@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useParams, Navigate, Link } from "react-router-dom";
+import { useParams, Navigate, Link, useNavigate } from "react-router-dom";
+import AppHeader from "./AppHeader.jsx";
 import { sendChat } from "../api.js";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition.js";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
 
 export default function ConversationPractice({ courses, mode }) {
   const { lang: langCode, courseId, level } = useParams();
+  const navigate = useNavigate();
   const lang = courses[langCode];
   const course = mode === "course" ? lang?.courses.find((c) => c.id === courseId) : null;
 
@@ -14,7 +16,8 @@ export default function ConversationPractice({ courses, mode }) {
   const [paused, setPaused] = useState(false);
   const [caption, setCaption] = useState("");
   const [captionFaint, setCaptionFaint] = useState(true);
-  const [correctionBanner, setCorrectionBanner] = useState(null);
+  const [turns, setTurns] = useState([]);
+  const [ended, setEnded] = useState(false);
   const [error, setError] = useState(null);
   const [showTextFallback, setShowTextFallback] = useState(false);
   const [textInput, setTextInput] = useState("");
@@ -22,7 +25,6 @@ export default function ConversationPractice({ courses, mode }) {
   const startedRef = useRef(false);
   const historyRef = useRef([]);
   const pausedRef = useRef(false);
-  const correctionTimeoutRef = useRef(null);
   pausedRef.current = paused;
 
   const { speak, cancel: cancelSpeech, isSupported: ttsSupported } = useSpeechSynthesis(
@@ -53,13 +55,6 @@ export default function ConversationPractice({ courses, mode }) {
     [langCode, mode, courseId, level]
   );
 
-  const showCorrection = useCallback((text) => {
-    if (!text) return;
-    clearTimeout(correctionTimeoutRef.current);
-    setCorrectionBanner({ key: Date.now(), text });
-    correctionTimeoutRef.current = setTimeout(() => setCorrectionBanner(null), 7000);
-  }, []);
-
   const submitTurn = useCallback(
     async (text) => {
       if (!text || !text.trim()) return;
@@ -77,10 +72,15 @@ export default function ConversationPractice({ courses, mode }) {
           { role: "user", content: trimmed },
           { role: "assistant", content: result.reply },
         ];
+        setTurns((prev) => [
+          ...prev,
+          {
+            userText: trimmed,
+            hasCorrection: !!result.has_correction,
+            correction: result.correction || "",
+          },
+        ]);
         setLoading(false);
-        if (result.has_correction && result.correction) {
-          showCorrection(result.correction);
-        }
         setCaption(result.reply);
         setCaptionFaint(false);
         setSpeaking(true);
@@ -95,13 +95,16 @@ export default function ConversationPractice({ courses, mode }) {
         setError(e.message);
       }
     },
-    [callApi, speak, stopListening, startListening, showCorrection]
+    [callApi, speak, stopListening, startListening]
   );
 
-  useEffect(() => {
-    if (startedRef.current || !lang) return;
-    if (mode === "course" && !course) return;
-    startedRef.current = true;
+  const startSession = useCallback(() => {
+    setEnded(false);
+    setTurns([]);
+    setError(null);
+    setCaption("");
+    setCaptionFaint(true);
+    historyRef.current = [];
     setLoading(true);
     callApi([], null)
       .then((result) => {
@@ -121,6 +124,14 @@ export default function ConversationPractice({ courses, mode }) {
         setLoading(false);
         setError(e.message);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [callApi, speak, startListening]);
+
+  useEffect(() => {
+    if (startedRef.current || !lang) return;
+    if (mode === "course" && !course) return;
+    startedRef.current = true;
+    startSession();
     // Intentionally run once on mount.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lang, course]);
@@ -136,7 +147,6 @@ export default function ConversationPractice({ courses, mode }) {
     return () => {
       cancelSpeech();
       stopListening();
-      clearTimeout(correctionTimeoutRef.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -146,6 +156,7 @@ export default function ConversationPractice({ courses, mode }) {
 
   const title = mode === "course" ? course.title : `Playground · ${capitalize(level)}`;
   const backTo = mode === "course" ? `/${langCode}/course/${courseId}` : `/${langCode}/playground`;
+  const tipCount = turns.filter((t) => t.hasCorrection).length;
   const orbState = listening ? "listening" : loading ? "thinking" : speaking ? "speaking" : "idle";
 
   function statusLabel() {
@@ -176,6 +187,16 @@ export default function ConversationPractice({ courses, mode }) {
     }
   }
 
+  function handleEndSession() {
+    cancelSpeech();
+    stopListening();
+    if (turns.length > 0) {
+      setEnded(true);
+    } else {
+      navigate(backTo);
+    }
+  }
+
   function handleTextSubmit(e) {
     e.preventDefault();
     if (!textInput.trim()) return;
@@ -183,16 +204,61 @@ export default function ConversationPractice({ courses, mode }) {
     setTextInput("");
   }
 
+  if (ended) {
+    return (
+      <>
+        <AppHeader backTo={backTo} backLabel={mode === "course" ? course.title : "Playground"} />
+        <div className="page">
+          <header className="hero small">
+            <h1>Session recap</h1>
+            <p>
+              {lang.flag} {title} ·{" "}
+              {turns.length === 1 ? "1 thing you said" : `${turns.length} things you said`}
+            </p>
+          </header>
+
+          {turns.length === 0 ? (
+            <p>You ended before saying anything — want to try again?</p>
+          ) : (
+            <div className="list-card">
+              <ul className="recap-list">
+                {turns.map((t, i) => (
+                  <li key={i}>
+                    <div className="recap-said">🗣️ {t.userText}</div>
+                    {t.hasCorrection ? (
+                      <div className="recap-tip">💡 {t.correction}</div>
+                    ) : (
+                      <div className="recap-ok">✓ Nice — no corrections here</div>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="cta-stack">
+            <button type="button" className="primary-button" onClick={startSession}>
+              🔁 Practice again
+            </button>
+            <Link to={backTo} className="secondary-button">
+              Done
+            </Link>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div className="voice-session">
       <div className="voice-topbar">
-        <Link to={backTo} className="voice-close" aria-label="Back">
+        <button type="button" className="voice-close" onClick={handleEndSession} aria-label="End session">
           ✕
-        </Link>
+        </button>
         <div className="voice-title">
           {lang.flag} <strong>{title}</strong>
         </div>
-        <div className="voice-spacer" />
+        <div className="voice-tip-count">{tipCount > 0 && `💡 ${tipCount}`}</div>
       </div>
 
       {!sttSupported && (
@@ -202,12 +268,6 @@ export default function ConversationPractice({ courses, mode }) {
       )}
       {!ttsSupported && (
         <p className="voice-warning">This browser can't read replies aloud, but text still works.</p>
-      )}
-
-      {correctionBanner && (
-        <div className="correction-banner" key={correctionBanner.key}>
-          💡 {correctionBanner.text}
-        </div>
       )}
 
       <div className={`orb-stage state-${orbState}`}>
@@ -232,6 +292,11 @@ export default function ConversationPractice({ courses, mode }) {
       {error && <p className="voice-error">{error}</p>}
 
       <div className="voice-footer">
+        {turns.length > 0 && (
+          <button type="button" className="end-session-link" onClick={handleEndSession}>
+            End session &amp; see recap →
+          </button>
+        )}
         {!showTextFallback && (
           <button className="text-fallback-toggle" onClick={() => setShowTextFallback(true)}>
             Type instead

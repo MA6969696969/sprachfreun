@@ -6,6 +6,7 @@ import LanguageHome from "./components/LanguageHome.jsx";
 import CourseDetail from "./components/CourseDetail.jsx";
 import Playground from "./components/Playground.jsx";
 import ConversationPractice from "./components/ConversationPractice.jsx";
+import VocabPractice from "./components/VocabPractice.jsx";
 
 export default function App() {
   const [courses, setCourses] = useState(null);
@@ -42,6 +43,10 @@ export default function App() {
       <Route path="/" element={<Home courses={courses} />} />
       <Route path="/:lang" element={<LanguageHome courses={courses} />} />
       <Route path="/:lang/course/:courseId" element={<CourseDetail courses={courses} />} />
+      <Route
+        path="/:lang/course/:courseId/flashcards"
+        element={<VocabPractice courses={courses} />}
+      />
       <Route
         path="/:lang/practice/:courseId"
         element={<ConversationPractice courses={courses} mode="course" />}

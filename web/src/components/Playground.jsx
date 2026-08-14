@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
-import BackLink from "./BackLink.jsx";
+import AppHeader from "./AppHeader.jsx";
 
 const LEVELS = [
   { id: "beginner", label: "Beginner", desc: "Simple words, short sentences, lots of patience." },
@@ -13,26 +13,28 @@ export default function Playground({ courses }) {
   if (!lang) return <Navigate to="/" replace />;
 
   return (
-    <div className="page">
-      <BackLink to={`/${langCode}`} label={lang.languageName} />
-      <header className="hero small">
-        <h1>Speaking Playground</h1>
-        <p>Pick your level, then talk about anything — {lang.languageName} only.</p>
-      </header>
+    <>
+      <AppHeader backTo={`/${langCode}`} backLabel={lang.languageName} />
+      <div className="page">
+        <header className="hero small">
+          <h1>Speaking Playground</h1>
+          <p>Pick your level, then talk about anything — {lang.languageName} only.</p>
+        </header>
 
-      <div className="card-grid">
-        {LEVELS.map((level, i) => (
-          <Link
-            key={level.id}
-            to={`/${langCode}/playground/${level.id}`}
-            className="level-card"
-            style={{ "--stagger": i }}
-          >
-            <h3>{level.label}</h3>
-            <p>{level.desc}</p>
-          </Link>
-        ))}
+        <div className="card-grid">
+          {LEVELS.map((level, i) => (
+            <Link
+              key={level.id}
+              to={`/${langCode}/playground/${level.id}`}
+              className="level-card"
+              style={{ "--stagger": i }}
+            >
+              <h3>{level.label}</h3>
+              <p>{level.desc}</p>
+            </Link>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

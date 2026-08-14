@@ -50,6 +50,66 @@ button {
 
 /* ---------- Layout ---------- */
 
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(251, 251, 253, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.app-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-weight: 700;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  flex-shrink: 0;
+}
+
+.app-brand-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: radial-gradient(
+    circle at 32% 28%,
+    #8fe9ff 0%,
+    #6a8bff 38%,
+    #9a6bff 68%,
+    #ff7fb0 100%
+  );
+  flex-shrink: 0;
+}
+
+.app-header-back {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 7px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.app-header-back:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
 .page {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -379,8 +439,34 @@ section h2 {
   transform: translateY(-1px);
 }
 
-.practice-cta {
+.secondary-button {
+  display: block;
+  text-align: center;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 17px;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.secondary-button:hover {
+  background: #dcebfa;
+  transform: translateY(-1px);
+}
+
+.cta-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   margin-top: 28px;
+}
+
+.cta-stack .practice-cta {
+  margin-top: 0;
 }
 
 /* =====================================================
@@ -450,8 +536,12 @@ section h2 {
   font-weight: 600;
 }
 
-.voice-spacer {
-  width: 38px;
+.voice-tip-count {
+  min-width: 38px;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffd9a0;
 }
 
 .voice-warning {
@@ -463,37 +553,6 @@ section h2 {
   border-radius: 10px;
   font-size: 0.82rem;
   text-align: center;
-}
-
-.correction-banner {
-  position: absolute;
-  top: 78px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: min(480px, 90vw);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #ffe6c2;
-  padding: 12px 18px;
-  border-radius: 16px;
-  font-size: 0.92rem;
-  line-height: 1.35;
-  text-align: center;
-  z-index: 5;
-  animation: bannerIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@keyframes bannerIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -8px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
 }
 
 .orb-stage {
@@ -743,4 +802,225 @@ section h2 {
   font-size: 0.85rem;
   text-align: center;
   max-width: 420px;
+}
+
+.end-session-link {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--voice-ink-soft);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 9px 18px;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.end-session-link:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--voice-ink);
+}
+
+/* ---------- Session recap ---------- */
+
+.recap-list {
+  list-style: none;
+  padding: 0 24px;
+  margin: 0;
+}
+
+.recap-list li {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.recap-list li:last-child {
+  border-bottom: none;
+}
+
+.recap-said {
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.4;
+}
+
+.recap-tip {
+  margin-top: 8px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.recap-ok {
+  margin-top: 8px;
+  color: #2f7d4f;
+  font-size: 0.88rem;
+}
+
+/* ---------- Flashcard practice ---------- */
+
+.flashcard-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flashcard-page .hero.small {
+  text-align: center;
+  width: 100%;
+}
+
+.flashcard-progress-track {
+  width: 100%;
+  max-width: 480px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--border-soft);
+  overflow: hidden;
+  margin-bottom: 32px;
+}
+
+.flashcard-progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6a8bff, #9a6bff);
+  transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.flashcard-stage {
+  width: 100%;
+  max-width: 480px;
+  perspective: 1400px;
+}
+
+.flashcard {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  cursor: pointer;
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcard.flipped .flashcard-inner {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  text-align: center;
+  gap: 10px;
+}
+
+.flashcard-face.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(160deg, #eef6ff 0%, var(--accent-soft) 100%);
+}
+
+.flashcard-term {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.flashcard-hint {
+  position: absolute;
+  bottom: 20px;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.flashcard-example {
+  color: var(--accent);
+  font-size: 0.98rem;
+  margin-top: 4px;
+}
+
+.flashcard-tap-prompt {
+  margin-top: 20px;
+  color: var(--ink-faint);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.flashcard-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.flashcard-btn {
+  flex: 1;
+  padding: 16px;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.flashcard-btn:hover {
+  transform: translateY(-1px);
+}
+
+.flashcard-btn.still-learning {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+
+.flashcard-btn.got-it {
+  background: #dcf5e3;
+  color: #1e6b3c;
+}
+
+.flashcard-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 420px;
+  margin-top: 12px;
+}
+
+.flashcard-complete-icon {
+  font-size: 3.4rem;
+}
+
+.flashcard-complete p {
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.flashcard-complete .cta-stack {
+  width: 100%;
 }
