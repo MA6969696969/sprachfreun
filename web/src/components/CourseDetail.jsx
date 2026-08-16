@@ -56,6 +56,9 @@ export default function CourseDetail({ courses }) {
           <Link to={`/${langCode}/course/${courseId}/flashcards`} className="primary-button practice-cta flashcard-cta">
             📇 Practice vocabulary
           </Link>
+          <Link to={`/${langCode}/course/${courseId}/match`} className="secondary-button practice-cta">
+            🔀 Play match
+          </Link>
           <Link to={`/${langCode}/practice/${courseId}`} className="secondary-button practice-cta">
             🎙️ Practice speaking with AI
           </Link>

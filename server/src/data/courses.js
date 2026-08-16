@@ -6,6 +6,31 @@ export const courses = {
     flag: "🇩🇪",
     courses: [
       {
+        id: "basics",
+        icon: "🔤",
+        category: "Foundations",
+        title: "Basics: Pronouns & Question Words",
+        description: "Learn the essential building blocks — I, you, we, who, what — and the verb 'to be'.",
+        scenario:
+          "You're learning the absolute basics of German with a patient tutor — pronouns, question words, and simple sentences with 'sein' (to be).",
+        vocabulary: [
+          { term: "ich", translation: "I", example: "Ich bin müde." },
+          { term: "du", translation: "you (informal, singular)", example: "Bist du fertig?" },
+          { term: "er / sie / es", translation: "he / she / it", example: "Er ist mein Bruder." },
+          { term: "wir", translation: "we", example: "Wir sind zusammen hier." },
+          { term: "sie / Sie", translation: "they / you (formal)", example: "Sie sind sehr nett." },
+          { term: "wer", translation: "who", example: "Wer ist das?" },
+          { term: "was", translation: "what", example: "Was machst du?" },
+        ],
+        phrases: [
+          { phrase: "Wer bist du?", translation: "Who are you?" },
+          { phrase: "Was ist das?", translation: "What is that?" },
+          { phrase: "Ich bin ...", translation: "I am ..." },
+          { phrase: "Wir sind ...", translation: "We are ..." },
+          { phrase: "Das ist gut.", translation: "That is good." },
+        ],
+      },
+      {
         id: "school",
         icon: "🎒",
         category: "Foundations",
@@ -542,6 +567,31 @@ export const courses = {
     speechLang: "ja-JP",
     flag: "🇯🇵",
     courses: [
+      {
+        id: "basics",
+        icon: "🔤",
+        category: "Foundations",
+        title: "Basics: Pronouns & Question Words",
+        description: "Learn the essential building blocks — I, you, we, who, what — and the word です (is/am/are).",
+        scenario:
+          "You're learning the absolute basics of Japanese with a patient tutor — pronouns, question words, and simple sentences with です.",
+        vocabulary: [
+          { term: "私", romaji: "watashi", translation: "I", example: "私は学生です。" },
+          { term: "あなた", romaji: "anata", translation: "you", example: "あなたは先生ですか？" },
+          { term: "彼 / 彼女", romaji: "kare / kanojo", translation: "he / she", example: "彼は私の兄です。" },
+          { term: "私たち", romaji: "watashitachi", translation: "we", example: "私たちは友達です。" },
+          { term: "彼ら", romaji: "karera", translation: "they", example: "彼らは学生です。" },
+          { term: "誰", romaji: "dare", translation: "who", example: "あの人は誰ですか？" },
+          { term: "何", romaji: "nani / nan", translation: "what", example: "それは何ですか？" },
+        ],
+        phrases: [
+          { phrase: "あなたは誰ですか？", romaji: "Anata wa dare desu ka?", translation: "Who are you?" },
+          { phrase: "これは何ですか？", romaji: "Kore wa nan desu ka?", translation: "What is this?" },
+          { phrase: "私は...です。", romaji: "Watashi wa ... desu.", translation: "I am ..." },
+          { phrase: "私たちは...です。", romaji: "Watashitachi wa ... desu.", translation: "We are ..." },
+          { phrase: "それはいいです。", romaji: "Sore wa ii desu.", translation: "That is good." },
+        ],
+      },
       {
         id: "school",
         icon: "🎒",

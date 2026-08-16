@@ -1,31 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
-
-function buildDeck(course) {
-  const vocabCards = course.vocabulary.map((v) => ({
-    front: v.term,
-    romaji: v.romaji || null,
-    back: v.translation,
-    example: v.example || null,
-  }));
-  const phraseCards = course.phrases.map((p) => ({
-    front: p.phrase,
-    romaji: p.romaji || null,
-    back: p.translation,
-    example: null,
-  }));
-  return [...vocabCards, ...phraseCards];
-}
-
-function shuffle(arr) {
-  const a = [...arr];
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+import { buildDeck, shuffle } from "../lib/deck.js";
 
 export default function VocabPractice({ courses }) {
   const { lang: langCode, courseId } = useParams();
