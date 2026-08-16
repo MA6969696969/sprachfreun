@@ -8,7 +8,7 @@ export default function ProfileBar() {
 
   function commitName() {
     const trimmed = draft.trim();
-    setName(trimmed || "Learner");
+    setName(trimmed || "Friend");
     setEditing(false);
   }
 
