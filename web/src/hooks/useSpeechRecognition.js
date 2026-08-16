@@ -54,7 +54,11 @@ export function useSpeechRecognition({ lang, onFinalResult }) {
       setInterimTranscript("");
       const text = finalTranscriptRef.current.trim();
       finalTranscriptRef.current = "";
-      if (text) onFinalResultRef.current?.(text);
+      // Always report back, even with an empty transcript — callers that
+      // only care about non-empty speech (e.g. open conversation) already
+      // guard for that themselves, and callers that need to know about a
+      // silent stop (e.g. a quiz question with no answer) can act on it.
+      onFinalResultRef.current?.(text);
     };
 
     recognitionRef.current = recognition;

@@ -65,3 +65,29 @@ export const replySchema = {
   required: ["reply", "has_correction", "correction"],
   additionalProperties: false,
 };
+
+export function buildGradePrompt({ languageName }) {
+  return `You are grading one question of a listening-comprehension quiz for a ${languageName} learner. They heard a ${languageName} word or phrase spoken aloud and had to say what it means in English.
+
+You will be given the original ${languageName} text, its accepted English translation, and what the learner said. Their answer was captured via speech-to-text (or typed in a hurry), so expect minor transcription noise, filler words, missing articles, or different phrasing.
+
+Mark it correct if the learner's answer captures the core meaning, even if worded differently, incomplete in minor ways, or slightly mangled by transcription. Mark it incorrect if the meaning is actually wrong, unrelated, or there is no real answer (silence, "I don't know", a random guess).
+
+Respond with one short, encouraging sentence of feedback in English: if correct, briefly affirm it; if incorrect, briefly and kindly state what it actually means.`;
+}
+
+export const gradeSchema = {
+  type: "object",
+  properties: {
+    correct: {
+      type: "boolean",
+      description: "Whether the learner's answer captures the core meaning of the phrase.",
+    },
+    feedback: {
+      type: "string",
+      description: "One short encouraging sentence of feedback, in English.",
+    },
+  },
+  required: ["correct", "feedback"],
+  additionalProperties: false,
+};

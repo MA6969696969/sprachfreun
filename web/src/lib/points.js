@@ -36,3 +36,13 @@ export function conversationSessionBonus(turns) {
   if (allCorrect && turns.length >= 3) bonus += 30;
   return bonus;
 }
+
+export const TEST_PASS_RATIO = 0.7;
+
+export function testPassed(correctCount, total) {
+  return total > 0 && correctCount / total >= TEST_PASS_RATIO;
+}
+
+export function testPoints(correctCount, total) {
+  return correctCount * 10 + (testPassed(correctCount, total) ? 40 : 0);
+}

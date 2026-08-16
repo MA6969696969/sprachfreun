@@ -1,8 +1,8 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
 import { useProfile, getLevel } from "../context/ProfileContext.jsx";
-
-const CATEGORY_ORDER = ["Foundations", "Out and About", "Life & Interests", "Everyday Life"];
+import { useProgress } from "../context/ProgressContext.jsx";
+import { CATEGORY_ORDER, categorySlug } from "../lib/categories.js";
 
 function groupByCategory(courses) {
   const groups = new Map();
@@ -20,11 +20,13 @@ export default function LanguageHome({ courses }) {
   const { lang: langCode } = useParams();
   const lang = courses[langCode];
   const { points } = useProfile();
+  const { isCategoryPassed, getLangProficiency } = useProgress();
   if (!lang) return <Navigate to="/" replace />;
 
   const grouped = groupByCategory(lang.courses);
   const langPoints = points[langCode] || 0;
   const langLevel = getLevel(langPoints);
+  const proficiency = getLangProficiency(langCode);
 
   return (
     <>
@@ -33,6 +35,9 @@ export default function LanguageHome({ courses }) {
         <header className="hero small">
           <span className="flag-big">{lang.flag}</span>
           <h1>{lang.languageName}</h1>
+          <div className="proficiency-badge">
+            🎯 {proficiency.title} · {proficiency.passedCount}/{proficiency.totalCount} units passed
+          </div>
           <p>{lang.courses.length} courses, organized so you can start with the basics and build up.</p>
           {langPoints > 0 && (
             <p className="lang-mastery">
@@ -49,25 +54,34 @@ export default function LanguageHome({ courses }) {
           </Link>
         </section>
 
-        {grouped.map(([category, categoryCourses]) => (
-          <section key={category}>
-            <h2>{category}</h2>
-            <div className="card-grid">
-              {categoryCourses.map((course, i) => (
-                <Link
-                  key={course.id}
-                  to={`/${langCode}/course/${course.id}`}
-                  className="course-card"
-                  style={{ "--stagger": i }}
-                >
-                  <span className="course-icon">{course.icon}</span>
-                  <h3>{course.title}</h3>
-                  <p>{course.description}</p>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
+        {grouped.map(([category, categoryCourses]) => {
+          const passed = isCategoryPassed(langCode, category);
+          return (
+            <section key={category}>
+              <h2>{category}</h2>
+              <div className="card-grid">
+                {categoryCourses.map((course, i) => (
+                  <Link
+                    key={course.id}
+                    to={`/${langCode}/course/${course.id}`}
+                    className="course-card"
+                    style={{ "--stagger": i }}
+                  >
+                    <span className="course-icon">{course.icon}</span>
+                    <h3>{course.title}</h3>
+                    <p>{course.description}</p>
+                  </Link>
+                ))}
+              </div>
+              <Link
+                to={`/${langCode}/test/${categorySlug(category)}`}
+                className={`category-test-cta ${passed ? "passed" : ""}`}
+              >
+                {passed ? `✅ ${category} test passed — retake` : `🧪 Take the ${category} test`}
+              </Link>
+            </section>
+          );
+        })}
       </div>
     </>
   );

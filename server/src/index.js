@@ -3,7 +3,7 @@ import express from "express";
 import cors from "cors";
 import Anthropic from "@anthropic-ai/sdk";
 import { courses, getLanguage, getCourse } from "./data/courses.js";
-import { buildSystemPrompt, replySchema } from "./promptBuilder.js";
+import { buildSystemPrompt, replySchema, buildGradePrompt, gradeSchema } from "./promptBuilder.js";
 
 const app = express();
 app.use(cors());
@@ -90,6 +90,47 @@ app.post("/api/chat", async (req, res) => {
     res.json(parsed);
   } catch (err) {
     console.error("Chat error:", err);
+    res.status(err.status || 500).json({ error: friendlyErrorMessage(err) });
+  }
+});
+
+app.post("/api/grade", async (req, res) => {
+  try {
+    const { language, term, correctTranslation, userAnswer } = req.body;
+
+    const lang = getLanguage(language);
+    if (!lang) {
+      return res.status(400).json({ error: `Unknown language: ${language}` });
+    }
+    if (!term || !correctTranslation) {
+      return res.status(400).json({ error: "Missing term or correctTranslation" });
+    }
+
+    const system = buildGradePrompt({ languageName: lang.languageName });
+    const userContent = `${lang.languageName} text: "${term}"
+Accepted meaning: "${correctTranslation}"
+Learner said: "${(userAnswer || "").trim() || "(nothing — no answer given)"}"`;
+
+    const response = await client.messages.create({
+      model: MODEL,
+      max_tokens: 200,
+      system,
+      messages: [{ role: "user", content: userContent }],
+      output_config: {
+        effort: EFFORT,
+        format: { type: "json_schema", schema: gradeSchema },
+      },
+    });
+
+    const textBlock = response.content.find((b) => b.type === "text");
+    if (!textBlock) {
+      return res.status(502).json({ error: "No text response from model" });
+    }
+
+    const parsed = JSON.parse(textBlock.text);
+    res.json(parsed);
+  } catch (err) {
+    console.error("Grade error:", err);
     res.status(err.status || 500).json({ error: friendlyErrorMessage(err) });
   }
 });

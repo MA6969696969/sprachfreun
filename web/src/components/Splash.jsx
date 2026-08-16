@@ -7,7 +7,8 @@ export default function Splash() {
         <span className="splash-core" />
       </div>
       <h1 className="splash-word">Sprachfreund</h1>
-      <p className="splash-tagline">Speak a language for real.</p>
+      <p className="splash-tagline">Speak it. Don't just study it.</p>
+      <p className="splash-sub">German · Japanese — real conversations with an AI partner</p>
       <div className="splash-loading" aria-label="Loading">
         <span />
         <span />

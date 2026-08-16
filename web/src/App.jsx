@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { fetchCourses } from "./api.js";
 import { ProfileProvider } from "./context/ProfileContext.jsx";
+import { ProgressProvider } from "./context/ProgressContext.jsx";
 import Splash from "./components/Splash.jsx";
 import Home from "./components/Home.jsx";
 import LanguageHome from "./components/LanguageHome.jsx";
@@ -10,8 +11,9 @@ import Playground from "./components/Playground.jsx";
 import ConversationPractice from "./components/ConversationPractice.jsx";
 import VocabPractice from "./components/VocabPractice.jsx";
 import MatchGame from "./components/MatchGame.jsx";
+import CategoryTest from "./components/CategoryTest.jsx";
 
-const MIN_SPLASH_MS = 1100;
+const MIN_SPLASH_MS = 2000;
 
 export default function App() {
   const [courses, setCourses] = useState(null);
@@ -47,29 +49,32 @@ export default function App() {
 
   return (
     <ProfileProvider>
-      <Routes>
-        <Route path="/" element={<Home courses={courses} />} />
-        <Route path="/:lang" element={<LanguageHome courses={courses} />} />
-        <Route path="/:lang/course/:courseId" element={<CourseDetail courses={courses} />} />
-        <Route
-          path="/:lang/course/:courseId/flashcards"
-          element={<VocabPractice courses={courses} />}
-        />
-        <Route
-          path="/:lang/course/:courseId/match"
-          element={<MatchGame courses={courses} />}
-        />
-        <Route
-          path="/:lang/practice/:courseId"
-          element={<ConversationPractice courses={courses} mode="course" />}
-        />
-        <Route path="/:lang/playground" element={<Playground courses={courses} />} />
-        <Route
-          path="/:lang/playground/:level"
-          element={<ConversationPractice courses={courses} mode="playground" />}
-        />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <ProgressProvider>
+        <Routes>
+          <Route path="/" element={<Home courses={courses} />} />
+          <Route path="/:lang" element={<LanguageHome courses={courses} />} />
+          <Route path="/:lang/course/:courseId" element={<CourseDetail courses={courses} />} />
+          <Route
+            path="/:lang/course/:courseId/flashcards"
+            element={<VocabPractice courses={courses} />}
+          />
+          <Route
+            path="/:lang/course/:courseId/match"
+            element={<MatchGame courses={courses} />}
+          />
+          <Route
+            path="/:lang/practice/:courseId"
+            element={<ConversationPractice courses={courses} mode="course" />}
+          />
+          <Route path="/:lang/playground" element={<Playground courses={courses} />} />
+          <Route
+            path="/:lang/playground/:level"
+            element={<ConversationPractice courses={courses} mode="playground" />}
+          />
+          <Route path="/:lang/test/:category" element={<CategoryTest courses={courses} />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </ProgressProvider>
     </ProfileProvider>
   );
 }
