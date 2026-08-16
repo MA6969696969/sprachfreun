@@ -1,7 +1,9 @@
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
 import { buildDeck, shuffle } from "../lib/deck.js";
+import { useProfile } from "../context/ProfileContext.jsx";
+import { flashcardPoints } from "../lib/points.js";
 
 export default function VocabPractice({ courses }) {
   const { lang: langCode, courseId } = useParams();
@@ -14,11 +16,20 @@ export default function VocabPractice({ courses }) {
   const [masteredCount, setMasteredCount] = useState(0);
   const [flipped, setFlipped] = useState(false);
   const nextRoundRef = useRef([]);
+  const awardedRef = useRef(false);
+  const { addPoints } = useProfile();
+  const complete = deck.length > 0 && queue.length === 0;
+
+  useEffect(() => {
+    if (complete && !awardedRef.current) {
+      awardedRef.current = true;
+      addPoints(langCode, flashcardPoints(deck.length, round));
+    }
+  }, [complete, langCode, deck.length, round, addPoints]);
 
   if (!lang || !course) return <Navigate to="/" replace />;
 
   const current = queue[0];
-  const complete = queue.length === 0;
   const backTo = `/${langCode}/course/${courseId}`;
 
   function handleMark(gotIt) {

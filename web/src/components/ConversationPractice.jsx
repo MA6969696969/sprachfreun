@@ -4,6 +4,8 @@ import AppHeader from "./AppHeader.jsx";
 import { sendChat } from "../api.js";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition.js";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
+import { useProfile } from "../context/ProfileContext.jsx";
+import { conversationTurnPoints, conversationSessionBonus } from "../lib/points.js";
 
 export default function ConversationPractice({ courses, mode }) {
   const { lang: langCode, courseId, level } = useParams();
@@ -13,7 +15,6 @@ export default function ConversationPractice({ courses, mode }) {
 
   const [loading, setLoading] = useState(true);
   const [speaking, setSpeaking] = useState(false);
-  const [paused, setPaused] = useState(false);
   const [caption, setCaption] = useState("");
   const [captionFaint, setCaptionFaint] = useState(true);
   const [turns, setTurns] = useState([]);
@@ -24,8 +25,7 @@ export default function ConversationPractice({ courses, mode }) {
 
   const startedRef = useRef(false);
   const historyRef = useRef([]);
-  const pausedRef = useRef(false);
-  pausedRef.current = paused;
+  const { addPoints } = useProfile();
 
   const { speak, cancel: cancelSpeech, isSupported: ttsSupported } = useSpeechSynthesis(
     lang?.speechLang
@@ -80,6 +80,7 @@ export default function ConversationPractice({ courses, mode }) {
             correction: result.correction || "",
           },
         ]);
+        addPoints(langCode, conversationTurnPoints(result.has_correction));
         setLoading(false);
         setCaption(result.reply);
         setCaptionFaint(false);
@@ -87,7 +88,7 @@ export default function ConversationPractice({ courses, mode }) {
         speak(result.reply, {
           onEnd: () => {
             setSpeaking(false);
-            if (!pausedRef.current) startListening();
+            startListening();
           },
         });
       } catch (e) {
@@ -95,7 +96,7 @@ export default function ConversationPractice({ courses, mode }) {
         setError(e.message);
       }
     },
-    [callApi, speak, stopListening, startListening]
+    [callApi, speak, stopListening, startListening, addPoints, langCode]
   );
 
   const startSession = useCallback(() => {
@@ -116,7 +117,7 @@ export default function ConversationPractice({ courses, mode }) {
         speak(result.reply, {
           onEnd: () => {
             setSpeaking(false);
-            if (!pausedRef.current) startListening();
+            startListening();
           },
         });
       })
@@ -162,27 +163,24 @@ export default function ConversationPractice({ courses, mode }) {
   function statusLabel() {
     switch (orbState) {
       case "listening":
-        return "Listening…";
+        return "Listening… tap when you're done";
       case "thinking":
         return "Thinking…";
       case "speaking":
         return "Tap to interrupt";
       default:
-        return paused ? "Paused — tap to resume" : "Tap to talk";
+        return "Tap to talk";
     }
   }
 
   function handleOrbTap() {
     if (orbState === "listening") {
-      setPaused(true);
       stopListening();
     } else if (orbState === "speaking") {
       cancelSpeech();
       setSpeaking(false);
-      setPaused(false);
       startListening();
     } else if (orbState === "idle") {
-      setPaused(false);
       startListening();
     }
   }
@@ -191,6 +189,7 @@ export default function ConversationPractice({ courses, mode }) {
     cancelSpeech();
     stopListening();
     if (turns.length > 0) {
+      addPoints(langCode, conversationSessionBonus(turns));
       setEnded(true);
     } else {
       navigate(backTo);

@@ -1,5 +1,6 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
+import { useProfile, getLevel } from "../context/ProfileContext.jsx";
 
 const CATEGORY_ORDER = ["Foundations", "Out and About", "Life & Interests", "Everyday Life"];
 
@@ -18,9 +19,12 @@ function groupByCategory(courses) {
 export default function LanguageHome({ courses }) {
   const { lang: langCode } = useParams();
   const lang = courses[langCode];
+  const { points } = useProfile();
   if (!lang) return <Navigate to="/" replace />;
 
   const grouped = groupByCategory(lang.courses);
+  const langPoints = points[langCode] || 0;
+  const langLevel = getLevel(langPoints);
 
   return (
     <>
@@ -30,6 +34,11 @@ export default function LanguageHome({ courses }) {
           <span className="flag-big">{lang.flag}</span>
           <h1>{lang.languageName}</h1>
           <p>{lang.courses.length} courses, organized so you can start with the basics and build up.</p>
+          {langPoints > 0 && (
+            <p className="lang-mastery">
+              🏅 {langLevel.title} · {langPoints} pts in {lang.languageName}
+            </p>
+          )}
         </header>
 
         <section>

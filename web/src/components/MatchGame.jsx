@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
 import { buildDeck, shuffle } from "../lib/deck.js";
+import { useProfile } from "../context/ProfileContext.jsx";
+import { matchPoints } from "../lib/points.js";
 
 const PAIR_COUNT = 6;
 
@@ -28,6 +30,8 @@ export default function MatchGame({ courses }) {
   const [startTime, setStartTime] = useState(null);
   const [elapsedMs, setElapsedMs] = useState(0);
   const lockRef = useRef(false);
+  const awardedRef = useRef(false);
+  const { addPoints } = useProfile();
 
   const finished = round.pairTotal > 0 && matchedPairs.size === round.pairTotal;
 
@@ -36,6 +40,13 @@ export default function MatchGame({ courses }) {
     const id = setInterval(() => setElapsedMs(Date.now() - startTime), 100);
     return () => clearInterval(id);
   }, [startTime, finished]);
+
+  useEffect(() => {
+    if (finished && !awardedRef.current) {
+      awardedRef.current = true;
+      addPoints(langCode, matchPoints(round.pairTotal, elapsedMs));
+    }
+  }, [finished, langCode, round.pairTotal, elapsedMs, addPoints]);
 
   if (!lang || !course) return <Navigate to="/" replace />;
 
@@ -76,6 +87,7 @@ export default function MatchGame({ courses }) {
     setStartTime(null);
     setElapsedMs(0);
     lockRef.current = false;
+    awardedRef.current = false;
   }
 
   return (

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
+import ProfileBar from "./ProfileBar.jsx";
 
 export default function Home({ courses }) {
   return (
@@ -10,6 +11,7 @@ export default function Home({ courses }) {
           <h1>Sprachfreund</h1>
           <p>Learn a language by actually speaking it — with an AI conversation partner.</p>
         </header>
+        <ProfileBar />
         <div className="card-grid">
           {Object.values(courses).map((lang, i) => (
             <Link

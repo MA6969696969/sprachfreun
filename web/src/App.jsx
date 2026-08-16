@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { fetchCourses } from "./api.js";
+import { ProfileProvider } from "./context/ProfileContext.jsx";
+import Splash from "./components/Splash.jsx";
 import Home from "./components/Home.jsx";
 import LanguageHome from "./components/LanguageHome.jsx";
 import CourseDetail from "./components/CourseDetail.jsx";
@@ -9,14 +11,22 @@ import ConversationPractice from "./components/ConversationPractice.jsx";
 import VocabPractice from "./components/VocabPractice.jsx";
 import MatchGame from "./components/MatchGame.jsx";
 
+const MIN_SPLASH_MS = 1100;
+
 export default function App() {
   const [courses, setCourses] = useState(null);
   const [error, setError] = useState(null);
+  const [minTimeDone, setMinTimeDone] = useState(false);
 
   useEffect(() => {
     fetchCourses()
       .then(setCourses)
       .catch((e) => setError(e.message));
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMinTimeDone(true), MIN_SPLASH_MS);
+    return () => clearTimeout(t);
   }, []);
 
   if (error) {
@@ -31,37 +41,35 @@ export default function App() {
     );
   }
 
-  if (!courses) {
-    return (
-      <div className="page-center">
-        <span className="loading-orb" aria-label="Loading" />
-      </div>
-    );
+  if (!courses || !minTimeDone) {
+    return <Splash />;
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Home courses={courses} />} />
-      <Route path="/:lang" element={<LanguageHome courses={courses} />} />
-      <Route path="/:lang/course/:courseId" element={<CourseDetail courses={courses} />} />
-      <Route
-        path="/:lang/course/:courseId/flashcards"
-        element={<VocabPractice courses={courses} />}
-      />
-      <Route
-        path="/:lang/course/:courseId/match"
-        element={<MatchGame courses={courses} />}
-      />
-      <Route
-        path="/:lang/practice/:courseId"
-        element={<ConversationPractice courses={courses} mode="course" />}
-      />
-      <Route path="/:lang/playground" element={<Playground courses={courses} />} />
-      <Route
-        path="/:lang/playground/:level"
-        element={<ConversationPractice courses={courses} mode="playground" />}
-      />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <ProfileProvider>
+      <Routes>
+        <Route path="/" element={<Home courses={courses} />} />
+        <Route path="/:lang" element={<LanguageHome courses={courses} />} />
+        <Route path="/:lang/course/:courseId" element={<CourseDetail courses={courses} />} />
+        <Route
+          path="/:lang/course/:courseId/flashcards"
+          element={<VocabPractice courses={courses} />}
+        />
+        <Route
+          path="/:lang/course/:courseId/match"
+          element={<MatchGame courses={courses} />}
+        />
+        <Route
+          path="/:lang/practice/:courseId"
+          element={<ConversationPractice courses={courses} mode="course" />}
+        />
+        <Route path="/:lang/playground" element={<Playground courses={courses} />} />
+        <Route
+          path="/:lang/playground/:level"
+          element={<ConversationPractice courses={courses} mode="playground" />}
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </ProfileProvider>
   );
 }

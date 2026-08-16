@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useSpeechRecognition({ lang, onFinalResult }) {
   const recognitionRef = useRef(null);
+  const finalTranscriptRef = useRef("");
   const [listening, setListening] = useState(false);
   const [interimTranscript, setInterimTranscript] = useState("");
   const isSupported =
@@ -16,40 +17,44 @@ export function useSpeechRecognition({ lang, onFinalResult }) {
     const SpeechRecognitionImpl =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognitionImpl();
-    recognition.continuous = false;
+    // Continuous + manual stop (rather than auto-stop on a short pause) so
+    // learners get unlimited time to think mid-sentence without getting cut
+    // off. The user taps the orb again when they're actually done.
+    recognition.continuous = true;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     recognition.lang = lang;
 
     recognition.onstart = () => {
+      finalTranscriptRef.current = "";
       setListening(true);
     };
 
     recognition.onresult = (event) => {
       let interim = "";
-      let final = "";
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const result = event.results[i];
         if (result.isFinal) {
-          final += result[0].transcript;
+          finalTranscriptRef.current += `${result[0].transcript} `;
         } else {
           interim += result[0].transcript;
         }
       }
-      setInterimTranscript(interim);
-      if (final.trim()) {
-        onFinalResultRef.current?.(final.trim());
-      }
+      setInterimTranscript(`${finalTranscriptRef.current}${interim}`.trim());
     };
 
     recognition.onerror = (event) => {
       console.warn("Speech recognition error:", event.error);
-      setListening(false);
+      // Let onend (which always fires after onerror) handle cleanup and
+      // submit whatever was already captured, instead of dropping it here.
     };
 
     recognition.onend = () => {
       setListening(false);
       setInterimTranscript("");
+      const text = finalTranscriptRef.current.trim();
+      finalTranscriptRef.current = "";
+      if (text) onFinalResultRef.current?.(text);
     };
 
     recognitionRef.current = recognition;
