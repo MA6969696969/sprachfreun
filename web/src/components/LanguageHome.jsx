@@ -35,13 +35,15 @@ export default function LanguageHome({ courses }) {
       <AppHeader backTo="/" backLabel={t("allLanguages")} />
       <div className="page">
         <header className="hero small">
-          <h1>{lang.languageName}</h1>
+          <h1>
+            {lang.languageName} <span className="lang-flag-inline">{lang.flag}</span>
+          </h1>
           <div className="proficiency-badge">
-            🎯 {proficiency.title} · {proficiency.passedCount}/{proficiency.totalCount} units passed
+            <span className="stat-icon">🎯</span> {proficiency.title} · {proficiency.passedCount}/{proficiency.totalCount} units passed
           </div>
           {langPoints > 0 && (
             <p className="lang-mastery">
-              🏅 {langLevel.title} · {langPoints} pts in {lang.languageName}
+              <span className="stat-icon">🏅</span> {langLevel.title} · {langPoints} pts in {lang.languageName}
             </p>
           )}
         </header>

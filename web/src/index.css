@@ -456,8 +456,15 @@ button {
 }
 
 .hero.small h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: clamp(1.7rem, 4vw, 2.3rem);
   margin: 6px 0 6px;
+}
+
+.lang-flag-inline {
+  font-size: 0.55em;
 }
 
 .hero.small p {
@@ -471,20 +478,21 @@ button {
   }
 }
 
-.lang-mastery {
-  display: block;
-  margin-top: 4px;
+.lang-mastery,
+.proficiency-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 0;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--accent);
 }
 
-.proficiency-badge {
-  display: block;
-  margin: 10px 0 0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent);
+.stat-icon {
+  display: inline-flex;
+  width: 20px;
+  flex-shrink: 0;
 }
 
 .category-test-cta {
