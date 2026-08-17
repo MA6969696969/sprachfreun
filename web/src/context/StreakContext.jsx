@@ -33,12 +33,19 @@ function loadState() {
         lastCompletedDate: parsed.lastCompletedDate || null,
         todayDate: parsed.todayDate || todayStr(),
         todaySeconds: parsed.todaySeconds || 0,
+        completedDates: Array.isArray(parsed.completedDates) ? parsed.completedDates : [],
       };
     }
   } catch {
     // ignore corrupt storage
   }
-  return { streakCount: 0, lastCompletedDate: null, todayDate: todayStr(), todaySeconds: 0 };
+  return {
+    streakCount: 0,
+    lastCompletedDate: null,
+    todayDate: todayStr(),
+    todaySeconds: 0,
+    completedDates: [],
+  };
 }
 
 // If the stored state is from an earlier day, roll it forward: reset today's
@@ -90,7 +97,14 @@ export function StreakProvider({ children }) {
     if (state.todaySeconds < GOAL_SECONDS) return;
     if (state.lastCompletedDate === state.todayDate) return; // already awarded today
     const newStreak = state.streakCount + 1;
-    setState((prev) => ({ ...prev, streakCount: newStreak, lastCompletedDate: state.todayDate }));
+    setState((prev) => ({
+      ...prev,
+      streakCount: newStreak,
+      lastCompletedDate: state.todayDate,
+      completedDates: prev.completedDates.includes(state.todayDate)
+        ? prev.completedDates
+        : [...prev.completedDates, state.todayDate],
+    }));
     addPoints("streak", streakPoints(newStreak));
   }, [state.todaySeconds, state.todayDate, state.lastCompletedDate, state.streakCount, addPoints]);
 
@@ -99,6 +113,7 @@ export function StreakProvider({ children }) {
     todaySeconds: Math.min(state.todaySeconds, GOAL_SECONDS),
     goalSeconds: GOAL_SECONDS,
     completedToday: state.lastCompletedDate === state.todayDate,
+    completedDates: state.completedDates,
   };
 
   return <StreakContext.Provider value={value}>{children}</StreakContext.Provider>;

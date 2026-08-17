@@ -145,27 +145,7 @@ button {
   color: var(--accent);
 }
 
-.streak-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 7px 12px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.streak-badge.complete {
-  background: var(--ok-bg);
-  border-color: rgba(74, 222, 128, 0.35);
-  color: var(--ok-ink);
-}
-
-.settings-gear {
+.menu-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,26 +155,84 @@ button {
   border-radius: 50%;
   background: var(--surface);
   border: 1px solid var(--border);
-  font-size: 0.95rem;
+  color: var(--ink);
+  font-size: 1.05rem;
+  cursor: pointer;
   transition: background 0.15s ease, border-color 0.15s ease;
 }
 
-.settings-gear:hover {
+.menu-button:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
 }
 
-.profile-badge {
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 29;
+}
+
+.app-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: max(24px, env(safe-area-inset-right, 0px));
+  z-index: 30;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: 8px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.app-menu-profile {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 10px;
+  padding: 10px 12px 12px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.app-menu-profile-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.app-menu-profile-points {
   font-size: 0.8rem;
-  font-weight: 600;
   color: var(--ink-soft);
+}
+
+.app-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  color: var(--ink);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.app-menu-item:hover {
   background: var(--accent-soft);
-  padding: 7px 14px;
-  border-radius: 999px;
-  white-space: nowrap;
+}
+
+.app-menu-item-value {
+  color: var(--ink-faint);
+  font-weight: 500;
+  font-size: 0.85rem;
 }
 
 .profile-badge-dot {
@@ -1566,6 +1604,89 @@ section h2 {
 .match-card.matched {
   opacity: 0;
   pointer-events: none;
+}
+
+/* ---------- Streak calendar ---------- */
+
+.calendar-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 20px;
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.calendar-nav button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.calendar-nav button:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.calendar-month-label {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.calendar-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.calendar-cell.empty {
+  visibility: hidden;
+}
+
+.calendar-cell.done {
+  background: var(--ok-bg);
+  border-color: var(--ok-ink);
+  color: var(--ok-ink);
+  font-weight: 700;
+}
+
+.calendar-cell.today:not(.done) {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 700;
 }
 
 /* ---------- Settings ---------- */

@@ -1,14 +1,18 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { useStreak } from "../context/StreakContext.jsx";
 
 export default function AppHeader({ backTo, backLabel }) {
   const { totalPoints, level } = useProfile();
-  const { streakCount, todaySeconds, goalSeconds, completedToday } = useStreak();
+  const { streakCount } = useStreak();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const streakTitle = completedToday
-    ? `${streakCount} day streak — today's goal is done!`
-    : `${streakCount} day streak — ${Math.round((todaySeconds / goalSeconds) * 100)}% to today's goal`;
+  function goTo(path) {
+    setMenuOpen(false);
+    navigate(path);
+  }
 
   return (
     <div className="app-header">
@@ -18,29 +22,43 @@ export default function AppHeader({ backTo, backLabel }) {
           <span>Sprachfreund</span>
         </Link>
         <div className="app-header-right">
-          {backTo ? (
+          {backTo && (
             <Link to={backTo} className="app-header-back">
               ← {backLabel}
             </Link>
-          ) : (
-            <>
-              <div className="profile-badge" title={`${level.title} · ${totalPoints} points`}>
-                <span className="profile-badge-dot" />
-                {level.title} · {totalPoints} pts
-              </div>
-              <div
-                className={`streak-badge ${completedToday ? "complete" : ""}`}
-                title={streakTitle}
-              >
-                📅 {streakCount}
-              </div>
-            </>
           )}
-          <Link to="/settings" className="settings-gear" aria-label="Settings">
-            ⚙️
-          </Link>
+          <button
+            type="button"
+            className="menu-button"
+            onClick={() => setMenuOpen((open) => !open)}
+            aria-label="Menu"
+          >
+            ☰
+          </button>
         </div>
       </div>
+
+      {menuOpen && (
+        <>
+          <div className="menu-overlay" onClick={() => setMenuOpen(false)} />
+          <div className="app-menu">
+            <div className="app-menu-profile">
+              <span className="profile-badge-dot" />
+              <div>
+                <div className="app-menu-profile-title">{level.title}</div>
+                <div className="app-menu-profile-points">{totalPoints} pts</div>
+              </div>
+            </div>
+            <button type="button" className="app-menu-item" onClick={() => goTo("/streak")}>
+              <span>📅 Streak</span>
+              <span className="app-menu-item-value">{streakCount}d</span>
+            </button>
+            <button type="button" className="app-menu-item" onClick={() => goTo("/settings")}>
+              <span>⚙️ Settings</span>
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 }
