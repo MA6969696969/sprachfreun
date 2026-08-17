@@ -273,20 +273,12 @@ button {
   animation: splashFadeUp 0.6s ease-out 0.45s forwards;
 }
 
-.splash-sub {
-  color: var(--ink-faint);
-  font-size: 0.85rem;
-  margin: 10px 0 0;
-  opacity: 0;
-  animation: splashFadeUp 0.6s ease-out 0.65s forwards;
-}
-
 .splash-loading {
   display: flex;
   gap: 6px;
   margin-top: 36px;
   opacity: 0;
-  animation: splashFadeUp 0.6s ease-out 0.9s forwards;
+  animation: splashFadeUp 0.6s ease-out 0.7s forwards;
 }
 
 .splash-loading span {
@@ -330,7 +322,6 @@ button {
 @media (prefers-reduced-motion: reduce) {
   .splash-word,
   .splash-tagline,
-  .splash-sub,
   .splash-loading {
     animation: none;
     opacity: 1;
