@@ -480,9 +480,10 @@ button {
 
 .lang-mastery,
 .proficiency-badge {
-  display: flex;
+  display: grid;
+  grid-template-columns: 24px 1fr;
   align-items: center;
-  gap: 8px;
+  column-gap: 8px;
   margin: 4px 0 0;
   font-size: 0.85rem;
   font-weight: 600;
@@ -490,9 +491,9 @@ button {
 }
 
 .stat-icon {
-  display: inline-flex;
-  width: 20px;
-  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .category-test-cta {
