@@ -24,9 +24,7 @@ export default function Home({ courses }) {
             >
               <span className="flag">{lang.flag}</span>
               <span className="lang-name">{lang.languageName}</span>
-              <span className="lang-sub">
-                {lang.courses.length} courses + speaking playground
-              </span>
+              <span className="lang-sub">{lang.courses.length} courses</span>
             </Link>
           ))}
         </div>
