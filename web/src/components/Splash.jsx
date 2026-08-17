@@ -1,4 +1,7 @@
+import { useLocale } from "../context/LocaleContext.jsx";
+
 export default function Splash() {
+  const { t } = useLocale();
   return (
     <div className="splash">
       <div className="splash-orb">
@@ -7,7 +10,7 @@ export default function Splash() {
         <span className="splash-core" />
       </div>
       <h1 className="splash-word">Sprachfreund</h1>
-      <p className="splash-tagline">Speak it. Don't just study it.</p>
+      <p className="splash-tagline">{t("tagline")}</p>
       <div className="splash-loading" aria-label="Loading">
         <span />
         <span />

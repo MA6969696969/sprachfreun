@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
 import { useProfile, getLevel } from "../context/ProfileContext.jsx";
 import { useProgress } from "../context/ProgressContext.jsx";
+import { useLocale } from "../context/LocaleContext.jsx";
 import { CATEGORY_ORDER, categorySlug } from "../lib/categories.js";
 
 function groupByCategory(courses) {
@@ -21,6 +22,7 @@ export default function LanguageHome({ courses }) {
   const lang = courses[langCode];
   const { points } = useProfile();
   const { isCategoryPassed, getLangProficiency } = useProgress();
+  const { t } = useLocale();
   if (!lang) return <Navigate to="/" replace />;
 
   const grouped = groupByCategory(lang.courses);
@@ -30,7 +32,7 @@ export default function LanguageHome({ courses }) {
 
   return (
     <>
-      <AppHeader backTo="/" backLabel="All languages" />
+      <AppHeader backTo="/" backLabel={t("allLanguages")} />
       <div className="page">
         <header className="hero small">
           <span className="flag-big">{lang.flag}</span>

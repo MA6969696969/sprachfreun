@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
 import ProfileBar from "./ProfileBar.jsx";
+import { useLocale } from "../context/LocaleContext.jsx";
 
 export default function Home({ courses }) {
+  const { t } = useLocale();
   return (
     <>
       <AppHeader />
       <div className="page">
         <header className="hero">
           <h1>Sprachfreund</h1>
-          <p>Learn a language by actually speaking it — with an AI conversation partner.</p>
+          <p>{t("homeSubtitle")}</p>
         </header>
         <ProfileBar />
         <div className="card-grid">
