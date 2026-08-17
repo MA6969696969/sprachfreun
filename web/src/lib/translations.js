@@ -13,7 +13,7 @@ export const UI_LANGUAGES = [
 export const TRANSLATIONS = {
   en: {
     tagline: "Speak it. Don't just study it.",
-    homeSubtitle: "Learn a language by actually speaking it.",
+    homeSubtitle: "Learn a language by actually speaking it",
     allLanguages: "All languages",
     settings: "Settings",
     done: "Done",
@@ -25,7 +25,7 @@ export const TRANSLATIONS = {
   },
   de: {
     tagline: "Sprich es. Studier es nicht nur.",
-    homeSubtitle: "Lerne eine Sprache, indem du sie wirklich sprichst.",
+    homeSubtitle: "Lerne eine Sprache, indem du sie wirklich sprichst",
     allLanguages: "Alle Sprachen",
     settings: "Einstellungen",
     done: "Fertig",
@@ -37,7 +37,7 @@ export const TRANSLATIONS = {
   },
   ja: {
     tagline: "話そう。勉強するだけじゃなく。",
-    homeSubtitle: "実際に話しながら言語を学びましょう。",
+    homeSubtitle: "実際に話しながら言語を学びましょう",
     allLanguages: "すべての言語",
     settings: "設定",
     done: "完了",
@@ -49,7 +49,7 @@ export const TRANSLATIONS = {
   },
   es: {
     tagline: "Háblalo. No solo lo estudies.",
-    homeSubtitle: "Aprende un idioma hablándolo de verdad.",
+    homeSubtitle: "Aprende un idioma hablándolo de verdad",
     allLanguages: "Todos los idiomas",
     settings: "Configuración",
     done: "Listo",
@@ -61,7 +61,7 @@ export const TRANSLATIONS = {
   },
   fr: {
     tagline: "Parle-le. Ne fais pas que l'étudier.",
-    homeSubtitle: "Apprends une langue en la parlant vraiment.",
+    homeSubtitle: "Apprends une langue en la parlant vraiment",
     allLanguages: "Toutes les langues",
     settings: "Paramètres",
     done: "Terminé",
@@ -73,7 +73,7 @@ export const TRANSLATIONS = {
   },
   pt: {
     tagline: "Fale. Não estude só.",
-    homeSubtitle: "Aprenda um idioma falando de verdade.",
+    homeSubtitle: "Aprenda um idioma falando de verdade",
     allLanguages: "Todos os idiomas",
     settings: "Configurações",
     done: "Concluído",
@@ -85,7 +85,7 @@ export const TRANSLATIONS = {
   },
   zh: {
     tagline: "开口说，而不只是学。",
-    homeSubtitle: "通过真正开口说话来学习一门语言。",
+    homeSubtitle: "通过真正开口说话来学习一门语言",
     allLanguages: "所有语言",
     settings: "设置",
     done: "完成",
@@ -97,7 +97,7 @@ export const TRANSLATIONS = {
   },
   hi: {
     tagline: "इसे बोलो। सिर्फ़ पढ़ो मत।",
-    homeSubtitle: "वाकई बोलकर भाषा सीखें।",
+    homeSubtitle: "वाकई बोलकर भाषा सीखें",
     allLanguages: "सभी भाषाएं",
     settings: "सेटिंग्स",
     done: "हो गया",
@@ -109,7 +109,7 @@ export const TRANSLATIONS = {
   },
   ar: {
     tagline: "تكلّم بها. لا تكتفِ بدراستها.",
-    homeSubtitle: "تعلّم لغة من خلال التحدث بها فعليًا.",
+    homeSubtitle: "تعلّم لغة من خلال التحدث بها فعليًا",
     allLanguages: "كل اللغات",
     settings: "الإعدادات",
     done: "تم",

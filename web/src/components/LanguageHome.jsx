@@ -35,12 +35,10 @@ export default function LanguageHome({ courses }) {
       <AppHeader backTo="/" backLabel={t("allLanguages")} />
       <div className="page">
         <header className="hero small">
-          <span className="flag-big">{lang.flag}</span>
           <h1>{lang.languageName}</h1>
           <div className="proficiency-badge">
             🎯 {proficiency.title} · {proficiency.passedCount}/{proficiency.totalCount} units passed
           </div>
-          <p>{lang.courses.length} courses, organized so you can start with the basics and build up.</p>
           {langPoints > 0 && (
             <p className="lang-mastery">
               🏅 {langLevel.title} · {langPoints} pts in {lang.languageName}

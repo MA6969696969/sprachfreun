@@ -465,6 +465,12 @@ button {
   max-width: none;
 }
 
+@media (max-width: 480px) {
+  .hero p {
+    font-size: 0.92rem;
+  }
+}
+
 .lang-mastery {
   display: inline-block;
   margin-top: 12px;
