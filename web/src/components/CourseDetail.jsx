@@ -1,10 +1,13 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
+import SpeakButton from "./SpeakButton.jsx";
+import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
 
 export default function CourseDetail({ courses }) {
   const { lang: langCode, courseId } = useParams();
   const lang = courses[langCode];
   const course = lang?.courses.find((c) => c.id === courseId);
+  const { speak } = useSpeechSynthesis(lang?.speechLang);
   if (!lang || !course) return <Navigate to="/" replace />;
 
   return (
@@ -26,8 +29,11 @@ export default function CourseDetail({ courses }) {
               {course.vocabulary.map((v, i) => (
                 <li key={i}>
                   <div className="vocab-term">
-                    {v.term}
-                    {v.romaji && <span className="romaji"> · {v.romaji}</span>}
+                    <span>
+                      {v.term}
+                      {v.romaji && <span className="romaji"> · {v.romaji}</span>}
+                    </span>
+                    <SpeakButton text={v.term} speak={speak} />
                   </div>
                   <div className="vocab-translation">{v.translation}</div>
                   <div className="vocab-example">{v.example}</div>
@@ -43,7 +49,10 @@ export default function CourseDetail({ courses }) {
             <ul className="phrase-list">
               {course.phrases.map((p, i) => (
                 <li key={i}>
-                  <div className="phrase-text">{p.phrase}</div>
+                  <div className="phrase-text">
+                    <span>{p.phrase}</span>
+                    <SpeakButton text={p.phrase} speak={speak} />
+                  </div>
                   {p.romaji && <div className="romaji">{p.romaji}</div>}
                   <div className="phrase-translation">{p.translation}</div>
                 </li>

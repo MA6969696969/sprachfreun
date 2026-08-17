@@ -46,3 +46,9 @@ export function testPassed(correctCount, total) {
 export function testPoints(correctCount, total) {
   return correctCount * 10 + (testPassed(correctCount, total) ? 40 : 0);
 }
+
+export function situationPoints(totalScore, turnsCount) {
+  if (turnsCount === 0) return 0;
+  const perfectBonus = totalScore === turnsCount ? 25 : 0;
+  return Math.round(totalScore * 15) + perfectBonus;
+}

@@ -66,6 +66,41 @@ export const replySchema = {
   additionalProperties: false,
 };
 
+export function buildSituationPrompt({ languageName, situationTitle, situationScenario, turnCount }) {
+  return `You are running a short speaking-practice simulation for a ${languageName} learner. You play a character in this scenario: ${situationScenario}
+
+Core rules:
+- Reply primarily in ${languageName}. Keep replies short and natural for spoken conversation (1-2 sentences).
+- Stay in character the whole time — you are the other person in the "${situationTitle}" scenario, not a teacher or narrator.
+- This simulation should last about ${turnCount} exchanges total (your opening line, then ${turnCount} learner replies). Keep the conversation moving naturally toward a natural conclusion around then — don't drag it out and don't cut it short early.
+- Once the learner has replied roughly ${turnCount} times and the scenario has reached a natural conclusion, give a short closing line appropriate to the scenario (like a goodbye) and set situation_complete to true. Before that point, keep situation_complete false.
+- Score the learner's most recent message (not your own) in turn_score: 1 if it was clear, correct, and appropriate to the moment; 0.5 if it was understandable but had a real grammar or word-choice mistake, or felt a bit off; 0 if it was incorrect, off-topic, or not a real attempt (e.g. silence, or "I don't know"). On your very first message, before the learner has said anything yet, set turn_score to 1 as a placeholder — it will be ignored.
+- Never include XML tags, stage directions, or meta-commentary of any kind — only what you would actually say out loud.
+
+Start the conversation yourself with a short, natural opening line that fits the scenario.`;
+}
+
+export const situationSchema = {
+  type: "object",
+  properties: {
+    reply: {
+      type: "string",
+      description: "What you say out loud, in the target language, staying in character.",
+    },
+    turn_score: {
+      type: "number",
+      enum: [0, 0.5, 1],
+      description: "Score for the learner's most recent message. 1 as a placeholder on your very first message.",
+    },
+    situation_complete: {
+      type: "boolean",
+      description: "True once the scenario has reached its natural conclusion, after roughly the target number of exchanges.",
+    },
+  },
+  required: ["reply", "turn_score", "situation_complete"],
+  additionalProperties: false,
+};
+
 export function buildGradePrompt({ languageName }) {
   return `You are grading one question of a listening-comprehension quiz for a ${languageName} learner. They heard a ${languageName} word or phrase spoken aloud and had to say what it means in English.
 

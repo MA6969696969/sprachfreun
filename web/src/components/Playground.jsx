@@ -34,6 +34,14 @@ export default function Playground({ courses }) {
             </Link>
           ))}
         </div>
+
+        <section>
+          <h2>Real-Life Situations</h2>
+          <Link to={`/${langCode}/situations`} className="playground-card">
+            <h3>🎭 Try a scripted scenario</h3>
+            <p>Grocery store, meeting a neighbor, ordering coffee, and more — talk it through and get a score.</p>
+          </Link>
+        </section>
       </div>
     </>
   );

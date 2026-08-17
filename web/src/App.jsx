@@ -12,6 +12,8 @@ import ConversationPractice from "./components/ConversationPractice.jsx";
 import VocabPractice from "./components/VocabPractice.jsx";
 import MatchGame from "./components/MatchGame.jsx";
 import CategoryTest from "./components/CategoryTest.jsx";
+import Situations from "./components/Situations.jsx";
+import SituationPractice from "./components/SituationPractice.jsx";
 
 const MIN_SPLASH_MS = 2000;
 
@@ -72,6 +74,11 @@ export default function App() {
             element={<ConversationPractice courses={courses} mode="playground" />}
           />
           <Route path="/:lang/test/:category" element={<CategoryTest courses={courses} />} />
+          <Route path="/:lang/situations" element={<Situations courses={courses} />} />
+          <Route
+            path="/:lang/situations/:situationId"
+            element={<SituationPractice courses={courses} />}
+          />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </ProgressProvider>

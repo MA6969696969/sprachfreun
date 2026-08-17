@@ -6,11 +6,31 @@ export async function fetchCourses() {
   return res.json();
 }
 
-export async function sendChat({ language, mode, courseId, level, history, message }) {
+export async function sendChat({
+  language,
+  mode,
+  courseId,
+  level,
+  history,
+  message,
+  situationTitle,
+  situationScenario,
+  turnCount,
+}) {
   const res = await fetch(`${BASE_URL}/api/chat`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ language, mode, courseId, level, history, message }),
+    body: JSON.stringify({
+      language,
+      mode,
+      courseId,
+      level,
+      history,
+      message,
+      situationTitle,
+      situationScenario,
+      turnCount,
+    }),
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));

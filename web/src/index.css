@@ -733,6 +733,33 @@ section h2 {
 .phrase-text {
   font-weight: 600;
   font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speak-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.speak-button:hover {
+  background: var(--accent-soft-hover);
+}
+
+.speak-button:active {
+  transform: scale(0.9);
 }
 
 .vocab-translation,
@@ -1322,6 +1349,15 @@ section h2 {
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.25;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flashcard-speak {
+  width: 32px;
+  height: 32px;
+  font-size: 0.95rem;
 }
 
 .flashcard-hint {

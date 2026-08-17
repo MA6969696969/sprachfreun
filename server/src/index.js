@@ -3,7 +3,14 @@ import express from "express";
 import cors from "cors";
 import Anthropic from "@anthropic-ai/sdk";
 import { courses, getLanguage, getCourse } from "./data/courses.js";
-import { buildSystemPrompt, replySchema, buildGradePrompt, gradeSchema } from "./promptBuilder.js";
+import {
+  buildSystemPrompt,
+  replySchema,
+  buildGradePrompt,
+  gradeSchema,
+  buildSituationPrompt,
+  situationSchema,
+} from "./promptBuilder.js";
 
 const app = express();
 app.use(cors());
@@ -16,7 +23,10 @@ if (!process.env.ANTHROPIC_API_KEY) {
   );
 }
 
-const client = new Anthropic(); // reads ANTHROPIC_API_KEY from env
+// reads ANTHROPIC_API_KEY from env. An explicit timeout matters here: without
+// one, a rare stalled request can hang far longer than any learner will wait,
+// and our own retry-on-failure logic below never gets a chance to kick in.
+const client = new Anthropic({ timeout: 20000 });
 
 const MODEL = process.env.ANTHROPIC_MODEL || "claude-opus-5";
 const EFFORT = process.env.ANTHROPIC_EFFORT || "low";
@@ -29,9 +39,47 @@ app.get("/api/courses", (req, res) => {
   res.json(courses);
 });
 
+// Occasionally the model's structured-output response comes back truncated
+// or malformed (rare, but seen in testing) — one retry clears it up almost
+// every time, so we don't surface a raw parse error to the learner for what
+// is usually just a one-off hiccup.
+async function createStructuredMessage({ system, messages, schema, maxTokens }) {
+  let lastErr;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const response = await client.messages.create({
+        model: MODEL,
+        max_tokens: maxTokens,
+        system,
+        messages,
+        output_config: {
+          effort: EFFORT,
+          format: { type: "json_schema", schema },
+        },
+      });
+      const textBlock = response.content.find((b) => b.type === "text");
+      if (!textBlock) throw new Error("No text response from model");
+      return JSON.parse(textBlock.text);
+    } catch (err) {
+      lastErr = err;
+    }
+  }
+  throw lastErr;
+}
+
 app.post("/api/chat", async (req, res) => {
   try {
-    const { language, mode, courseId, level, history, message } = req.body;
+    const {
+      language,
+      mode,
+      courseId,
+      level,
+      history,
+      message,
+      situationTitle,
+      situationScenario,
+      turnCount,
+    } = req.body;
 
     const lang = getLanguage(language);
     if (!lang) {
@@ -46,12 +94,27 @@ app.post("/api/chat", async (req, res) => {
       }
     }
 
-    const system = buildSystemPrompt({
-      languageName: lang.languageName,
-      mode,
-      course,
-      level: level || "beginner",
-    });
+    let system, schema;
+    if (mode === "situation") {
+      if (!situationScenario) {
+        return res.status(400).json({ error: "Missing situationScenario" });
+      }
+      system = buildSituationPrompt({
+        languageName: lang.languageName,
+        situationTitle: situationTitle || "",
+        situationScenario,
+        turnCount: turnCount || 6,
+      });
+      schema = situationSchema;
+    } else {
+      system = buildSystemPrompt({
+        languageName: lang.languageName,
+        mode,
+        course,
+        level: level || "beginner",
+      });
+      schema = replySchema;
+    }
 
     const apiMessages = (history || []).map((turn) => ({
       role: turn.role === "assistant" ? "assistant" : "user",
@@ -70,23 +133,12 @@ app.post("/api/chat", async (req, res) => {
       });
     }
 
-    const response = await client.messages.create({
-      model: MODEL,
-      max_tokens: 500,
+    const parsed = await createStructuredMessage({
       system,
       messages: apiMessages,
-      output_config: {
-        effort: EFFORT,
-        format: { type: "json_schema", schema: replySchema },
-      },
+      schema,
+      maxTokens: 700,
     });
-
-    const textBlock = response.content.find((b) => b.type === "text");
-    if (!textBlock) {
-      return res.status(502).json({ error: "No text response from model" });
-    }
-
-    const parsed = JSON.parse(textBlock.text);
     res.json(parsed);
   } catch (err) {
     console.error("Chat error:", err);
@@ -111,23 +163,12 @@ app.post("/api/grade", async (req, res) => {
 Accepted meaning: "${correctTranslation}"
 Learner said: "${(userAnswer || "").trim() || "(nothing — no answer given)"}"`;
 
-    const response = await client.messages.create({
-      model: MODEL,
-      max_tokens: 200,
+    const parsed = await createStructuredMessage({
       system,
       messages: [{ role: "user", content: userContent }],
-      output_config: {
-        effort: EFFORT,
-        format: { type: "json_schema", schema: gradeSchema },
-      },
+      schema: gradeSchema,
+      maxTokens: 300,
     });
-
-    const textBlock = response.content.find((b) => b.type === "text");
-    if (!textBlock) {
-      return res.status(502).json({ error: "No text response from model" });
-    }
-
-    const parsed = JSON.parse(textBlock.text);
     res.json(parsed);
   } catch (err) {
     console.error("Grade error:", err);

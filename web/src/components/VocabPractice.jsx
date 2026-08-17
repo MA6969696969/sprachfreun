@@ -4,11 +4,14 @@ import AppHeader from "./AppHeader.jsx";
 import { buildDeck, shuffle } from "../lib/deck.js";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { flashcardPoints } from "../lib/points.js";
+import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
+import SpeakButton from "./SpeakButton.jsx";
 
 export default function VocabPractice({ courses }) {
   const { lang: langCode, courseId } = useParams();
   const lang = courses[langCode];
   const course = lang?.courses.find((c) => c.id === courseId);
+  const { speak } = useSpeechSynthesis(lang?.speechLang);
 
   const deck = useMemo(() => (course ? buildDeck(course) : []), [course]);
   const [queue, setQueue] = useState(() => shuffle(deck));
@@ -112,7 +115,10 @@ export default function VocabPractice({ courses }) {
               >
                 <div className="flashcard-inner">
                   <div className="flashcard-face front">
-                    <div className="flashcard-term">{current.front}</div>
+                    <div className="flashcard-term">
+                      {current.front}
+                      <SpeakButton text={current.front} speak={speak} className="flashcard-speak" />
+                    </div>
                     {current.romaji && <div className="romaji">{current.romaji}</div>}
                     <div className="flashcard-hint">Tap to reveal</div>
                   </div>
