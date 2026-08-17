@@ -145,6 +145,26 @@ button {
   color: var(--accent);
 }
 
+.streak-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 7px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.streak-badge.complete {
+  background: var(--ok-bg);
+  border-color: rgba(74, 222, 128, 0.35);
+  color: var(--ok-ink);
+}
+
 .settings-gear {
   display: flex;
   align-items: center;

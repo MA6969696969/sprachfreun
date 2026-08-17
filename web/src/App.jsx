@@ -5,6 +5,7 @@ import { ProfileProvider } from "./context/ProfileContext.jsx";
 import { ProgressProvider } from "./context/ProgressContext.jsx";
 import { LocaleProvider } from "./context/LocaleContext.jsx";
 import { SettingsProvider } from "./context/SettingsContext.jsx";
+import { StreakProvider } from "./context/StreakContext.jsx";
 import Splash from "./components/Splash.jsx";
 import Settings from "./components/Settings.jsx";
 import Home from "./components/Home.jsx";
@@ -56,6 +57,7 @@ export default function App() {
         ) : (
           <ProfileProvider>
             <ProgressProvider>
+            <StreakProvider>
               <Routes>
                 <Route path="/" element={<Home courses={courses} />} />
                 <Route path="/settings" element={<Settings />} />
@@ -92,6 +94,7 @@ export default function App() {
                 />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
+            </StreakProvider>
             </ProgressProvider>
           </ProfileProvider>
         )}

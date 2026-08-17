@@ -21,19 +21,21 @@ export default function Playground({ courses }) {
           <p>Pick your level, then talk about anything — {lang.languageName} only.</p>
         </header>
 
-        <div className="card-grid">
-          {LEVELS.map((level, i) => (
-            <Link
-              key={level.id}
-              to={`/${langCode}/playground/${level.id}`}
-              className="level-card"
-              style={{ "--stagger": i }}
-            >
-              <h3>{level.label}</h3>
-              <p>{level.desc}</p>
-            </Link>
-          ))}
-        </div>
+        <section>
+          <div className="card-grid">
+            {LEVELS.map((level, i) => (
+              <Link
+                key={level.id}
+                to={`/${langCode}/playground/${level.id}`}
+                className="level-card"
+                style={{ "--stagger": i }}
+              >
+                <h3>{level.label}</h3>
+                <p>{level.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section>
           <h2>Real-Life Situations</h2>
