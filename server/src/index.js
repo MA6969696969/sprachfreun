@@ -39,13 +39,27 @@ app.get("/api/courses", (req, res) => {
   res.json(courses);
 });
 
+// Rarely, the model's structured-output text contains a literal, un-decoded
+// escape sequence (e.g. a raw "ö" or a stray "\3" instead of the actual
+// character) — the JSON is technically valid so JSON.parse succeeds, but the
+// resulting string is corrupted. Catch that content-level failure the same
+// way we catch a parse error, so the retry loop below covers both.
+function hasCorruptedEscapes(value) {
+  if (typeof value === "string") {
+    return /\\u[0-9a-fA-F]{4}/.test(value) || /\\[0-9]/.test(value);
+  }
+  if (Array.isArray(value)) return value.some(hasCorruptedEscapes);
+  if (value && typeof value === "object") return Object.values(value).some(hasCorruptedEscapes);
+  return false;
+}
+
 // Occasionally the model's structured-output response comes back truncated
-// or malformed (rare, but seen in testing) — one retry clears it up almost
+// or malformed (rare, but seen in testing) — a retry clears it up almost
 // every time, so we don't surface a raw parse error to the learner for what
 // is usually just a one-off hiccup.
 async function createStructuredMessage({ system, messages, schema, maxTokens }) {
   let lastErr;
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const response = await client.messages.create({
         model: MODEL,
@@ -59,7 +73,9 @@ async function createStructuredMessage({ system, messages, schema, maxTokens }) 
       });
       const textBlock = response.content.find((b) => b.type === "text");
       if (!textBlock) throw new Error("No text response from model");
-      return JSON.parse(textBlock.text);
+      const parsed = JSON.parse(textBlock.text);
+      if (hasCorruptedEscapes(parsed)) throw new Error("Corrupted escape sequence in model output");
+      return parsed;
     } catch (err) {
       lastErr = err;
     }
