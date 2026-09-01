@@ -9,6 +9,7 @@ import { StreakProvider } from "./context/StreakContext.jsx";
 import Splash from "./components/Splash.jsx";
 import Settings from "./components/Settings.jsx";
 import Streak from "./components/Streak.jsx";
+import Leaderboard from "./components/Leaderboard.jsx";
 import Home from "./components/Home.jsx";
 import LanguageHome from "./components/LanguageHome.jsx";
 import CourseDetail from "./components/CourseDetail.jsx";
@@ -63,6 +64,7 @@ export default function App() {
                 <Route path="/" element={<Home courses={courses} />} />
                 <Route path="/settings" element={<Settings />} />
                 <Route path="/streak" element={<Streak />} />
+                <Route path="/leaderboard" element={<Leaderboard courses={courses} />} />
                 <Route path="/:lang" element={<LanguageHome courses={courses} />} />
                 <Route
                   path="/:lang/course/:courseId"

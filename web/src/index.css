@@ -1740,3 +1740,109 @@ section h2 {
 .settings-lang-flag {
   font-size: 1.2rem;
 }
+
+/* ---------- Leaderboard ---------- */
+
+.leaderboard-name-card {
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.leaderboard-name-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.leaderboard-name-card .profile-name-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin: 0;
+}
+
+.leaderboard-name-card .profile-name-form input {
+  max-width: none;
+  padding: var(--sp-3);
+  font-size: 1rem;
+}
+
+.leaderboard-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-bottom: var(--sp-4);
+}
+
+.leaderboard-list {
+  padding: var(--sp-2) 0;
+}
+
+.leaderboard-empty {
+  margin: 0;
+  padding: var(--sp-5) var(--sp-4);
+  text-align: center;
+  color: var(--ink-faint);
+  font-size: 0.92rem;
+}
+
+.leaderboard-rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.leaderboard-row:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-row.me {
+  background: var(--accent-soft);
+}
+
+.leaderboard-rank {
+  flex-shrink: 0;
+  width: 32px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.leaderboard-name {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leaderboard-you {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.leaderboard-score {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.leaderboard-note {
+  margin: var(--sp-3) 0 0;
+  color: var(--ink-faint);
+  font-size: 0.8rem;
+  text-align: center;
+}

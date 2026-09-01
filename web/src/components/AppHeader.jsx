@@ -53,6 +53,9 @@ export default function AppHeader({ backTo, backLabel }) {
               <span>📅 Streak</span>
               <span className="app-menu-item-value">{streakCount}d</span>
             </button>
+            <button type="button" className="app-menu-item" onClick={() => goTo("/leaderboard")}>
+              <span>🏆 Leaderboard</span>
+            </button>
             <button type="button" className="app-menu-item" onClick={() => goTo("/settings")}>
               <span>⚙️ Settings</span>
             </button>

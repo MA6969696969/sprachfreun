@@ -11,6 +11,7 @@ import {
   buildSituationPrompt,
   situationSchema,
 } from "./promptBuilder.js";
+import { submitScore, getLeaderboard } from "./leaderboardStore.js";
 
 const app = express();
 app.use(cors());
@@ -190,6 +191,21 @@ Learner said: "${(userAnswer || "").trim() || "(nothing — no answer given)"}"`
     console.error("Grade error:", err);
     res.status(err.status || 500).json({ error: friendlyErrorMessage(err) });
   }
+});
+
+app.post("/api/leaderboard", (req, res) => {
+  try {
+    const { deviceId, name, totalPoints, points } = req.body;
+    const result = submitScore({ deviceId, name, totalPoints, points });
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ error: err.message || "Invalid submission" });
+  }
+});
+
+app.get("/api/leaderboard", (req, res) => {
+  const langCode = typeof req.query.lang === "string" ? req.query.lang : undefined;
+  res.json({ entries: getLeaderboard({ langCode }) });
 });
 
 function friendlyErrorMessage(err) {
