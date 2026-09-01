@@ -193,19 +193,26 @@ Learner said: "${(userAnswer || "").trim() || "(nothing — no answer given)"}"`
   }
 });
 
-app.post("/api/leaderboard", (req, res) => {
+app.post("/api/leaderboard", async (req, res) => {
   try {
     const { deviceId, name, totalPoints, points } = req.body;
-    const result = submitScore({ deviceId, name, totalPoints, points });
+    const result = await submitScore({ deviceId, name, totalPoints, points });
     res.json(result);
   } catch (err) {
+    console.error("Leaderboard submit error:", err);
     res.status(400).json({ error: err.message || "Invalid submission" });
   }
 });
 
-app.get("/api/leaderboard", (req, res) => {
-  const langCode = typeof req.query.lang === "string" ? req.query.lang : undefined;
-  res.json({ entries: getLeaderboard({ langCode }) });
+app.get("/api/leaderboard", async (req, res) => {
+  try {
+    const langCode = typeof req.query.lang === "string" ? req.query.lang : undefined;
+    const entries = await getLeaderboard({ langCode });
+    res.json({ entries });
+  } catch (err) {
+    console.error("Leaderboard fetch error:", err);
+    res.status(500).json({ error: "Failed to load leaderboard" });
+  }
 });
 
 function friendlyErrorMessage(err) {
