@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AppHeader from "./AppHeader.jsx";
 import { useStreak } from "../context/StreakContext.jsx";
 
 const WEEKDAY_LABELS = ["S", "M", "T", "W", "T", "F", "S"];
@@ -65,7 +64,6 @@ export default function Streak() {
 
   return (
     <>
-      <AppHeader backTo="/" backLabel="Home" />
       <div className="page">
         <header className="hero small">
           <h1>📅 Streak</h1>

@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import { fetchCourses } from "./api.js";
 import { ProfileProvider } from "./context/ProfileContext.jsx";
 import { ProgressProvider } from "./context/ProgressContext.jsx";
 import { LocaleProvider } from "./context/LocaleContext.jsx";
 import { SettingsProvider } from "./context/SettingsContext.jsx";
 import { StreakProvider } from "./context/StreakContext.jsx";
+import { ActiveLanguageProvider, useActiveLanguage } from "./context/ActiveLanguageContext.jsx";
 import Splash from "./components/Splash.jsx";
+import AppShell from "./components/AppShell.jsx";
 import Settings from "./components/Settings.jsx";
 import Streak from "./components/Streak.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
 import Home from "./components/Home.jsx";
-import LanguageHome from "./components/LanguageHome.jsx";
 import CourseDetail from "./components/CourseDetail.jsx";
 import Playground from "./components/Playground.jsx";
 import ConversationPractice from "./components/ConversationPractice.jsx";
@@ -22,6 +23,18 @@ import Situations from "./components/Situations.jsx";
 import SituationPractice from "./components/SituationPractice.jsx";
 
 const MIN_SPLASH_MS = 2000;
+
+function LanguageRedirect({ courses }) {
+  const { lang } = useParams();
+  const { setActiveLanguage } = useActiveLanguage();
+
+  useEffect(() => {
+    if (courses[lang]) setActiveLanguage(lang);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
+
+  return <Navigate to="/" replace />;
+}
 
 export default function App() {
   const [courses, setCourses] = useState(null);
@@ -60,12 +73,15 @@ export default function App() {
           <ProfileProvider>
             <ProgressProvider>
             <StreakProvider>
+            <ActiveLanguageProvider courses={courses}>
               <Routes>
-                <Route path="/" element={<Home courses={courses} />} />
-                <Route path="/settings" element={<Settings />} />
-                <Route path="/streak" element={<Streak />} />
-                <Route path="/leaderboard" element={<Leaderboard courses={courses} />} />
-                <Route path="/:lang" element={<LanguageHome courses={courses} />} />
+                <Route element={<AppShell />}>
+                  <Route path="/" element={<Home courses={courses} />} />
+                  <Route path="/settings" element={<Settings />} />
+                  <Route path="/streak" element={<Streak />} />
+                  <Route path="/leaderboard" element={<Leaderboard courses={courses} />} />
+                </Route>
+                <Route path="/:lang" element={<LanguageRedirect courses={courses} />} />
                 <Route
                   path="/:lang/course/:courseId"
                   element={<CourseDetail courses={courses} />}
@@ -98,6 +114,7 @@ export default function App() {
                 />
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
+            </ActiveLanguageProvider>
             </StreakProvider>
             </ProgressProvider>
           </ProfileProvider>

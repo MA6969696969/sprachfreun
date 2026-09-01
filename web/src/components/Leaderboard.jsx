@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import AppHeader from "./AppHeader.jsx";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { getDeviceId } from "../lib/deviceId.js";
 import { submitLeaderboardScore, fetchLeaderboard } from "../api.js";
@@ -51,7 +50,6 @@ export default function Leaderboard({ courses }) {
 
   return (
     <>
-      <AppHeader backTo="/" backLabel="Home" />
       <div className="page">
         <header className="hero small">
           <h1>🏆 Leaderboard</h1>

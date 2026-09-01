@@ -1,4 +1,3 @@
-import AppHeader from "./AppHeader.jsx";
 import { useSettings, FONT_SIZES, THEMES } from "../context/SettingsContext.jsx";
 import { useLocale } from "../context/LocaleContext.jsx";
 import { UI_LANGUAGES } from "../lib/translations.js";
@@ -15,7 +14,6 @@ export default function Settings() {
 
   return (
     <>
-      <AppHeader backTo="/" backLabel={t("done")} />
       <div className="page">
         <header className="hero small">
           <h1>⚙️ {t("settings")}</h1>
