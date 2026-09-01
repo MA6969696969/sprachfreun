@@ -134,8 +134,6 @@ html {
 
 body {
   margin: 0;
-  overflow-x: hidden;
-  overscroll-behavior-x: none;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font);
@@ -360,6 +358,21 @@ button {
   white-space: nowrap;
 }
 
+@media (max-width: 360px) {
+  .top-bar-inner {
+    padding-left: max(var(--sp-3), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--sp-3), env(safe-area-inset-right, 0px));
+    gap: var(--sp-2);
+  }
+  .top-stat {
+    font-size: 0.78rem;
+    padding: 5px 9px;
+  }
+  .top-bar-stats {
+    gap: 6px;
+  }
+}
+
 .bottom-nav {
   position: fixed;
   bottom: 0;
@@ -367,25 +380,9 @@ button {
   right: 0;
   z-index: 20;
   display: flex;
-  background: var(--header-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: var(--bg);
   border-top: 1px solid var(--border-soft);
   padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-/* The safe-area padding strip has no page content behind it to blur, so a
-   translucent background there can read as a mismatched band rather than
-   part of the bar — paint it as a solid, on-theme color instead. */
-.bottom-nav::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: env(safe-area-inset-bottom, 0px);
-  background: var(--bg);
-  pointer-events: none;
 }
 
 .bottom-nav-item {
@@ -418,6 +415,13 @@ button {
 
 .shell-content {
   padding-bottom: 76px;
+}
+
+/* .page already has its own generous bottom padding for free-scrolling
+   sub-pages. Inside the shell, .shell-content's padding already clears the
+   fixed nav, so the two would otherwise stack into a large empty gap. */
+.shell-content .page {
+  padding-bottom: var(--sp-4);
 }
 
 @media (min-width: 900px) {
@@ -993,30 +997,49 @@ button {
   width: 100%;
 }
 
-/* Wiggle the path left/right in a gentle wave, like Duolingo's winding trail. */
+/* Wiggle the path left/right in a gentle wave, like Duolingo's winding trail.
+   Kept conservative so it can't push a node past the viewport edge even on
+   narrow phones (html has overflow-x: hidden as a last-resort backstop). */
 .path-node-wrap:nth-child(8n + 1) {
   transform: translateX(0);
 }
 .path-node-wrap:nth-child(8n + 2) {
-  transform: translateX(-44px);
+  transform: translateX(-26px);
 }
 .path-node-wrap:nth-child(8n + 3) {
-  transform: translateX(-68px);
+  transform: translateX(-40px);
 }
 .path-node-wrap:nth-child(8n + 4) {
-  transform: translateX(-44px);
+  transform: translateX(-26px);
 }
 .path-node-wrap:nth-child(8n + 5) {
   transform: translateX(0);
 }
 .path-node-wrap:nth-child(8n + 6) {
-  transform: translateX(44px);
+  transform: translateX(26px);
 }
 .path-node-wrap:nth-child(8n + 7) {
-  transform: translateX(68px);
+  transform: translateX(40px);
 }
 .path-node-wrap:nth-child(8n + 8) {
-  transform: translateX(44px);
+  transform: translateX(26px);
+}
+
+@media (max-width: 360px) {
+  .path-node-wrap:nth-child(8n + 2),
+  .path-node-wrap:nth-child(8n + 4) {
+    transform: translateX(-18px);
+  }
+  .path-node-wrap:nth-child(8n + 3) {
+    transform: translateX(-28px);
+  }
+  .path-node-wrap:nth-child(8n + 6),
+  .path-node-wrap:nth-child(8n + 8) {
+    transform: translateX(18px);
+  }
+  .path-node-wrap:nth-child(8n + 7) {
+    transform: translateX(28px);
+  }
 }
 
 .path-node {
@@ -1969,6 +1992,56 @@ section h2 {
   border-radius: 999px;
   background: var(--accent);
   transition: width 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.flashcard-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin: var(--sp-3) 0 var(--sp-4);
+}
+
+.flashcard-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.flashcard-nav-btn:hover:not(:disabled) {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.flashcard-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.flashcard-position {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  min-width: 48px;
+  text-align: center;
+}
+
+.flashcard-review-note {
+  margin-top: var(--sp-3);
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink-soft);
 }
 
 .flashcard-stage {

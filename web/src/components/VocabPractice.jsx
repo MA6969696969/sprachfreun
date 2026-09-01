@@ -13,15 +13,38 @@ export default function VocabPractice({ courses }) {
   const course = lang?.courses.find((c) => c.id === courseId);
   const { speak } = useSpeechSynthesis(lang?.speechLang);
 
-  const deck = useMemo(() => (course ? buildDeck(course) : []), [course]);
-  const [queue, setQueue] = useState(() => shuffle(deck));
+  const deck = useMemo(
+    () => (course ? buildDeck(course).map((c, i) => ({ ...c, _id: i })) : []),
+    [course]
+  );
+  const [roundOrder, setRoundOrder] = useState(() => shuffle(deck));
+  const [index, setIndex] = useState(0);
+  const [furthest, setFurthest] = useState(0);
+  const [marks, setMarks] = useState({});
   const [round, setRound] = useState(1);
-  const [masteredCount, setMasteredCount] = useState(0);
   const [flipped, setFlipped] = useState(false);
-  const nextRoundRef = useRef([]);
   const awardedRef = useRef(false);
   const { addPoints } = useProfile();
-  const complete = deck.length > 0 && queue.length === 0;
+
+  const masteredCount = useMemo(
+    () => Object.values(marks).filter((m) => m === "got").length,
+    [marks]
+  );
+  const roundDone = roundOrder.length > 0 && index >= roundOrder.length;
+  const complete = roundDone && roundOrder.every((c) => marks[c._id] === "got");
+
+  // When a round finishes, requeue anything still marked "learning" into a
+  // fresh shuffled round. Self-terminating: resetting index/roundOrder makes
+  // roundDone false again, so this can't loop.
+  useEffect(() => {
+    if (!roundDone) return;
+    const stillLearning = roundOrder.filter((c) => marks[c._id] === "learning");
+    if (stillLearning.length === 0) return;
+    setRoundOrder(shuffle(stillLearning));
+    setIndex(0);
+    setFurthest(0);
+    setRound((r) => r + 1);
+  }, [roundDone, roundOrder, marks]);
 
   useEffect(() => {
     if (complete && !awardedRef.current) {
@@ -32,35 +55,37 @@ export default function VocabPractice({ courses }) {
 
   if (!lang || !course) return <Navigate to="/" replace />;
 
-  const current = queue[0];
+  const current = roundOrder[index];
   const backTo = `/${langCode}`;
+  const reviewing = index < furthest;
 
   function handleMark(gotIt) {
-    const rest = queue.slice(1);
-    if (gotIt) {
-      setMasteredCount((c) => c + 1);
-    } else {
-      nextRoundRef.current.push(current);
-    }
+    const cardId = current._id;
+    setMarks((prev) => ({ ...prev, [cardId]: gotIt ? "got" : "learning" }));
     setFlipped(false);
-    if (rest.length > 0) {
-      setQueue(rest);
-    } else if (nextRoundRef.current.length > 0) {
-      const next = shuffle(nextRoundRef.current);
-      nextRoundRef.current = [];
-      setRound((r) => r + 1);
-      setQueue(next);
-    } else {
-      setQueue([]);
-    }
+    setFurthest((f) => Math.max(f, index + 1));
+    setIndex((i) => i + 1);
+  }
+
+  function handleBack() {
+    if (index === 0) return;
+    setFlipped(false);
+    setIndex((i) => i - 1);
+  }
+
+  function handleForward() {
+    if (index >= furthest) return;
+    setFlipped(false);
+    setIndex((i) => i + 1);
   }
 
   function handleRestart() {
-    nextRoundRef.current = [];
+    setMarks({});
     setRound(1);
-    setMasteredCount(0);
+    setIndex(0);
+    setFurthest(0);
     setFlipped(false);
-    setQueue(shuffle(deck));
+    setRoundOrder(shuffle(deck));
   }
 
   return (
@@ -79,12 +104,37 @@ export default function VocabPractice({ courses }) {
         </header>
 
         {!complete && (
-          <div className="flashcard-progress-track">
-            <div
-              className="flashcard-progress-fill"
-              style={{ width: `${(masteredCount / deck.length) * 100}%` }}
-            />
-          </div>
+          <>
+            <div className="flashcard-progress-track">
+              <div
+                className="flashcard-progress-fill"
+                style={{ width: `${(masteredCount / deck.length) * 100}%` }}
+              />
+            </div>
+            <div className="flashcard-nav-row">
+              <button
+                type="button"
+                className="flashcard-nav-btn"
+                onClick={handleBack}
+                disabled={index === 0}
+                aria-label="Previous card"
+              >
+                ‹
+              </button>
+              <span className="flashcard-position">
+                {index + 1} / {roundOrder.length}
+              </span>
+              <button
+                type="button"
+                className="flashcard-nav-btn"
+                onClick={handleForward}
+                disabled={index >= furthest}
+                aria-label="Next card"
+              >
+                ›
+              </button>
+            </div>
+          </>
         )}
 
         {complete ? (
@@ -137,14 +187,20 @@ export default function VocabPractice({ courses }) {
             </div>
 
             {flipped ? (
-              <div className="flashcard-actions">
-                <button type="button" className="flashcard-btn still-learning" onClick={() => handleMark(false)}>
-                  😅 Still learning
-                </button>
-                <button type="button" className="flashcard-btn got-it" onClick={() => handleMark(true)}>
-                  ✅ Got it
-                </button>
-              </div>
+              reviewing ? (
+                <p className="flashcard-review-note">
+                  {marks[current._id] === "got" ? "✅ You had this one" : "😅 Still practicing this one"}
+                </p>
+              ) : (
+                <div className="flashcard-actions">
+                  <button type="button" className="flashcard-btn still-learning" onClick={() => handleMark(false)}>
+                    😅 Still learning
+                  </button>
+                  <button type="button" className="flashcard-btn got-it" onClick={() => handleMark(true)}>
+                    ✅ Got it
+                  </button>
+                </div>
+              )
             ) : (
               <p className="flashcard-tap-prompt">Tap the card to see the translation</p>
             )}

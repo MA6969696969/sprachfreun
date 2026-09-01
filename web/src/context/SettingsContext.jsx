@@ -37,6 +37,22 @@ export function SettingsProvider({ children }) {
     } catch {
       // ignore write failures
     }
+
+    // Keep the browser-chrome/status-bar color (and the installed PWA's
+    // safe-area tinting) in sync with the resolved theme — a static value
+    // here would mismatch the app whenever dark mode is active.
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) return;
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    function updateThemeColor() {
+      const isDark = theme === "dark" || (theme === "system" && mql.matches);
+      meta.setAttribute("content", isDark ? "#16161c" : "#ffffff");
+    }
+    updateThemeColor();
+    if (theme === "system") {
+      mql.addEventListener("change", updateThemeColor);
+      return () => mql.removeEventListener("change", updateThemeColor);
+    }
   }, [fontSize, theme]);
 
   const setFontSize = (value) => setState((prev) => ({ ...prev, fontSize: value }));
