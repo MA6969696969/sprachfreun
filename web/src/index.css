@@ -19,6 +19,7 @@
   --warn-ink: #9a5b0a;
   --ok-bg: #e6f4ec;
   --ok-ink: #1f7a4d;
+  --danger-bg: #fbeae8;
   --danger-ink: #c0392b;
   --header-bg: rgba(255, 255, 255, 0.82);
   --btn-shadow: #2e3299;
@@ -73,6 +74,7 @@
     --warn-ink: #ffcf8a;
     --ok-bg: rgba(74, 222, 128, 0.14);
     --ok-ink: #6fe0a0;
+    --danger-bg: rgba(255, 107, 107, 0.14);
     --danger-ink: #ff6b6b;
     --header-bg: rgba(22, 22, 28, 0.82);
     --btn-shadow: #5a5ecb;
@@ -100,6 +102,7 @@
   --warn-ink: #ffcf8a;
   --ok-bg: rgba(74, 222, 128, 0.14);
   --ok-ink: #6fe0a0;
+  --danger-bg: rgba(255, 107, 107, 0.14);
   --danger-ink: #ff6b6b;
   --header-bg: rgba(22, 22, 28, 0.82);
   --btn-shadow: #5a5ecb;
@@ -348,6 +351,9 @@ button {
 }
 
 .top-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-weight: 700;
   font-size: 0.86rem;
   color: var(--ink);
@@ -356,6 +362,11 @@ button {
   border-radius: 999px;
   padding: 6px 12px;
   white-space: nowrap;
+}
+
+.top-stat svg {
+  color: var(--accent);
+  flex-shrink: 0;
 }
 
 @media (max-width: 360px) {
@@ -401,8 +412,9 @@ button {
 }
 
 .bottom-nav-icon {
-  font-size: 1.35rem;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bottom-nav-item.active {
@@ -485,9 +497,11 @@ button {
   }
 
   .side-nav-icon {
-    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 24px;
-    text-align: center;
+    flex-shrink: 0;
   }
 
   .side-nav-item:hover {
@@ -1066,7 +1080,10 @@ button {
 }
 
 .path-node-icon {
-  font-size: 1.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
 }
 
 .path-node-label {
@@ -1103,6 +1120,81 @@ button {
   box-shadow: 0 1px 0 var(--ok-ink);
 }
 
+/* Speaking-test mastery ring, from the per-course speaking test's score. */
+.path-node.mastery-green {
+  outline: 3px solid var(--ok-ink);
+  outline-offset: 2px;
+}
+
+.path-node.mastery-yellow {
+  outline: 3px solid var(--warn-ink);
+  outline-offset: 2px;
+}
+
+.path-node.mastery-red {
+  outline: 3px solid var(--danger-ink);
+  outline-offset: 2px;
+}
+
+/* ---------- Speaking test results ---------- */
+
+.test-score-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+  padding: var(--sp-5);
+  margin-bottom: var(--sp-5);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.test-score-percent {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.test-score-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.test-score-detail {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.test-score-card.tier-green {
+  background: var(--ok-bg);
+}
+
+.test-score-card.tier-green .test-score-percent,
+.test-score-card.tier-green .test-score-label {
+  color: var(--ok-ink);
+}
+
+.test-score-card.tier-yellow {
+  background: var(--warn-bg);
+}
+
+.test-score-card.tier-yellow .test-score-percent,
+.test-score-card.tier-yellow .test-score-label {
+  color: var(--warn-ink);
+}
+
+.test-score-card.tier-red {
+  background: var(--danger-bg);
+}
+
+.test-score-card.tier-red .test-score-percent,
+.test-score-card.tier-red .test-score-label {
+  color: var(--danger-ink);
+}
+
 .flag-big {
   font-size: 2.8rem;
   display: block;
@@ -1120,6 +1212,7 @@ button {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  color: var(--accent);
   width: 44px;
   height: 44px;
   border-radius: 14px;

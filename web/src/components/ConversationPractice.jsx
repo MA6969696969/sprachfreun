@@ -5,13 +5,23 @@ import { sendChat } from "../api.js";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition.js";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
 import { useProfile } from "../context/ProfileContext.jsx";
+import { useProgress, scoreToTier } from "../context/ProgressContext.jsx";
 import { conversationTurnPoints, conversationSessionBonus } from "../lib/points.js";
+
+const TEST_TURN_COUNT = 5;
+const TEST_TIER_BONUS = { green: 40, yellow: 20, red: 5 };
+const TEST_TIER_LABEL = {
+  green: "Great job! 🟢",
+  yellow: "Getting there 🟡",
+  red: "Keep practicing 🔴",
+};
 
 export default function ConversationPractice({ courses, mode }) {
   const { lang: langCode, courseId, level } = useParams();
   const navigate = useNavigate();
   const lang = courses[langCode];
-  const course = mode === "course" ? lang?.courses.find((c) => c.id === courseId) : null;
+  const isCourseLike = mode === "course" || mode === "test";
+  const course = isCourseLike ? lang?.courses.find((c) => c.id === courseId) : null;
 
   const [loading, setLoading] = useState(true);
   const [speaking, setSpeaking] = useState(false);
@@ -22,11 +32,14 @@ export default function ConversationPractice({ courses, mode }) {
   const [error, setError] = useState(null);
   const [showTextFallback, setShowTextFallback] = useState(false);
   const [textInput, setTextInput] = useState("");
+  const [testResult, setTestResult] = useState(null);
 
   const startedRef = useRef(false);
   const historyRef = useRef([]);
+  const turnsRef = useRef([]);
   const activeRef = useRef(true);
   const { addPoints } = useProfile();
+  const { setCourseMastery } = useProgress();
 
   const { speak, cancel: cancelSpeech, isSupported: ttsSupported } = useSpeechSynthesis(
     lang?.speechLang
@@ -47,13 +60,15 @@ export default function ConversationPractice({ courses, mode }) {
     (history, message) =>
       sendChat({
         language: langCode,
-        mode,
-        courseId: mode === "course" ? courseId : undefined,
+        // The test is a bounded, auto-scored course conversation — the AI
+        // doesn't need a different prompt for it, just the normal course one.
+        mode: mode === "test" ? "course" : mode,
+        courseId: isCourseLike ? courseId : undefined,
         level: mode === "playground" ? level : undefined,
         history,
         message,
       }),
-    [langCode, mode, courseId, level]
+    [langCode, mode, courseId, level, isCourseLike]
   );
 
   const submitTurn = useCallback(
@@ -74,23 +89,27 @@ export default function ConversationPractice({ courses, mode }) {
           { role: "user", content: trimmed },
           { role: "assistant", content: result.reply },
         ];
-        setTurns((prev) => [
-          ...prev,
-          {
-            userText: trimmed,
-            hasCorrection: !!result.has_correction,
-            correction: result.correction || "",
-          },
-        ]);
+        const newTurn = {
+          userText: trimmed,
+          hasCorrection: !!result.has_correction,
+          correction: result.correction || "",
+        };
+        turnsRef.current = [...turnsRef.current, newTurn];
+        setTurns(turnsRef.current);
         addPoints(langCode, conversationTurnPoints(result.has_correction));
         setLoading(false);
         setCaption(result.reply);
         setCaptionFaint(false);
         setSpeaking(true);
+        const testDone = mode === "test" && turnsRef.current.length >= TEST_TURN_COUNT;
         speak(result.reply, {
           onEnd: () => {
             setSpeaking(false);
-            startListening();
+            if (testDone) {
+              finishTest();
+            } else {
+              startListening();
+            }
           },
         });
       } catch (e) {
@@ -99,16 +118,32 @@ export default function ConversationPractice({ courses, mode }) {
         setError(e.message);
       }
     },
-    [callApi, speak, stopListening, startListening, addPoints, langCode]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [callApi, speak, stopListening, startListening, addPoints, langCode, mode]
   );
+
+  function finishTest() {
+    cancelSpeech();
+    stopListening();
+    const finalTurns = turnsRef.current;
+    const correctCount = finalTurns.filter((t) => !t.hasCorrection).length;
+    const percent = finalTurns.length > 0 ? Math.round((correctCount / finalTurns.length) * 100) : 0;
+    const tier = scoreToTier(percent);
+    setCourseMastery(langCode, courseId, tier);
+    addPoints(langCode, conversationSessionBonus(finalTurns) + (TEST_TIER_BONUS[tier] || 0));
+    setTestResult({ percent, tier, correctCount, total: finalTurns.length });
+    setEnded(true);
+  }
 
   const startSession = useCallback(() => {
     setEnded(false);
     setTurns([]);
+    setTestResult(null);
     setError(null);
     setCaption("");
     setCaptionFaint(true);
     historyRef.current = [];
+    turnsRef.current = [];
     setLoading(true);
     callApi([], null)
       .then((result) => {
@@ -135,7 +170,7 @@ export default function ConversationPractice({ courses, mode }) {
 
   useEffect(() => {
     if (startedRef.current || !lang) return;
-    if (mode === "course" && !course) return;
+    if (isCourseLike && !course) return;
     startedRef.current = true;
     startSession();
     // Intentionally run once on mount.
@@ -159,10 +194,10 @@ export default function ConversationPractice({ courses, mode }) {
   }, []);
 
   if (!lang) return <Navigate to="/" replace />;
-  if (mode === "course" && !course) return <Navigate to={`/${langCode}`} replace />;
+  if (isCourseLike && !course) return <Navigate to={`/${langCode}`} replace />;
 
-  const title = mode === "course" ? course.title : `Playground · ${capitalize(level)}`;
-  const backTo = mode === "course" ? `/${langCode}` : `/${langCode}/playground`;
+  const title = isCourseLike ? course.title : `Playground · ${capitalize(level)}`;
+  const backTo = isCourseLike ? `/${langCode}` : `/${langCode}/playground`;
   const tipCount = turns.filter((t) => t.hasCorrection).length;
   const orbState = listening ? "listening" : loading ? "thinking" : speaking ? "speaking" : "idle";
 
@@ -194,6 +229,12 @@ export default function ConversationPractice({ courses, mode }) {
   function handleEndSession() {
     cancelSpeech();
     stopListening();
+    if (mode === "test") {
+      // Leaving a test early doesn't produce a fair score — just exit
+      // without recording a result so it can be retaken cleanly.
+      navigate(backTo);
+      return;
+    }
     if (turns.length > 0) {
       addPoints(langCode, conversationSessionBonus(turns));
       setEnded(true);
@@ -207,6 +248,54 @@ export default function ConversationPractice({ courses, mode }) {
     if (!textInput.trim()) return;
     submitTurn(textInput);
     setTextInput("");
+  }
+
+  if (ended && mode === "test" && testResult) {
+    return (
+      <>
+        <AppHeader backTo={backTo} backLabel={lang.languageName} />
+        <div className="page">
+          <header className="hero small">
+            <h1>Test results</h1>
+            <p>
+              {lang.flag} {course.title}
+            </p>
+          </header>
+
+          <div className={`test-score-card tier-${testResult.tier}`}>
+            <div className="test-score-percent">{testResult.percent}%</div>
+            <div className="test-score-label">{TEST_TIER_LABEL[testResult.tier]}</div>
+            <div className="test-score-detail">
+              {testResult.correctCount}/{testResult.total} without a correction
+            </div>
+          </div>
+
+          <div className="list-card">
+            <ul className="recap-list">
+              {turns.map((t, i) => (
+                <li key={i}>
+                  <div className="recap-said">🗣️ {t.userText}</div>
+                  {t.hasCorrection ? (
+                    <div className="recap-tip">💡 {t.correction}</div>
+                  ) : (
+                    <div className="recap-ok">✓ Nice — no corrections here</div>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="cta-stack">
+            <button type="button" className="primary-button" onClick={startSession}>
+              🔁 Retake the test
+            </button>
+            <Link to={backTo} className="cta-text-link">
+              Done
+            </Link>
+          </div>
+        </div>
+      </>
+    );
   }
 
   if (ended) {
@@ -263,7 +352,9 @@ export default function ConversationPractice({ courses, mode }) {
         <div className="voice-title">
           {lang.flag} <strong>{title}</strong>
         </div>
-        <div className="voice-tip-count">{tipCount > 0 && `💡 ${tipCount}`}</div>
+        <div className="voice-tip-count">
+          {mode === "test" ? `${turns.length}/${TEST_TURN_COUNT}` : tipCount > 0 && `💡 ${tipCount}`}
+        </div>
       </div>
 
       {!sttSupported && (
@@ -297,7 +388,7 @@ export default function ConversationPractice({ courses, mode }) {
       {error && <p className="voice-error">{error}</p>}
 
       <div className="voice-footer">
-        {turns.length > 0 && (
+        {mode !== "test" && turns.length > 0 && (
           <button type="button" className="end-session-link" onClick={handleEndSession}>
             End session &amp; see recap →
           </button>

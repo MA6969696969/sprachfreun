@@ -95,6 +95,10 @@ export default function App() {
                   element={<MatchGame courses={courses} />}
                 />
                 <Route
+                  path="/:lang/course/:courseId/test"
+                  element={<ConversationPractice courses={courses} mode="test" />}
+                />
+                <Route
                   path="/:lang/practice/:courseId"
                   element={<ConversationPractice courses={courses} mode="course" />}
                 />

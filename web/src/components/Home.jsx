@@ -6,6 +6,7 @@ import { useProfile, getLevel } from "../context/ProfileContext.jsx";
 import { useProgress } from "../context/ProgressContext.jsx";
 import { useLocale } from "../context/LocaleContext.jsx";
 import { CATEGORY_ORDER, categorySlug } from "../lib/categories.js";
+import { CourseIcon } from "../lib/icons.jsx";
 
 function groupByCategory(courses) {
   const groups = new Map();
@@ -23,7 +24,7 @@ export default function Home({ courses }) {
   const { activeLanguage } = useActiveLanguage();
   const lang = courses[activeLanguage];
   const { points } = useProfile();
-  const { isCategoryPassed, getLangProficiency } = useProgress();
+  const { isCategoryPassed, getLangProficiency, getCourseMastery } = useProgress();
   const { t } = useLocale();
 
   const grouped = groupByCategory(lang.courses);
@@ -66,14 +67,22 @@ export default function Home({ courses }) {
               <h2>{category}</h2>
             </div>
             <div className="course-path">
-              {categoryCourses.map((course, i) => (
-                <div className="path-node-wrap" key={course.id}>
-                  <Link to={`/${langCode}/course/${course.id}/flashcards`} className="path-node">
-                    <span className="path-node-icon">{course.icon}</span>
-                  </Link>
-                  <span className="path-node-label">{course.title}</span>
-                </div>
-              ))}
+              {categoryCourses.map((course, i) => {
+                const mastery = getCourseMastery(langCode, course.id);
+                return (
+                  <div className="path-node-wrap" key={course.id}>
+                    <Link
+                      to={`/${langCode}/course/${course.id}/flashcards`}
+                      className={`path-node ${mastery ? `mastery-${mastery}` : ""}`}
+                    >
+                      <span className="path-node-icon">
+                        <CourseIcon courseId={course.id} size={28} />
+                      </span>
+                    </Link>
+                    <span className="path-node-label">{course.title}</span>
+                  </div>
+                );
+              })}
               <div className="path-node-wrap">
                 <Link
                   to={`/${langCode}/test/${categorySlug(category)}`}

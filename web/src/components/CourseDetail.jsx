@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
 import SpeakButton from "./SpeakButton.jsx";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
+import { CourseIcon } from "../lib/icons.jsx";
 
 export default function CourseDetail({ courses }) {
   const { lang: langCode, courseId } = useParams();
@@ -15,7 +16,9 @@ export default function CourseDetail({ courses }) {
       <AppHeader backTo={`/${langCode}`} backLabel={lang.languageName} />
       <div className="page">
         <header className="hero small course-hero">
-          <span className="course-icon course-icon-lg">{course.icon}</span>
+          <span className="course-icon course-icon-lg">
+            <CourseIcon courseId={course.id} size={32} />
+          </span>
           <div>
             <h1>{course.title}</h1>
             <p>{course.description}</p>

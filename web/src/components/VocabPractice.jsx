@@ -6,6 +6,7 @@ import { useProfile } from "../context/ProfileContext.jsx";
 import { flashcardPoints } from "../lib/points.js";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
 import SpeakButton from "./SpeakButton.jsx";
+import { CourseIcon } from "../lib/icons.jsx";
 
 export default function VocabPractice({ courses }) {
   const { lang: langCode, courseId } = useParams();
@@ -94,7 +95,7 @@ export default function VocabPractice({ courses }) {
       <div className="page flashcard-page">
         <header className="hero small">
           <h1>
-            {course.icon} {course.title}
+            <CourseIcon courseId={course.id} size={26} /> {course.title}
           </h1>
           <p>
             {complete
@@ -145,7 +146,10 @@ export default function VocabPractice({ courses }) {
               {round > 1 ? ` in ${round} rounds` : ""}. Nice work.
             </p>
             <div className="cta-stack">
-              <Link to={`/${langCode}/course/${courseId}/match`} className="primary-button">
+              <Link to={`/${langCode}/course/${courseId}/test`} className="primary-button">
+                🎯 Take the test
+              </Link>
+              <Link to={`/${langCode}/course/${courseId}/match`} className="secondary-button">
                 🔀 Play match
               </Link>
               <Link to={`/${langCode}/practice/${courseId}`} className="secondary-button">
