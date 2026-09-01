@@ -129,7 +129,7 @@ export default function VocabPractice({ courses }) {
                     <div className="flashcard-hint">Tap to reveal</div>
                   </div>
                   <div className="flashcard-face back">
-                    <div className="flashcard-term">{current.back}</div>
+                    <div className="flashcard-definition">{current.back}</div>
                     {current.example && <div className="flashcard-example">{current.example}</div>}
                   </div>
                 </div>

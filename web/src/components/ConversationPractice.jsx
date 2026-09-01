@@ -25,6 +25,7 @@ export default function ConversationPractice({ courses, mode }) {
 
   const startedRef = useRef(false);
   const historyRef = useRef([]);
+  const activeRef = useRef(true);
   const { addPoints } = useProfile();
 
   const { speak, cancel: cancelSpeech, isSupported: ttsSupported } = useSpeechSynthesis(
@@ -67,6 +68,7 @@ export default function ConversationPractice({ courses, mode }) {
       setLoading(true);
       try {
         const result = await callApi(historyForApi, trimmed);
+        if (!activeRef.current) return;
         historyRef.current = [
           ...historyForApi,
           { role: "user", content: trimmed },
@@ -92,6 +94,7 @@ export default function ConversationPractice({ courses, mode }) {
           },
         });
       } catch (e) {
+        if (!activeRef.current) return;
         setLoading(false);
         setError(e.message);
       }
@@ -109,6 +112,7 @@ export default function ConversationPractice({ courses, mode }) {
     setLoading(true);
     callApi([], null)
       .then((result) => {
+        if (!activeRef.current) return;
         historyRef.current = [{ role: "assistant", content: result.reply }];
         setLoading(false);
         setCaption(result.reply);
@@ -122,6 +126,7 @@ export default function ConversationPractice({ courses, mode }) {
         });
       })
       .catch((e) => {
+        if (!activeRef.current) return;
         setLoading(false);
         setError(e.message);
       });
@@ -146,6 +151,7 @@ export default function ConversationPractice({ courses, mode }) {
 
   useEffect(() => {
     return () => {
+      activeRef.current = false;
       cancelSpeech();
       stopListening();
     };
