@@ -19,6 +19,8 @@
   --warn-ink: #9a5b0a;
   --ok-bg: #e6f4ec;
   --ok-ink: #1f7a4d;
+  --danger-ink: #c0392b;
+  --header-bg: rgba(255, 255, 255, 0.82);
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -43,6 +45,61 @@
   --voice-ink-soft: var(--ink-soft);
   --voice-ink-faint: var(--ink-faint);
   --voice-accent: var(--accent);
+}
+
+/* Dark theme — follows the OS by default (prefers-color-scheme), unless the
+   user picks one explicitly in Settings (data-theme="light"|"dark"), which
+   always wins over the system setting either direction. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16161c;
+    --surface: #1e1e26;
+    --surface-hover: #27262f;
+    --ink: #f2f2f5;
+    --ink-soft: rgba(242, 242, 245, 0.64);
+    --ink-faint: rgba(242, 242, 245, 0.42);
+    --accent: #8b90ff;
+    --accent-hover: #a3a7ff;
+    --accent-strong: #7478f0;
+    --accent-strong-hover: #8a8ef5;
+    --accent-soft: rgba(139, 144, 255, 0.16);
+    --accent-soft-hover: rgba(139, 144, 255, 0.26);
+    --border: rgba(255, 255, 255, 0.11);
+    --border-soft: rgba(255, 255, 255, 0.07);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 16px 36px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3);
+    --warn-bg: rgba(255, 179, 71, 0.14);
+    --warn-ink: #ffcf8a;
+    --ok-bg: rgba(74, 222, 128, 0.14);
+    --ok-ink: #6fe0a0;
+    --danger-ink: #ff6b6b;
+    --header-bg: rgba(22, 22, 28, 0.82);
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #16161c;
+  --surface: #1e1e26;
+  --surface-hover: #27262f;
+  --ink: #f2f2f5;
+  --ink-soft: rgba(242, 242, 245, 0.64);
+  --ink-faint: rgba(242, 242, 245, 0.42);
+  --accent: #8b90ff;
+  --accent-hover: #a3a7ff;
+  --accent-strong: #7478f0;
+  --accent-strong-hover: #8a8ef5;
+  --accent-soft: rgba(139, 144, 255, 0.16);
+  --accent-soft-hover: rgba(139, 144, 255, 0.26);
+  --border: rgba(255, 255, 255, 0.11);
+  --border-soft: rgba(255, 255, 255, 0.07);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 16px 36px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.3);
+  --warn-bg: rgba(255, 179, 71, 0.14);
+  --warn-ink: #ffcf8a;
+  --ok-bg: rgba(74, 222, 128, 0.14);
+  --ok-ink: #6fe0a0;
+  --danger-ink: #ff6b6b;
+  --header-bg: rgba(22, 22, 28, 0.82);
 }
 
 * {
@@ -90,7 +147,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--header-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-soft);
@@ -1239,7 +1296,7 @@ section h2 {
 }
 
 .voice-error {
-  color: #c0392b;
+  color: var(--danger-ink);
   font-size: 0.85rem;
   text-align: center;
   max-width: 420px;
@@ -1587,7 +1644,7 @@ section h2 {
 
 .match-card.wrong {
   background: var(--warn-bg);
-  border-color: #d98c2b;
+  border-color: var(--warn-ink);
 }
 
 .match-card.matched {

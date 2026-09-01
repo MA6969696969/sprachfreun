@@ -1,10 +1,16 @@
 import AppHeader from "./AppHeader.jsx";
-import { useSettings, FONT_SIZES } from "../context/SettingsContext.jsx";
+import { useSettings, FONT_SIZES, THEMES } from "../context/SettingsContext.jsx";
 import { useLocale } from "../context/LocaleContext.jsx";
 import { UI_LANGUAGES } from "../lib/translations.js";
 
+const THEME_LABEL_KEYS = {
+  light: "themeLight",
+  dark: "themeDark",
+  system: "themeSystem",
+};
+
 export default function Settings() {
-  const { fontSize, setFontSize } = useSettings();
+  const { fontSize, setFontSize, theme, setTheme } = useSettings();
   const { locale, setLocale, t } = useLocale();
 
   return (
@@ -14,6 +20,22 @@ export default function Settings() {
         <header className="hero small">
           <h1>⚙️ {t("settings")}</h1>
         </header>
+
+        <section>
+          <h2>{t("theme")}</h2>
+          <div className="settings-row">
+            {THEMES.map((value) => (
+              <button
+                key={value}
+                type="button"
+                className={`settings-choice ${theme === value ? "active" : ""}`}
+                onClick={() => setTheme(value)}
+              >
+                {t(THEME_LABEL_KEYS[value])}
+              </button>
+            ))}
+          </div>
+        </section>
 
         <section>
           <h2>{t("fontSize")}</h2>
