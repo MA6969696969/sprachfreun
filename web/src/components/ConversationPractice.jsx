@@ -156,7 +156,7 @@ export default function ConversationPractice({ courses, mode }) {
   if (mode === "course" && !course) return <Navigate to={`/${langCode}`} replace />;
 
   const title = mode === "course" ? course.title : `Playground · ${capitalize(level)}`;
-  const backTo = mode === "course" ? `/${langCode}/course/${courseId}` : `/${langCode}/playground`;
+  const backTo = mode === "course" ? `/${langCode}` : `/${langCode}/playground`;
   const tipCount = turns.filter((t) => t.hasCorrection).length;
   const orbState = listening ? "listening" : loading ? "thinking" : speaking ? "speaking" : "idle";
 
@@ -206,7 +206,7 @@ export default function ConversationPractice({ courses, mode }) {
   if (ended) {
     return (
       <>
-        <AppHeader backTo={backTo} backLabel={mode === "course" ? course.title : "Playground"} />
+        <AppHeader backTo={backTo} backLabel={mode === "course" ? lang.languageName : "Playground"} />
         <div className="page">
           <header className="hero small">
             <h1>Session recap</h1>

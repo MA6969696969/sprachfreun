@@ -68,7 +68,7 @@ export default function Home({ courses }) {
             <div className="course-path">
               {categoryCourses.map((course, i) => (
                 <div className="path-node-wrap" key={course.id}>
-                  <Link to={`/${langCode}/course/${course.id}`} className="path-node">
+                  <Link to={`/${langCode}/course/${course.id}/flashcards`} className="path-node">
                     <span className="path-node-icon">{course.icon}</span>
                   </Link>
                   <span className="path-node-label">{course.title}</span>

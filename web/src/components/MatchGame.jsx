@@ -50,7 +50,7 @@ export default function MatchGame({ courses }) {
 
   if (!lang || !course) return <Navigate to="/" replace />;
 
-  const backTo = `/${langCode}/course/${courseId}`;
+  const backTo = `/${langCode}`;
   const seconds = (elapsedMs / 1000).toFixed(1);
 
   function handleCardClick(card) {
@@ -92,7 +92,7 @@ export default function MatchGame({ courses }) {
 
   return (
     <>
-      <AppHeader backTo={backTo} backLabel={course.title} />
+      <AppHeader backTo={backTo} backLabel={lang.languageName} />
       <div className="page match-page">
         <header className="hero small">
           <h1>{course.icon} Match</h1>

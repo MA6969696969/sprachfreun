@@ -33,7 +33,7 @@ export default function VocabPractice({ courses }) {
   if (!lang || !course) return <Navigate to="/" replace />;
 
   const current = queue[0];
-  const backTo = `/${langCode}/course/${courseId}`;
+  const backTo = `/${langCode}`;
 
   function handleMark(gotIt) {
     const rest = queue.slice(1);
@@ -65,7 +65,7 @@ export default function VocabPractice({ courses }) {
 
   return (
     <>
-      <AppHeader backTo={backTo} backLabel={course.title} />
+      <AppHeader backTo={backTo} backLabel={lang.languageName} />
       <div className="page flashcard-page">
         <header className="hero small">
           <h1>
@@ -95,10 +95,16 @@ export default function VocabPractice({ courses }) {
               {round > 1 ? ` in ${round} rounds` : ""}. Nice work.
             </p>
             <div className="cta-stack">
-              <button type="button" className="primary-button" onClick={handleRestart}>
+              <Link to={`/${langCode}/course/${courseId}/match`} className="primary-button">
+                🔀 Play match
+              </Link>
+              <Link to={`/${langCode}/practice/${courseId}`} className="secondary-button">
+                🎙️ Practice speaking with AI
+              </Link>
+              <button type="button" className="secondary-button" onClick={handleRestart}>
                 🔁 Practice again
               </button>
-              <Link to={backTo} className="secondary-button">
+              <Link to={backTo} className="cta-text-link">
                 Done
               </Link>
             </div>
