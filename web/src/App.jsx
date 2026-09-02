@@ -7,9 +7,11 @@ import { LocaleProvider } from "./context/LocaleContext.jsx";
 import { SettingsProvider } from "./context/SettingsContext.jsx";
 import { StreakProvider } from "./context/StreakContext.jsx";
 import { ActiveLanguageProvider, useActiveLanguage } from "./context/ActiveLanguageContext.jsx";
+import { AuthProvider } from "./context/AuthContext.jsx";
 import Splash from "./components/Splash.jsx";
 import AppShell from "./components/AppShell.jsx";
 import Settings from "./components/Settings.jsx";
+import Auth from "./components/Auth.jsx";
 import Streak from "./components/Streak.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
 import Home from "./components/Home.jsx";
@@ -70,6 +72,7 @@ export default function App() {
         {!courses || !minTimeDone ? (
           <Splash />
         ) : (
+          <AuthProvider>
           <ProfileProvider>
             <ProgressProvider>
             <StreakProvider>
@@ -81,6 +84,7 @@ export default function App() {
                   <Route path="/streak" element={<Streak />} />
                   <Route path="/leaderboard" element={<Leaderboard courses={courses} />} />
                 </Route>
+                <Route path="/account" element={<Auth />} />
                 <Route path="/:lang" element={<LanguageRedirect courses={courses} />} />
                 <Route
                   path="/:lang/course/:courseId"
@@ -122,6 +126,7 @@ export default function App() {
             </StreakProvider>
             </ProgressProvider>
           </ProfileProvider>
+          </AuthProvider>
         )}
       </SettingsProvider>
     </LocaleProvider>

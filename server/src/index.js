@@ -12,6 +12,7 @@ import {
   situationSchema,
 } from "./promptBuilder.js";
 import { submitScore, getLeaderboard } from "./leaderboardStore.js";
+import { signup, login, getUserById, verifyToken } from "./authStore.js";
 
 const app = express();
 app.use(cors());
@@ -193,9 +194,51 @@ Learner said: "${(userAnswer || "").trim() || "(nothing — no answer given)"}"`
   }
 });
 
+async function getAuthUser(req) {
+  const header = req.headers.authorization || "";
+  const token = header.startsWith("Bearer ") ? header.slice(7) : null;
+  if (!token) return null;
+  const userId = verifyToken(token);
+  return userId ? getUserById(userId) : null;
+}
+
+app.post("/api/auth/signup", async (req, res) => {
+  try {
+    const { email, username, password } = req.body;
+    const result = await signup({ email, username, password });
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ error: err.message || "Signup failed" });
+  }
+});
+
+app.post("/api/auth/login", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const result = await login({ email, password });
+    res.json(result);
+  } catch (err) {
+    res.status(401).json({ error: err.message || "Login failed" });
+  }
+});
+
+app.get("/api/auth/me", async (req, res) => {
+  const user = await getAuthUser(req);
+  if (!user) return res.status(401).json({ error: "Not signed in" });
+  res.json({ user });
+});
+
 app.post("/api/leaderboard", async (req, res) => {
   try {
-    const { deviceId, name, totalPoints, points } = req.body;
+    let { deviceId, name, totalPoints, points } = req.body;
+    // A signed-in submission always uses the account's own protected
+    // identity — never whatever name/deviceId the client sent — so no one
+    // else can post scores under your username.
+    const authUser = await getAuthUser(req);
+    if (authUser) {
+      deviceId = `user:${authUser.id}`;
+      name = authUser.username;
+    }
     const result = await submitScore({ deviceId, name, totalPoints, points });
     res.json(result);
   } catch (err) {

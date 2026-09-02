@@ -1,26 +1,39 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useProfile } from "../context/ProfileContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 import { getDeviceId } from "../lib/deviceId.js";
 import { submitLeaderboardScore, fetchLeaderboard } from "../api.js";
 
 export default function Leaderboard({ courses }) {
   const { name, setName, totalPoints, points } = useProfile();
-  const [editing, setEditing] = useState(!name);
+  const { isSignedIn, user, token } = useAuth();
+  const [editing, setEditing] = useState(!name && !isSignedIn);
   const [draft, setDraft] = useState(name || "");
   const [langCode, setLangCode] = useState(null);
   const [entries, setEntries] = useState(null);
   const [error, setError] = useState(null);
   const deviceId = getDeviceId();
+  // Signed-in submissions are keyed by account, not this browser's device id
+  // (the backend does the same thing) — so "you" highlighting still lines up.
+  const effectiveDeviceId = isSignedIn ? `user:${user.id}` : deviceId;
+  const effectiveName = isSignedIn ? user.username : name;
 
   useEffect(() => {
     let cancelled = false;
     setError(null);
 
     async function submitThenFetch() {
-      if (name) {
+      if (effectiveName) {
         // Submit first so a fresh visit shows your own just-updated score
         // right away instead of one page load behind.
-        await submitLeaderboardScore({ deviceId, name, totalPoints, points }).catch(() => {
+        await submitLeaderboardScore({
+          deviceId,
+          name: effectiveName,
+          totalPoints,
+          points,
+          token: isSignedIn ? token : undefined,
+        }).catch(() => {
           // best-effort — still try to load the list below with whatever's there
         });
       }
@@ -37,7 +50,7 @@ export default function Leaderboard({ courses }) {
     return () => {
       cancelled = true;
     };
-  }, [langCode, name, totalPoints, points, deviceId]);
+  }, [langCode, effectiveName, totalPoints, points, deviceId, isSignedIn, token]);
 
   function commitName() {
     const trimmed = draft.trim();
@@ -55,6 +68,16 @@ export default function Leaderboard({ courses }) {
           <h1>🏆 Leaderboard</h1>
           <p>See how your points stack up against everyone else playing Sprachfreund.</p>
         </header>
+
+        {isSignedIn ? (
+          <p className="leaderboard-account-status">
+            🔒 Signed in as <strong>{user.username}</strong> — your name is protected.
+          </p>
+        ) : (
+          <p className="leaderboard-account-status">
+            <Link to="/account">Sign in</Link> to protect your name so no one else can use it.
+          </p>
+        )}
 
         {editing ? (
           <div className="list-card leaderboard-name-card">
@@ -114,7 +137,7 @@ export default function Leaderboard({ courses }) {
                   {entries.map((entry) => (
                     <li
                       key={entry.deviceId}
-                      className={`leaderboard-row ${entry.deviceId === deviceId ? "me" : ""}`}
+                      className={`leaderboard-row ${entry.deviceId === effectiveDeviceId ? "me" : ""}`}
                     >
                       <span className="leaderboard-rank">
                         {entry.rank === 1
@@ -127,7 +150,9 @@ export default function Leaderboard({ courses }) {
                       </span>
                       <span className="leaderboard-name">
                         {entry.name}
-                        {entry.deviceId === deviceId && <span className="leaderboard-you"> · you</span>}
+                        {entry.deviceId === effectiveDeviceId && (
+                          <span className="leaderboard-you"> · you</span>
+                        )}
                       </span>
                       <span className="leaderboard-score">{entry.score} pts</span>
                     </li>
@@ -137,8 +162,8 @@ export default function Leaderboard({ courses }) {
             </div>
 
             <p className="leaderboard-note">
-              Your name and points are visible to everyone else on this leaderboard. You can change
-              your name anytime in Settings.
+              Your name and points are visible to everyone else on this leaderboard.
+              {!isSignedIn && " You can change your name anytime in Settings."}
             </p>
           </>
         )}

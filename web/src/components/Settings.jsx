@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { useSettings, FONT_SIZES, THEMES } from "../context/SettingsContext.jsx";
 import { useLocale } from "../context/LocaleContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 import { UI_LANGUAGES } from "../lib/translations.js";
 
 const THEME_LABEL_KEYS = {
@@ -11,6 +13,7 @@ const THEME_LABEL_KEYS = {
 export default function Settings() {
   const { fontSize, setFontSize, theme, setTheme } = useSettings();
   const { locale, setLocale, t } = useLocale();
+  const { isSignedIn, user } = useAuth();
 
   return (
     <>
@@ -18,6 +21,22 @@ export default function Settings() {
         <header className="hero small">
           <h1>⚙️ {t("settings")}</h1>
         </header>
+
+        <section>
+          <h2>Account</h2>
+          <Link to="/account" className="settings-account-row">
+            <span className="settings-account-avatar">{isSignedIn ? "👤" : "🔒"}</span>
+            <span className="settings-account-info">
+              <span className="settings-account-title">
+                {isSignedIn ? user.username : "Sign in"}
+              </span>
+              <span className="settings-account-sub">
+                {isSignedIn ? "Manage your account" : "Protect your leaderboard name"}
+              </span>
+            </span>
+            <span className="settings-account-chevron">›</span>
+          </Link>
+        </section>
 
         <section>
           <h2>{t("theme")}</h2>

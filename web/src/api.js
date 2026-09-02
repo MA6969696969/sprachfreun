@@ -52,10 +52,12 @@ export async function gradeAnswer({ language, term, correctTranslation, userAnsw
   return res.json();
 }
 
-export async function submitLeaderboardScore({ deviceId, name, totalPoints, points }) {
+export async function submitLeaderboardScore({ deviceId, name, totalPoints, points, token }) {
+  const headers = { "Content-Type": "application/json" };
+  if (token) headers.Authorization = `Bearer ${token}`;
   const res = await fetch(`${BASE_URL}/api/leaderboard`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers,
     body: JSON.stringify({ deviceId, name, totalPoints, points }),
   });
   if (!res.ok) throw new Error("Failed to submit score");
@@ -67,5 +69,35 @@ export async function fetchLeaderboard(langCode) {
   if (langCode) url.searchParams.set("lang", langCode);
   const res = await fetch(url.toString());
   if (!res.ok) throw new Error("Failed to load leaderboard");
+  return res.json();
+}
+
+export async function signupUser({ email, username, password }) {
+  const res = await fetch(`${BASE_URL}/api/auth/signup`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, username, password }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || "Signup failed");
+  return data;
+}
+
+export async function loginUser({ email, password }) {
+  const res = await fetch(`${BASE_URL}/api/auth/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || "Login failed");
+  return data;
+}
+
+export async function fetchMe(token) {
+  const res = await fetch(`${BASE_URL}/api/auth/me`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error("Not signed in");
   return res.json();
 }
