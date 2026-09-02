@@ -3,10 +3,11 @@ import { Link, Navigate, useParams } from "react-router-dom";
 import AppHeader from "./AppHeader.jsx";
 import { buildDeck, shuffle } from "../lib/deck.js";
 import { useProfile } from "../context/ProfileContext.jsx";
+import { useProgress } from "../context/ProgressContext.jsx";
 import { flashcardPoints } from "../lib/points.js";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
 import SpeakButton from "./SpeakButton.jsx";
-import { CourseIcon } from "../lib/icons.jsx";
+import { CourseIcon, courseColorClass } from "../lib/icons.jsx";
 
 export default function VocabPractice({ courses }) {
   const { lang: langCode, courseId } = useParams();
@@ -26,13 +27,18 @@ export default function VocabPractice({ courses }) {
   const [flipped, setFlipped] = useState(false);
   const awardedRef = useRef(false);
   const { addPoints } = useProfile();
+  const { markDeckCompleted, isDeckCompleted } = useProgress();
+  // If this deck was already finished before, jump straight to the options
+  // screen (test/match/speak) instead of making them redo every card.
+  const [skipToComplete, setSkipToComplete] = useState(() => isDeckCompleted(langCode, courseId));
 
   const masteredCount = useMemo(
     () => Object.values(marks).filter((m) => m === "got").length,
     [marks]
   );
   const roundDone = roundOrder.length > 0 && index >= roundOrder.length;
-  const complete = roundDone && roundOrder.every((c) => marks[c._id] === "got");
+  const freshlyComplete = roundDone && roundOrder.every((c) => marks[c._id] === "got");
+  const complete = skipToComplete || freshlyComplete;
 
   // When a round finishes, requeue anything still marked "learning" into a
   // fresh shuffled round. Self-terminating: resetting index/roundOrder makes
@@ -48,11 +54,12 @@ export default function VocabPractice({ courses }) {
   }, [roundDone, roundOrder, marks]);
 
   useEffect(() => {
-    if (complete && !awardedRef.current) {
+    if (freshlyComplete && !awardedRef.current) {
       awardedRef.current = true;
       addPoints(langCode, flashcardPoints(deck.length, round));
+      markDeckCompleted(langCode, courseId);
     }
-  }, [complete, langCode, deck.length, round, addPoints]);
+  }, [freshlyComplete, langCode, courseId, deck.length, round, addPoints, markDeckCompleted]);
 
   if (!lang || !course) return <Navigate to="/" replace />;
 
@@ -87,6 +94,7 @@ export default function VocabPractice({ courses }) {
     setFurthest(0);
     setFlipped(false);
     setRoundOrder(shuffle(deck));
+    setSkipToComplete(false);
   }
 
   return (
@@ -95,7 +103,8 @@ export default function VocabPractice({ courses }) {
       <div className="page flashcard-page">
         <header className="hero small">
           <h1>
-            <CourseIcon courseId={course.id} size={26} /> {course.title}
+            <CourseIcon courseId={course.id} size={26} className={courseColorClass(course.id)} />{" "}
+            {course.title}
           </h1>
           <p>
             {complete

@@ -4,7 +4,7 @@ import AppHeader from "./AppHeader.jsx";
 import { buildDeck, shuffle } from "../lib/deck.js";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { matchPoints } from "../lib/points.js";
-import { CourseIcon } from "../lib/icons.jsx";
+import { CourseIcon, courseColorClass } from "../lib/icons.jsx";
 
 const PAIR_COUNT = 6;
 
@@ -97,7 +97,7 @@ export default function MatchGame({ courses }) {
       <div className="page match-page">
         <header className="hero small">
           <h1>
-            <CourseIcon courseId={course.id} size={26} /> Match
+            <CourseIcon courseId={course.id} size={26} className={courseColorClass(course.id)} /> Match
           </h1>
           <p>
             {finished

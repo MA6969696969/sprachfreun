@@ -65,6 +65,39 @@ export const COURSE_ICONS = {
   holidays: Gift,
 };
 
+// A small rotating palette of muted colors, assigned per course so
+// adjacent nodes on the same category's path don't repeat a hue.
+export const COURSE_COLORS = {
+  basics: "violet",
+  school: "terracotta",
+  "daily-life": "amber",
+  greetings: "teal",
+  family: "green",
+  descriptions: "slate",
+  food: "amber",
+  shopping: "rose",
+  directions: "teal",
+  travel: "blue",
+  transportation: "slate",
+  hobbies: "violet",
+  weekend: "rose",
+  sports: "green",
+  technology: "slate",
+  "making-plans": "blue",
+  holidays: "terracotta",
+  weather: "blue",
+  "numbers-time": "slate",
+  health: "rose",
+  work: "amber",
+  emotions: "violet",
+  home: "green",
+};
+
+export function courseColorClass(courseId) {
+  const color = COURSE_COLORS[courseId];
+  return color ? `icon-${color}` : "";
+}
+
 export function CourseIcon({ courseId, size = 22, className }) {
   const Icon = COURSE_ICONS[courseId];
   if (!Icon) return null;

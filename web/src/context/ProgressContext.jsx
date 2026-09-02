@@ -23,12 +23,16 @@ function loadState() {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
-      return { passed: parsed.passed || {}, courseMastery: parsed.courseMastery || {} };
+      return {
+        passed: parsed.passed || {},
+        courseMastery: parsed.courseMastery || {},
+        completedDecks: parsed.completedDecks || {},
+      };
     }
   } catch {
     // ignore corrupt storage
   }
-  return { passed: {}, courseMastery: {} };
+  return { passed: {}, courseMastery: {}, completedDecks: {} };
 }
 
 const ProgressContext = createContext(null);
@@ -77,6 +81,22 @@ export function ProgressProvider({ children }) {
     [state.courseMastery]
   );
 
+  const markDeckCompleted = useCallback((langCode, courseId) => {
+    setState((prev) => {
+      const current = prev.completedDecks[langCode] || [];
+      if (current.includes(courseId)) return prev;
+      return {
+        ...prev,
+        completedDecks: { ...prev.completedDecks, [langCode]: [...current, courseId] },
+      };
+    });
+  }, []);
+
+  const isDeckCompleted = useCallback(
+    (langCode, courseId) => (state.completedDecks[langCode] || []).includes(courseId),
+    [state.completedDecks]
+  );
+
   const value = {
     passed: state.passed,
     markCategoryPassed,
@@ -84,6 +104,8 @@ export function ProgressProvider({ children }) {
     getLangProficiency,
     setCourseMastery,
     getCourseMastery,
+    markDeckCompleted,
+    isDeckCompleted,
   };
 
   return <ProgressContext.Provider value={value}>{children}</ProgressContext.Provider>;

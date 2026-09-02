@@ -23,6 +23,26 @@
   --danger-ink: #c0392b;
   --header-bg: rgba(255, 255, 255, 0.82);
   --btn-shadow: #2e3299;
+
+  /* Muted, calm course-icon colors — a small rotating palette, not a
+     saturated "AI slop" rainbow. */
+  --icon-blue-ink: #4d6f92;
+  --icon-blue-bg: #e9eef4;
+  --icon-green-ink: #4f7d5f;
+  --icon-green-bg: #e8f0ea;
+  --icon-amber-ink: #a3762f;
+  --icon-amber-bg: #f3ecdf;
+  --icon-rose-ink: #a05770;
+  --icon-rose-bg: #f3e8ec;
+  --icon-teal-ink: #417d78;
+  --icon-teal-bg: #e6efee;
+  --icon-violet-ink: #6f5799;
+  --icon-violet-bg: #ece7f4;
+  --icon-slate-ink: #52607d;
+  --icon-slate-bg: #e9ebf0;
+  --icon-terracotta-ink: #9c5b41;
+  --icon-terracotta-bg: #f1e6e0;
+
   --radius-sm: 10px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -78,6 +98,23 @@
     --danger-ink: #ff6b6b;
     --header-bg: rgba(22, 22, 28, 0.82);
     --btn-shadow: #5a5ecb;
+
+    --icon-blue-ink: #9dbedd;
+    --icon-blue-bg: rgba(157, 190, 221, 0.14);
+    --icon-green-ink: #93c9a3;
+    --icon-green-bg: rgba(147, 201, 163, 0.14);
+    --icon-amber-ink: #e0b673;
+    --icon-amber-bg: rgba(224, 182, 115, 0.14);
+    --icon-rose-ink: #e0a3b8;
+    --icon-rose-bg: rgba(224, 163, 184, 0.14);
+    --icon-teal-ink: #83c7c0;
+    --icon-teal-bg: rgba(131, 199, 192, 0.14);
+    --icon-violet-ink: #b7a3dd;
+    --icon-violet-bg: rgba(183, 163, 221, 0.14);
+    --icon-slate-ink: #a3b0cc;
+    --icon-slate-bg: rgba(163, 176, 204, 0.14);
+    --icon-terracotta-ink: #d99b7f;
+    --icon-terracotta-bg: rgba(217, 155, 127, 0.14);
   }
 }
 
@@ -106,6 +143,23 @@
   --danger-ink: #ff6b6b;
   --header-bg: rgba(22, 22, 28, 0.82);
   --btn-shadow: #5a5ecb;
+
+  --icon-blue-ink: #9dbedd;
+  --icon-blue-bg: rgba(157, 190, 221, 0.14);
+  --icon-green-ink: #93c9a3;
+  --icon-green-bg: rgba(147, 201, 163, 0.14);
+  --icon-amber-ink: #e0b673;
+  --icon-amber-bg: rgba(224, 182, 115, 0.14);
+  --icon-rose-ink: #e0a3b8;
+  --icon-rose-bg: rgba(224, 163, 184, 0.14);
+  --icon-teal-ink: #83c7c0;
+  --icon-teal-bg: rgba(131, 199, 192, 0.14);
+  --icon-violet-ink: #b7a3dd;
+  --icon-violet-bg: rgba(183, 163, 221, 0.14);
+  --icon-slate-ink: #a3b0cc;
+  --icon-slate-bg: rgba(163, 176, 204, 0.14);
+  --icon-terracotta-ink: #d99b7f;
+  --icon-terracotta-bg: rgba(217, 155, 127, 0.14);
 }
 
 * {
@@ -426,14 +480,14 @@ button {
 }
 
 .shell-content {
-  padding-bottom: 76px;
+  padding-bottom: 64px;
 }
 
 /* .page already has its own generous bottom padding for free-scrolling
    sub-pages. Inside the shell, .shell-content's padding already clears the
    fixed nav, so the two would otherwise stack into a large empty gap. */
 .shell-content .page {
-  padding-bottom: var(--sp-4);
+  padding-bottom: var(--sp-2);
 }
 
 @media (min-width: 900px) {
@@ -950,6 +1004,10 @@ button {
   margin-bottom: var(--sp-7);
 }
 
+.path-chapter:last-child {
+  margin-bottom: var(--sp-3);
+}
+
 .chapter-banner {
   background: var(--accent-soft);
   border-radius: var(--radius-lg);
@@ -1064,7 +1122,7 @@ button {
   height: 72px;
   flex-shrink: 0;
   border-radius: 50%;
-  background: var(--surface);
+  background: var(--icon-bg, var(--surface));
   border: 1px solid var(--border);
   box-shadow: 0 4px 0 var(--border), var(--shadow-sm);
   transition: transform 0.12s ease, box-shadow 0.12s ease;
@@ -1083,7 +1141,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  color: var(--icon-ink, var(--accent));
 }
 
 .path-node-label {
@@ -1212,11 +1270,11 @@ button {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
-  color: var(--accent);
+  color: var(--icon-ink, var(--accent));
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  background: var(--accent-soft);
+  background: var(--icon-bg, var(--accent-soft));
   flex-shrink: 0;
 }
 
@@ -1225,6 +1283,49 @@ button {
   width: 76px;
   height: 76px;
   border-radius: 22px;
+}
+
+/* Muted per-course icon colors — applied via an icon-<hue> class from
+   lib/icons.jsx's COURSE_COLORS map. */
+.icon-blue {
+  --icon-ink: var(--icon-blue-ink);
+  --icon-bg: var(--icon-blue-bg);
+  color: var(--icon-ink);
+}
+.icon-green {
+  --icon-ink: var(--icon-green-ink);
+  --icon-bg: var(--icon-green-bg);
+  color: var(--icon-ink);
+}
+.icon-amber {
+  --icon-ink: var(--icon-amber-ink);
+  --icon-bg: var(--icon-amber-bg);
+  color: var(--icon-ink);
+}
+.icon-rose {
+  --icon-ink: var(--icon-rose-ink);
+  --icon-bg: var(--icon-rose-bg);
+  color: var(--icon-ink);
+}
+.icon-teal {
+  --icon-ink: var(--icon-teal-ink);
+  --icon-bg: var(--icon-teal-bg);
+  color: var(--icon-ink);
+}
+.icon-violet {
+  --icon-ink: var(--icon-violet-ink);
+  --icon-bg: var(--icon-violet-bg);
+  color: var(--icon-ink);
+}
+.icon-slate {
+  --icon-ink: var(--icon-slate-ink);
+  --icon-bg: var(--icon-slate-bg);
+  color: var(--icon-ink);
+}
+.icon-terracotta {
+  --icon-ink: var(--icon-terracotta-ink);
+  --icon-bg: var(--icon-terracotta-bg);
+  color: var(--icon-ink);
 }
 
 /* ---------- Sections & cards ---------- */

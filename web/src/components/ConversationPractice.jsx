@@ -33,6 +33,7 @@ export default function ConversationPractice({ courses, mode }) {
   const [showTextFallback, setShowTextFallback] = useState(false);
   const [textInput, setTextInput] = useState("");
   const [testResult, setTestResult] = useState(null);
+  const [starting, setStarting] = useState(false);
 
   const startedRef = useRef(false);
   const historyRef = useRef([]);
@@ -108,6 +109,7 @@ export default function ConversationPractice({ courses, mode }) {
             if (testDone) {
               finishTest();
             } else {
+              setStarting(true);
               startListening();
             }
           },
@@ -156,6 +158,7 @@ export default function ConversationPractice({ courses, mode }) {
         speak(result.reply, {
           onEnd: () => {
             setSpeaking(false);
+            setStarting(true);
             startListening();
           },
         });
@@ -179,10 +182,19 @@ export default function ConversationPractice({ courses, mode }) {
 
   useEffect(() => {
     if (listening) {
+      setStarting(false);
       setCaption(interimTranscript);
       setCaptionFaint(!interimTranscript);
     }
   }, [listening, interimTranscript]);
+
+  // Safety net: if the mic never actually starts (denied permission, a
+  // flaky device), don't leave the orb stuck showing "starting" forever.
+  useEffect(() => {
+    if (!starting) return undefined;
+    const timeout = setTimeout(() => setStarting(false), 2500);
+    return () => clearTimeout(timeout);
+  }, [starting]);
 
   useEffect(() => {
     return () => {
@@ -199,12 +211,22 @@ export default function ConversationPractice({ courses, mode }) {
   const title = isCourseLike ? course.title : `Playground · ${capitalize(level)}`;
   const backTo = isCourseLike ? `/${langCode}` : `/${langCode}/playground`;
   const tipCount = turns.filter((t) => t.hasCorrection).length;
-  const orbState = listening ? "listening" : loading ? "thinking" : speaking ? "speaking" : "idle";
+  const orbState = listening
+    ? "listening"
+    : starting
+    ? "starting"
+    : loading
+    ? "thinking"
+    : speaking
+    ? "speaking"
+    : "idle";
 
   function statusLabel() {
     switch (orbState) {
       case "listening":
         return "Listening… tap when you're done";
+      case "starting":
+        return "Go ahead, I'm listening…";
       case "thinking":
         return "Thinking…";
       case "speaking":
@@ -215,13 +237,16 @@ export default function ConversationPractice({ courses, mode }) {
   }
 
   function handleOrbTap() {
-    if (orbState === "listening") {
+    if (orbState === "listening" || orbState === "starting") {
+      setStarting(false);
       stopListening();
     } else if (orbState === "speaking") {
       cancelSpeech();
       setSpeaking(false);
+      setStarting(true);
       startListening();
     } else if (orbState === "idle") {
+      setStarting(true);
       startListening();
     }
   }
@@ -366,7 +391,7 @@ export default function ConversationPractice({ courses, mode }) {
         <p className="voice-warning">This browser can't read replies aloud, but text still works.</p>
       )}
 
-      <div className={`orb-stage state-${orbState}`}>
+      <div className={`orb-stage state-${orbState === "starting" ? "listening" : orbState}`}>
         <div className="orb-wrap">
           <span className="ring ring-1" />
           <span className="ring ring-2" />

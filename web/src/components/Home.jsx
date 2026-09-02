@@ -6,7 +6,7 @@ import { useProfile, getLevel } from "../context/ProfileContext.jsx";
 import { useProgress } from "../context/ProgressContext.jsx";
 import { useLocale } from "../context/LocaleContext.jsx";
 import { CATEGORY_ORDER, categorySlug } from "../lib/categories.js";
-import { CourseIcon } from "../lib/icons.jsx";
+import { CourseIcon, courseColorClass } from "../lib/icons.jsx";
 
 function groupByCategory(courses) {
   const groups = new Map();
@@ -73,7 +73,9 @@ export default function Home({ courses }) {
                   <div className="path-node-wrap" key={course.id}>
                     <Link
                       to={`/${langCode}/course/${course.id}/flashcards`}
-                      className={`path-node ${mastery ? `mastery-${mastery}` : ""}`}
+                      className={`path-node ${courseColorClass(course.id)} ${
+                        mastery ? `mastery-${mastery}` : ""
+                      }`}
                     >
                       <span className="path-node-icon">
                         <CourseIcon courseId={course.id} size={28} />
