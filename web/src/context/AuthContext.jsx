@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { signupUser, loginUser, fetchMe } from "../api.js";
+import { signupUser, loginUser, fetchMe, requestPasswordReset, resetPassword } from "../api.js";
 
 const STORAGE_KEY = "sprachfreund.auth.v1";
 
@@ -65,7 +65,27 @@ export function AuthProvider({ children }) {
     setState({ token: null, user: null });
   }, []);
 
-  const value = { user, token, checkedSession, signup, login, logout, isSignedIn: !!user };
+  const forgotPassword = useCallback(async (email) => {
+    await requestPasswordReset({ email });
+  }, []);
+
+  const completePasswordReset = useCallback(async (email, code, newPassword) => {
+    const result = await resetPassword({ email, code, newPassword });
+    setState({ token: result.token, user: result.user });
+    return result.user;
+  }, []);
+
+  const value = {
+    user,
+    token,
+    checkedSession,
+    signup,
+    login,
+    logout,
+    forgotPassword,
+    completePasswordReset,
+    isSignedIn: !!user,
+  };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

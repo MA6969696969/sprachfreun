@@ -7,7 +7,8 @@
 import pg from "pg";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { randomUUID } from "crypto";
+import { randomUUID, randomInt } from "crypto";
+import { sendPasswordResetEmail } from "./mailer.js";
 
 const { Pool } = pg;
 
@@ -18,6 +19,7 @@ const pool = process.env.DATABASE_URL
 const JWT_SECRET = process.env.JWT_SECRET || "dev-only-insecure-secret-change-me";
 const TOKEN_EXPIRY = "30d";
 const USERNAME_RE = /^[a-zA-Z0-9_]{3,20}$/;
+const RESET_CODE_TTL_MS = 15 * 60 * 1000;
 
 let schemaReady = null;
 
@@ -34,6 +36,8 @@ async function ensureSchema() {
       );
       CREATE UNIQUE INDEX IF NOT EXISTS users_email_lower_idx ON users (LOWER(email));
       CREATE UNIQUE INDEX IF NOT EXISTS users_username_lower_idx ON users (LOWER(username));
+      ALTER TABLE users ADD COLUMN IF NOT EXISTS reset_code_hash TEXT;
+      ALTER TABLE users ADD COLUMN IF NOT EXISTS reset_code_expires TIMESTAMPTZ;
     `);
   }
   await schemaReady;
@@ -147,4 +151,97 @@ export function verifyToken(token) {
   } catch {
     return null;
   }
+}
+
+function generateResetCode() {
+  return String(randomInt(0, 1000000)).padStart(6, "0");
+}
+
+// Always resolves — doesn't reveal whether the email has an account. If it
+// does, a 6-digit code is emailed and valid for 15 minutes.
+export async function requestPasswordReset({ email }) {
+  const cleanEmail = String(email || "").trim().toLowerCase();
+  if (!cleanEmail) return;
+
+  let record;
+  if (pool) {
+    await ensureSchema();
+    const result = await pool.query(`SELECT id, email, username FROM users WHERE LOWER(email) = $1`, [
+      cleanEmail,
+    ]);
+    record = result.rows[0] || null;
+  } else {
+    record = memoryUsersByEmail.get(cleanEmail) || null;
+  }
+  if (!record) return;
+
+  const code = generateResetCode();
+  const codeHash = await bcrypt.hash(code, 10);
+  const expires = new Date(Date.now() + RESET_CODE_TTL_MS);
+
+  if (pool) {
+    await pool.query(`UPDATE users SET reset_code_hash = $1, reset_code_expires = $2 WHERE id = $3`, [
+      codeHash,
+      expires,
+      record.id,
+    ]);
+  } else {
+    const memRecord = memoryUsersById.get(record.id);
+    memRecord.resetCodeHash = codeHash;
+    memRecord.resetCodeExpires = expires;
+  }
+
+  await sendPasswordResetEmail(record.email, record.username, code);
+}
+
+export async function resetPassword({ email, code, newPassword }) {
+  const cleanEmail = String(email || "").trim().toLowerCase();
+  const cleanCode = String(code || "").trim();
+  if (!newPassword || newPassword.length < 8) {
+    throw new Error("Password must be at least 8 characters.");
+  }
+
+  let record;
+  if (pool) {
+    await ensureSchema();
+    const result = await pool.query(`SELECT * FROM users WHERE LOWER(email) = $1`, [cleanEmail]);
+    record = result.rows[0]
+      ? {
+          id: result.rows[0].id,
+          email: result.rows[0].email,
+          username: result.rows[0].username,
+          resetCodeHash: result.rows[0].reset_code_hash,
+          resetCodeExpires: result.rows[0].reset_code_expires,
+        }
+      : null;
+  } else {
+    record = memoryUsersById.get(memoryUsersByEmail.get(cleanEmail)?.id) || null;
+  }
+
+  if (!record || !record.resetCodeHash || !record.resetCodeExpires) {
+    throw new Error("Invalid or expired code.");
+  }
+  if (new Date(record.resetCodeExpires).getTime() < Date.now()) {
+    throw new Error("Invalid or expired code.");
+  }
+  const validCode = await bcrypt.compare(cleanCode, record.resetCodeHash);
+  if (!validCode) {
+    throw new Error("Invalid or expired code.");
+  }
+
+  const passwordHash = await bcrypt.hash(newPassword, 10);
+
+  if (pool) {
+    await pool.query(
+      `UPDATE users SET password_hash = $1, reset_code_hash = NULL, reset_code_expires = NULL WHERE id = $2`,
+      [passwordHash, record.id]
+    );
+  } else {
+    const memRecord = memoryUsersById.get(record.id);
+    memRecord.passwordHash = passwordHash;
+    memRecord.resetCodeHash = null;
+    memRecord.resetCodeExpires = null;
+  }
+
+  return { user: toPublicUser(record), token: signToken(record.id) };
 }

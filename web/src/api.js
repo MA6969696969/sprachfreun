@@ -101,3 +101,25 @@ export async function fetchMe(token) {
   if (!res.ok) throw new Error("Not signed in");
   return res.json();
 }
+
+export async function requestPasswordReset({ email }) {
+  const res = await fetch(`${BASE_URL}/api/auth/forgot-password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || "Couldn't send the reset email");
+  return data;
+}
+
+export async function resetPassword({ email, code, newPassword }) {
+  const res = await fetch(`${BASE_URL}/api/auth/reset-password`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, code, newPassword }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data.error || "Reset failed");
+  return data;
+}

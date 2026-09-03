@@ -1807,6 +1807,13 @@ section h2 {
   color: var(--danger-ink);
 }
 
+.auth-notice {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ok-ink);
+}
+
 .auth-account-card {
   padding: var(--sp-4);
   margin-bottom: var(--sp-3);

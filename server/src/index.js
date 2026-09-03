@@ -12,7 +12,7 @@ import {
   situationSchema,
 } from "./promptBuilder.js";
 import { submitScore, getLeaderboard } from "./leaderboardStore.js";
-import { signup, login, getUserById, verifyToken } from "./authStore.js";
+import { signup, login, getUserById, verifyToken, requestPasswordReset, resetPassword } from "./authStore.js";
 
 const app = express();
 app.use(cors());
@@ -226,6 +226,27 @@ app.get("/api/auth/me", async (req, res) => {
   const user = await getAuthUser(req);
   if (!user) return res.status(401).json({ error: "Not signed in" });
   res.json({ user });
+});
+
+app.post("/api/auth/forgot-password", async (req, res) => {
+  try {
+    const { email } = req.body;
+    await requestPasswordReset({ email });
+    res.json({ sent: true });
+  } catch (err) {
+    console.error("Forgot-password error:", err);
+    res.status(500).json({ error: "Couldn't send the reset email right now — try again in a moment." });
+  }
+});
+
+app.post("/api/auth/reset-password", async (req, res) => {
+  try {
+    const { email, code, newPassword } = req.body;
+    const result = await resetPassword({ email, code, newPassword });
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ error: err.message || "Reset failed" });
+  }
 });
 
 app.post("/api/leaderboard", async (req, res) => {

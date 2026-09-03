@@ -1,17 +1,28 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { User } from "lucide-react";
+import { User, Mail } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 
+const TITLES = {
+  login: "Sign in",
+  signup: "Create account",
+  forgot: "Reset your password",
+  reset: "Enter your code",
+};
+
 export default function Auth() {
-  const { user, isSignedIn, checkedSession, signup, login, logout } = useAuth();
+  const { user, isSignedIn, checkedSession, signup, login, logout, forgotPassword, completePasswordReset } =
+    useAuth();
   const navigate = useNavigate();
   const [mode, setMode] = useState("login");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [code, setCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState(null);
+  const [notice, setNotice] = useState(null);
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(e) {
@@ -21,10 +32,32 @@ export default function Auth() {
     try {
       if (mode === "signup") {
         await signup(email, username, password);
-      } else {
+        navigate("/settings");
+      } else if (mode === "login") {
         await login(email, password);
+        navigate("/settings");
+      } else if (mode === "forgot") {
+        await forgotPassword(email);
+        setNotice("If that email has an account, a 6-digit code is on its way — check your inbox.");
+        setMode("reset");
+      } else if (mode === "reset") {
+        await completePasswordReset(email, code, newPassword);
+        navigate("/settings");
       }
-      navigate("/settings");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
+  async function handleResendCode() {
+    setError(null);
+    setNotice(null);
+    setSubmitting(true);
+    try {
+      await forgotPassword(email);
+      setNotice("Sent again — check your inbox.");
     } catch (err) {
       setError(err.message);
     } finally {
@@ -73,22 +106,30 @@ export default function Auth() {
       <div className="page">
         <header className="hero small">
           <h1>
-            <User size={26} className="icon-inline" /> {mode === "signup" ? "Create account" : "Sign in"}
+            <User size={26} className="icon-inline" /> {TITLES[mode]}
           </h1>
-          <p>Protect your leaderboard name with an email and password.</p>
+          <p>
+            {mode === "forgot"
+              ? "Enter your account email and we'll send you a 6-digit code."
+              : mode === "reset"
+              ? "Enter the code we emailed you, plus a new password."
+              : "Protect your leaderboard name with an email and password."}
+          </p>
         </header>
 
         <form className="auth-form list-card" onSubmit={handleSubmit}>
-          <label className="auth-field">
-            <span>Email</span>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-              required
-            />
-          </label>
+          {mode !== "reset" && (
+            <label className="auth-field">
+              <span>Email</span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                autoComplete="email"
+                required
+              />
+            </label>
+          )}
 
           {mode === "signup" && (
             <label className="auth-field">
@@ -105,34 +146,114 @@ export default function Auth() {
             </label>
           )}
 
-          <label className="auth-field">
-            <span>Password</span>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete={mode === "signup" ? "new-password" : "current-password"}
-              minLength={8}
-              required
-            />
-          </label>
+          {(mode === "login" || mode === "signup") && (
+            <label className="auth-field">
+              <span>Password</span>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoComplete={mode === "signup" ? "new-password" : "current-password"}
+                minLength={8}
+                required
+              />
+            </label>
+          )}
 
+          {mode === "reset" && (
+            <>
+              <label className="auth-field">
+                <span>Email</span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="email"
+                  required
+                />
+              </label>
+              <label className="auth-field">
+                <span>6-digit code</span>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]{6}"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                  placeholder="123456"
+                  autoComplete="one-time-code"
+                  required
+                />
+              </label>
+              <label className="auth-field">
+                <span>New password</span>
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  autoComplete="new-password"
+                  minLength={8}
+                  required
+                />
+              </label>
+            </>
+          )}
+
+          {notice && <p className="auth-notice">{notice}</p>}
           {error && <p className="auth-error">{error}</p>}
 
           <button type="submit" className="primary-button" disabled={submitting || !checkedSession}>
-            {submitting ? "…" : mode === "signup" ? "Create account" : "Sign in"}
+            {submitting
+              ? "…"
+              : mode === "signup"
+              ? "Create account"
+              : mode === "forgot"
+              ? "Send reset code"
+              : mode === "reset"
+              ? "Reset password"
+              : "Sign in"}
           </button>
+
+          {mode === "reset" && (
+            <button
+              type="button"
+              className="cta-text-link"
+              onClick={handleResendCode}
+              disabled={submitting || !email}
+            >
+              <Mail size={16} /> Resend code
+            </button>
+          )}
         </form>
+
+        {mode === "login" && (
+          <button
+            type="button"
+            className="cta-text-link"
+            onClick={() => {
+              setMode("forgot");
+              setError(null);
+              setNotice(null);
+            }}
+          >
+            Forgot your password?
+          </button>
+        )}
 
         <button
           type="button"
           className="cta-text-link"
           onClick={() => {
-            setMode((m) => (m === "signup" ? "login" : "signup"));
+            setMode((m) => (m === "signup" ? "login" : m === "login" ? "signup" : "login"));
             setError(null);
+            setNotice(null);
           }}
         >
-          {mode === "signup" ? "Already have an account? Sign in" : "New here? Create an account"}
+          {mode === "signup"
+            ? "Already have an account? Sign in"
+            : mode === "login"
+            ? "New here? Create an account"
+            : "Back to sign in"}
         </button>
       </div>
     </>
