@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, Navigate, Link, useNavigate } from "react-router-dom";
+import { PartyPopper, CheckCircle2, XCircle, RotateCcw, X } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import { gradeAnswer } from "../api.js";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition.js";
@@ -194,7 +195,15 @@ export default function CategoryTest({ courses }) {
         <AppHeader backTo={backTo} backLabel={lang.languageName} />
         <div className="page">
           <header className="hero small">
-            <h1>{passed ? "🎉 Test passed!" : "Test results"}</h1>
+            <h1>
+              {passed ? (
+                <>
+                  <PartyPopper size={26} className="icon-inline" /> Test passed!
+                </>
+              ) : (
+                "Test results"
+              )}
+            </h1>
             <p>
               {lang.flag} {category} · {correctCount}/{items.length} correct
             </p>
@@ -212,7 +221,8 @@ export default function CategoryTest({ courses }) {
               {results.map((r, i) => (
                 <li key={i}>
                   <div className="recap-said">
-                    {r.correct ? "✅" : "❌"} {r.term} → "{r.userAnswer || "(no answer)"}"
+                    {r.correct ? <CheckCircle2 size={16} /> : <XCircle size={16} />} {r.term} → "
+                    {r.userAnswer || "(no answer)"}"
                   </div>
                   {r.correct ? (
                     <div className="recap-ok">{r.feedback || "Correct!"}</div>
@@ -229,7 +239,7 @@ export default function CategoryTest({ courses }) {
 
           <div className="cta-stack">
             <button type="button" className="primary-button" onClick={handleRetry}>
-              🔁 Retake test
+              <RotateCcw size={18} /> Retake test
             </button>
             <Link to={backTo} className="secondary-button">
               Done
@@ -260,7 +270,7 @@ export default function CategoryTest({ courses }) {
     <div className="voice-session">
       <div className="voice-topbar">
         <button type="button" className="voice-close" onClick={handleClose} aria-label="Exit test">
-          ✕
+          <X size={18} />
         </button>
         <div className="voice-title">
           {lang.flag} <strong>{category} Test</strong>
@@ -304,7 +314,17 @@ export default function CategoryTest({ courses }) {
 
       {phase === "feedback" && feedback && (
         <div className={`test-feedback ${feedback.correct ? "correct" : "incorrect"}`}>
-          <p className="test-feedback-verdict">{feedback.correct ? "✅ Correct" : "❌ Not quite"}</p>
+          <p className="test-feedback-verdict">
+            {feedback.correct ? (
+              <>
+                <CheckCircle2 size={18} /> Correct
+              </>
+            ) : (
+              <>
+                <XCircle size={18} /> Not quite
+              </>
+            )}
+          </p>
           <p className="test-feedback-meaning">
             "{currentItem.term}" means: {currentItem.translation}
           </p>

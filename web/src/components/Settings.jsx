@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Settings as SettingsIcon, User, Lock } from "lucide-react";
 import { useSettings, FONT_SIZES, THEMES } from "../context/SettingsContext.jsx";
 import { useLocale } from "../context/LocaleContext.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
@@ -19,13 +20,17 @@ export default function Settings() {
     <>
       <div className="page">
         <header className="hero small">
-          <h1>⚙️ {t("settings")}</h1>
+          <h1>
+            <SettingsIcon size={26} className="icon-inline" /> {t("settings")}
+          </h1>
         </header>
 
         <section>
           <h2>Account</h2>
           <Link to="/account" className="settings-account-row">
-            <span className="settings-account-avatar">{isSignedIn ? "👤" : "🔒"}</span>
+            <span className="settings-account-avatar">
+              {isSignedIn ? <User size={20} /> : <Lock size={20} />}
+            </span>
             <span className="settings-account-info">
               <span className="settings-account-title">
                 {isSignedIn ? user.username : "Sign in"}

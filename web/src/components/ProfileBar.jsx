@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Pencil } from "lucide-react";
 import { useProfile } from "../context/ProfileContext.jsx";
 
 export default function ProfileBar() {
@@ -49,7 +50,10 @@ export default function ProfileBar() {
               setEditing(true);
             }}
           >
-            {name} <span className="profile-edit-hint">✎</span>
+            {name}{" "}
+            <span className="profile-edit-hint">
+              <Pencil size={12} />
+            </span>
           </button>
         )}
 

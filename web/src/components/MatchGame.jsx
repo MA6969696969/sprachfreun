@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { Timer, Trophy, RotateCcw } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import { buildDeck, shuffle } from "../lib/deck.js";
 import { useProfile } from "../context/ProfileContext.jsx";
@@ -106,17 +107,23 @@ export default function MatchGame({ courses }) {
           </p>
         </header>
 
-        {!finished && <div className="match-timer">⏱ {seconds}s</div>}
+        {!finished && (
+          <div className="match-timer">
+            <Timer size={16} /> {seconds}s
+          </div>
+        )}
 
         {finished ? (
           <div className="flashcard-complete">
-            <div className="flashcard-complete-icon">🏆</div>
+            <div className="flashcard-complete-icon">
+              <Trophy size={52} />
+            </div>
             <p>
               You matched all {round.pairTotal} pairs in {seconds} seconds.
             </p>
             <div className="cta-stack">
               <button type="button" className="primary-button" onClick={handleReplay}>
-                🔁 Play again
+                <RotateCcw size={18} /> Play again
               </button>
               <Link to={backTo} className="secondary-button">
                 Done

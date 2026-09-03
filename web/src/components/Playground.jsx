@@ -1,4 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
+import { Drama } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 
 const LEVELS = [
@@ -40,7 +41,9 @@ export default function Playground({ courses }) {
         <section>
           <h2>Real-Life Situations</h2>
           <Link to={`/${langCode}/situations`} className="playground-card">
-            <h3>🎭 Try a scripted scenario</h3>
+            <h3>
+              <Drama size={20} className="icon-inline" /> Try a scripted scenario
+            </h3>
             <p>Grocery store, meeting a neighbor, ordering coffee, and more — talk it through and get a score.</p>
           </Link>
         </section>

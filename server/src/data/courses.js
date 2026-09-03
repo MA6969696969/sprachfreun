@@ -1656,6 +1656,510 @@ export const courses = {
           },
         ],
       },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Add a set of high-frequency idioms and everyday expressions to your vocabulary so you can sound more like a native speaker in casual conversation.",
+        scenario: "You're chatting with a friend who peppers every sentence with idioms, and you're trying to keep up while picking up a few of your own.",
+        vocabulary: [
+          {
+            term: "to hit the nail on the head",
+            translation: "to describe exactly what is causing a situation or problem",
+            example: "You hit the nail on the head — that's exactly why the project fell apart.",
+          },
+          {
+            term: "to bite the bullet",
+            translation: "to force yourself to do something difficult or unpleasant that you've been putting off",
+            example: "I finally bit the bullet and booked the dentist appointment.",
+          },
+          {
+            term: "under the weather",
+            translation: "feeling slightly ill",
+            example: "I'm staying home today — I'm feeling a bit under the weather.",
+          },
+          {
+            term: "to spill the beans",
+            translation: "to reveal a secret, often accidentally",
+            example: "She spilled the beans about the surprise party.",
+          },
+          {
+            term: "to cost an arm and a leg",
+            translation: "to be very expensive",
+            example: "That new phone cost me an arm and a leg.",
+          },
+          {
+            term: "to be on the same page",
+            translation: "to agree with someone or understand something in the same way they do",
+            example: "Before we start, let's make sure we're all on the same page.",
+          },
+          {
+            term: "once in a blue moon",
+            translation: "very rarely",
+            example: "We only eat out once in a blue moon.",
+          },
+          {
+            term: "to let the cat out of the bag",
+            translation: "to reveal a secret, usually without meaning to",
+            example: "He let the cat out of the bag about their engagement.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Long story short, ...",
+            translation: "Used to summarize something quickly after skipping over the details.",
+          },
+          {
+            phrase: "It's not rocket science.",
+            translation: "Means something isn't as complicated as it might seem.",
+          },
+          {
+            phrase: "Better late than never.",
+            translation: "Said when something happens later than planned, but you're still glad it happened at all.",
+          },
+          {
+            phrase: "That rings a bell.",
+            translation: "Means something sounds familiar, even if you can't quite place the details.",
+          },
+          {
+            phrase: "Actions speak louder than words.",
+            translation: "Means what people do matters more than what they say they'll do.",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Pick up natural vocabulary for getting around a city and talking about neighborhood life like a local.",
+        scenario: "You've just moved to a new neighborhood and you're chatting with a neighbor about the area — the commute, the local spots, and what it's like to live there.",
+        vocabulary: [
+          {
+            term: "commute",
+            translation: "the regular journey you make between home and work or school",
+            example: "My commute takes about forty minutes each way.",
+          },
+          {
+            term: "rush hour",
+            translation: "the busiest time of day for traffic and public transportation, usually morning and evening",
+            example: "Try to avoid the highway during rush hour.",
+          },
+          {
+            term: "gentrification",
+            translation: "the process of a poorer neighborhood becoming more expensive as wealthier people move in",
+            example: "Rents have gone up a lot because of gentrification.",
+          },
+          {
+            term: "to live within walking distance",
+            translation: "to live close enough to somewhere that you can get there on foot",
+            example: "I live within walking distance of the office, so I never drive.",
+          },
+          {
+            term: "high-rise",
+            translation: "a very tall building with many floors, usually apartments or offices",
+            example: "They just built a new high-rise downtown.",
+          },
+          {
+            term: "hole-in-the-wall",
+            translation: "a small, unassuming restaurant or shop that's often surprisingly good",
+            example: "That little hole-in-the-wall serves the best noodles in town.",
+          },
+          {
+            term: "to run errands",
+            translation: "to go out and do a series of small tasks, like shopping or picking up dry cleaning",
+            example: "I have to run a few errands this afternoon.",
+          },
+          {
+            term: "curb appeal",
+            translation: "how attractive a building or house looks from the street",
+            example: "A fresh coat of paint really improved the house's curb appeal.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "It's just around the corner.",
+            translation: "Means a place is very close by, just a short walk away.",
+          },
+          {
+            phrase: "Watch out for the potholes.",
+            translation: "A common warning about damaged, bumpy road surfaces.",
+          },
+          {
+            phrase: "This neighborhood has really come up.",
+            translation: "Means an area has improved and become nicer or more desirable over time.",
+          },
+          {
+            phrase: "I'll just grab a cab.",
+            translation: "A casual way of saying you'll take a taxi instead of another form of transport.",
+          },
+          {
+            phrase: "It's a five-minute walk, tops.",
+            translation: "Means something is at most a five-minute walk away.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌲",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Build vocabulary for describing the outdoors, from hiking trails to weather and wildlife, so you can talk about nature with ease.",
+        scenario: "You're planning a weekend hike with a friend and swapping stories about past trips into the outdoors.",
+        vocabulary: [
+          {
+            term: "trailhead",
+            translation: "the starting point of a hiking path",
+            example: "We parked near the trailhead and set off at sunrise.",
+          },
+          {
+            term: "to rough it",
+            translation: "to live without the usual comforts, especially while camping",
+            example: "We decided to rough it and camp without a tent.",
+          },
+          {
+            term: "breathtaking",
+            translation: "extremely beautiful or impressive, taking your breath away",
+            example: "The view from the summit was absolutely breathtaking.",
+          },
+          {
+            term: "wildlife",
+            translation: "animals living in their natural environment",
+            example: "We spotted quite a bit of wildlife on the trail, including a deer.",
+          },
+          {
+            term: "off the beaten path",
+            translation: "in a place that isn't well known or often visited",
+            example: "We found a beautiful waterfall off the beaten path.",
+          },
+          {
+            term: "downpour",
+            translation: "a sudden, heavy fall of rain",
+            example: "We got caught in a downpour halfway through the hike.",
+          },
+          {
+            term: "to pitch a tent",
+            translation: "to set up a tent for camping",
+            example: "We pitched our tent near the lake before it got dark.",
+          },
+          {
+            term: "scenic route",
+            translation: "a longer path chosen because of its beautiful views rather than speed",
+            example: "Let's take the scenic route along the coast.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Let's beat the heat and head out early.",
+            translation: "Means leaving early to avoid the hottest part of the day.",
+          },
+          {
+            phrase: "Leave no trace.",
+            translation: "An outdoor ethics phrase meaning you should leave nature exactly as you found it.",
+          },
+          {
+            phrase: "It's calling for rain later.",
+            translation: "A casual way of saying the weather forecast predicts rain.",
+          },
+          {
+            phrase: "We really lucked out with the weather.",
+            translation: "Means you were fortunate that the weather turned out well.",
+          },
+          {
+            phrase: "Fresh air does you good.",
+            translation: "A common saying about the health benefits of spending time outdoors.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Pick up the vocabulary you need to talk about music, concerts, and entertainment like a true fan.",
+        scenario: "You're at a party discussing favorite bands, recent concerts, and what everyone's been streaming lately.",
+        vocabulary: [
+          {
+            term: "to be into (a genre)",
+            translation: "to like or be a fan of a particular type of music",
+            example: "I've really been into jazz lately.",
+          },
+          {
+            term: "one-hit wonder",
+            translation: "an artist known for only a single successful song",
+            example: "That band turned out to be a one-hit wonder.",
+          },
+          {
+            term: "to sell out",
+            translation: "for tickets to a show to all be purchased — can also mean to compromise your artistic values for money",
+            example: "The concert sold out within minutes.",
+          },
+          {
+            term: "catchy",
+            translation: "describes a tune that's easy to remember and gets stuck in your head",
+            example: "That chorus is so catchy, I can't stop humming it.",
+          },
+          {
+            term: "to jam",
+            translation: "to play music informally with other musicians, often improvising",
+            example: "We used to jam in his garage every weekend.",
+          },
+          {
+            term: "encore",
+            translation: "an extra performance given at the end of a show because the audience keeps applauding",
+            example: "The crowd cheered until the band came back for an encore.",
+          },
+          {
+            term: "playlist",
+            translation: "a curated list of songs meant to be played in a particular order",
+            example: "I made a road trip playlist for the drive.",
+          },
+          {
+            term: "tone-deaf",
+            translation: "unable to accurately hear or reproduce musical pitch — informally, also used to mean insensitive to a situation",
+            example: "He's completely tone-deaf, but he loves karaoke anyway.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "This song is on repeat for me right now.",
+            translation: "Means you keep listening to the same song over and over.",
+          },
+          {
+            phrase: "It's not really my scene.",
+            translation: "A casual way to say something, like a music genre or venue, isn't to your taste.",
+          },
+          {
+            phrase: "Turn it up!",
+            translation: "A common request to raise the volume of music.",
+          },
+          {
+            phrase: "They killed it live.",
+            translation: "Means a band or performer did an excellent job during a live performance.",
+          },
+          {
+            phrase: "I've had that song stuck in my head all day.",
+            translation: "Means a song keeps replaying in your mind involuntarily.",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Learn the everyday vocabulary pet owners use to talk about caring for and bonding with their animals.",
+        scenario: "You're chatting with a friend at the dog park, comparing notes on pet care, training, and funny animal habits.",
+        vocabulary: [
+          {
+            term: "to housetrain",
+            translation: "to teach a pet, usually a dog or cat, to relieve itself outside or in a designated spot",
+            example: "It took about a month to housetrain our puppy.",
+          },
+          {
+            term: "litter box",
+            translation: "a container filled with material where cats go to the bathroom indoors",
+            example: "I need to clean the litter box before it gets too messy.",
+          },
+          {
+            term: "to fetch",
+            translation: "for a dog to retrieve and bring back an object that's been thrown",
+            example: "Our dog loves playing fetch in the park.",
+          },
+          {
+            term: "vet",
+            translation: "short for veterinarian, a doctor who treats animals",
+            example: "We're taking the cat to the vet for her checkup.",
+          },
+          {
+            term: "to shed",
+            translation: "for an animal to lose fur or hair, especially seasonally",
+            example: "This breed sheds a lot in the summer.",
+          },
+          {
+            term: "to spoil (a pet)",
+            translation: "to treat a pet with excessive affection or indulgence",
+            example: "I know I spoil my dog, but he deserves it.",
+          },
+          {
+            term: "leash",
+            translation: "a strap or cord used to hold and control a dog while walking",
+            example: "Please keep your dog on a leash in this area.",
+          },
+          {
+            term: "purr",
+            translation: "a low, continuous vibrating sound a cat makes when content",
+            example: "The cat curled up on my lap and started to purr.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "He's such a good boy.",
+            translation: "An affectionate phrase commonly used to praise a dog.",
+          },
+          {
+            phrase: "She's not a morning cat.",
+            translation: "A playful way of saying a cat is grumpy or sleepy early in the day.",
+          },
+          {
+            phrase: "My dog thinks he's a lap dog, even though he's huge.",
+            translation: "A humorous way to describe a large dog that acts like a small one.",
+          },
+          {
+            phrase: "Cats always land on their feet.",
+            translation: "A saying about cats' agility, sometimes used more broadly to mean someone recovers well from setbacks.",
+          },
+          {
+            phrase: "He's got me wrapped around his paw.",
+            translation: "A playful twist on 'wrapped around your finger,' meaning a pet has you completely charmed.",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💰",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Build the vocabulary you need to talk confidently about money, budgeting, and everyday banking.",
+        scenario: "You're meeting a friend for coffee and the conversation turns to budgeting, saving up, and dealing with the bank.",
+        vocabulary: [
+          {
+            term: "to budget",
+            translation: "to plan how you'll spend and save your money over a period of time",
+            example: "I've started budgeting more carefully since moving out.",
+          },
+          {
+            term: "overdraft",
+            translation: "a situation where you've withdrawn more money from your account than you actually have",
+            example: "I got hit with a fee for going into overdraft.",
+          },
+          {
+            term: "to be broke",
+            translation: "to have little or no money, usually temporarily",
+            example: "I'm completely broke until payday.",
+          },
+          {
+            term: "direct deposit",
+            translation: "a payment, usually a salary, transferred automatically into a bank account",
+            example: "My paycheck comes in through direct deposit every two weeks.",
+          },
+          {
+            term: "to splurge",
+            translation: "to spend more money than usual on something, often as a treat",
+            example: "We splurged on a fancy dinner for our anniversary.",
+          },
+          {
+            term: "interest rate",
+            translation: "the percentage a bank charges to lend money, or pays you for savings",
+            example: "The savings account has a decent interest rate right now.",
+          },
+          {
+            term: "to make ends meet",
+            translation: "to have just enough money to cover your basic expenses",
+            example: "It's been tough to make ends meet with rising prices.",
+          },
+          {
+            term: "to foot the bill",
+            translation: "to pay for something, often on behalf of others",
+            example: "My parents footed the bill for the wedding.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "That's a bit out of my price range.",
+            translation: "A polite way to say something is too expensive for you.",
+          },
+          {
+            phrase: "Money doesn't grow on trees.",
+            translation: "A common saying reminding someone that money is limited and shouldn't be wasted.",
+          },
+          {
+            phrase: "Let's split the bill.",
+            translation: "Suggests dividing the cost of something, like a meal, evenly between everyone.",
+          },
+          {
+            phrase: "I'm saving up for a house.",
+            translation: "Means you're setting money aside for a future purchase.",
+          },
+          {
+            phrase: "It's on me.",
+            translation: "Means you're offering to pay for someone else.",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📞",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Pick up the everyday phrases native speakers use for phone calls, texting, and staying in touch.",
+        scenario: "You're catching up with a friend over the phone after a bad connection made your last few calls difficult.",
+        vocabulary: [
+          {
+            term: "to hang up",
+            translation: "to end a phone call",
+            example: "She hung up before I could say goodbye.",
+          },
+          {
+            term: "voicemail",
+            translation: "a recorded message left when a call isn't answered",
+            example: "Just leave a voicemail if I don't pick up.",
+          },
+          {
+            term: "to break up (on a call)",
+            translation: "for a phone connection to become unclear or cut in and out",
+            example: "Sorry, you're breaking up — can you hear me now?",
+          },
+          {
+            term: "to butt-dial",
+            translation: "to accidentally call someone because your phone was pressed in your pocket",
+            example: "Sorry about that, I must have butt-dialed you.",
+          },
+          {
+            term: "to text back",
+            translation: "to reply to someone's text message",
+            example: "I'll text you back once I'm out of the meeting.",
+          },
+          {
+            term: "landline",
+            translation: "a traditional telephone connected by a physical wire, as opposed to a mobile phone",
+            example: "My grandparents still have a landline at home.",
+          },
+          {
+            term: "to be on hold",
+            translation: "to wait, usually listening to music, while a call is paused until someone can speak with you",
+            example: "I've been on hold with customer service for twenty minutes.",
+          },
+          {
+            term: "missed call",
+            translation: "a call that wasn't answered before it ended",
+            example: "You have three missed calls from your sister.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Can you hear me okay?",
+            translation: "A common question to check if the phone connection is clear.",
+          },
+          {
+            phrase: "I'll call you right back.",
+            translation: "Means you'll end the current call and phone the person again shortly.",
+          },
+          {
+            phrase: "Sorry, I've got you on speaker.",
+            translation: "Lets the other person know you're using speakerphone, often so they're aware others might hear.",
+          },
+          {
+            phrase: "Let me put you on hold for a second.",
+            translation: "Asks someone to wait briefly while you deal with something else during the call.",
+          },
+          {
+            phrase: "We got cut off.",
+            translation: "Means a phone call ended unexpectedly, usually due to a bad connection.",
+          },
+        ],
+      },
     ],
   },
   de: {
@@ -3097,6 +3601,510 @@ export const courses = {
           {
             phrase: "Welches Fest feierst du am liebsten?",
             translation: "Which holiday do you like celebrating the most?",
+          },
+        ],
+      },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn common German idioms and expressions that native speakers use every day.",
+        scenario: "You're chatting with a German friend who loves colorful expressions, and you want to understand and start using them yourself.",
+        vocabulary: [
+          {
+            term: "die Daumen drücken",
+            translation: "to keep one's fingers crossed (lit. \"to press one's thumbs\")",
+            example: "Ich drücke dir die Daumen für die Prüfung.",
+          },
+          {
+            term: "Schwein haben",
+            translation: "to be lucky (lit. \"to have pig\")",
+            example: "Du hast wirklich Schwein gehabt, dass der Zug noch da war.",
+          },
+          {
+            term: "ins Wasser fallen",
+            translation: "to fall through, not happen after all (lit. \"to fall into the water\")",
+            example: "Unser Ausflug ist leider ins Wasser gefallen.",
+          },
+          {
+            term: "die Nase voll haben",
+            translation: "to be fed up with something (lit. \"to have one's nose full\")",
+            example: "Ich habe die Nase voll von diesem Regenwetter.",
+          },
+          {
+            term: "auf dem Holzweg sein",
+            translation: "to be mistaken, on the wrong track (lit. \"to be on the wooden path\")",
+            example: "Wenn du das glaubst, bist du auf dem Holzweg.",
+          },
+          {
+            term: "das ist mir Wurst",
+            translation: "that doesn't matter to me at all (lit. \"that is sausage to me\")",
+            example: "Ob wir heute oder morgen fahren, das ist mir Wurst.",
+          },
+          {
+            term: "unter vier Augen",
+            translation: "privately, just between the two of us (lit. \"under four eyes\")",
+            example: "Können wir das kurz unter vier Augen besprechen?",
+          },
+          {
+            term: "Tomaten auf den Augen haben",
+            translation: "to fail to see something obvious (lit. \"to have tomatoes on one's eyes\")",
+            example: "Hast du Tomaten auf den Augen? Der Schlüssel liegt doch direkt vor dir.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Da liegt der Hund begraben.",
+            translation: "That's the real problem / the crux of the matter.",
+          },
+          {
+            phrase: "Ich verstehe nur Bahnhof.",
+            translation: "I don't understand a single word.",
+          },
+          {
+            phrase: "Alles hat ein Ende, nur die Wurst hat zwei.",
+            translation: "Everything comes to an end eventually (a playful, well-known saying).",
+          },
+          {
+            phrase: "Da steppt der Bär.",
+            translation: "That's where the party's happening.",
+          },
+          {
+            phrase: "Mach kein Drama!",
+            translation: "Don't make a big deal out of it!",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Explore vocabulary for navigating city life — from your neighborhood to public transport and local errands.",
+        scenario: "You've just moved into a new neighborhood in a German city and are getting to know your surroundings and daily errands.",
+        vocabulary: [
+          {
+            term: "die Nachbarschaft",
+            translation: "the neighborhood",
+            example: "Ich wohne wirklich gern in dieser Nachbarschaft.",
+          },
+          {
+            term: "der Stadtteil",
+            translation: "the city district, borough",
+            example: "Welcher Stadtteil gefällt dir bisher am besten?",
+          },
+          {
+            term: "die Bäckerei",
+            translation: "the bakery",
+            example: "An der Ecke gibt es eine wirklich gute Bäckerei.",
+          },
+          {
+            term: "die öffentlichen Verkehrsmittel",
+            translation: "public transportation",
+            example: "Ich fahre in der Stadt meistens mit den öffentlichen Verkehrsmitteln.",
+          },
+          {
+            term: "der Wochenmarkt",
+            translation: "the weekly market (fresh produce, usually outdoors)",
+            example: "Samstags gehe ich immer auf den Wochenmarkt.",
+          },
+          {
+            term: "die Mietwohnung",
+            translation: "the rented apartment",
+            example: "Wir suchen gerade eine Mietwohnung in der Innenstadt.",
+          },
+          {
+            term: "der Nachbar / die Nachbarin",
+            translation: "the neighbor (m/f)",
+            example: "Mein Nachbar ist immer sehr hilfsbereit.",
+          },
+          {
+            term: "die Baustelle",
+            translation: "the construction site",
+            example: "Vor unserem Haus ist seit Wochen eine Baustelle.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Wo ist der nächste Supermarkt?",
+            translation: "Where's the nearest supermarket?",
+          },
+          {
+            phrase: "Kennst du eine gute Bäckerei hier in der Nähe?",
+            translation: "Do you know a good bakery around here?",
+          },
+          {
+            phrase: "Ich wohne seit einem Jahr in diesem Viertel.",
+            translation: "I've lived in this neighborhood for a year.",
+          },
+          {
+            phrase: "Die U-Bahn fährt hier alle fünf Minuten.",
+            translation: "The subway runs every five minutes here.",
+          },
+          {
+            phrase: "Es ist gerade ziemlich laut wegen der Baustelle.",
+            translation: "It's pretty loud right now because of the construction site.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌳",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Learn how to talk about nature, landscapes, and outdoor activities in German.",
+        scenario: "You're planning a weekend hike with friends and talking about the landscape, weather, and wildlife you might encounter.",
+        vocabulary: [
+          {
+            term: "der Wald",
+            translation: "the forest",
+            example: "Wir wandern am liebsten durch den Wald.",
+          },
+          {
+            term: "der Berg / die Berge",
+            translation: "the mountain / mountains",
+            example: "Im Sommer fahren wir oft in die Berge.",
+          },
+          {
+            term: "der See",
+            translation: "the lake",
+            example: "In diesem See kann man im Sommer baden.",
+          },
+          {
+            term: "die Wanderung",
+            translation: "the hike",
+            example: "Die Wanderung dauert ungefähr drei Stunden.",
+          },
+          {
+            term: "die Natur genießen",
+            translation: "to enjoy nature",
+            example: "Hier draußen kann man die Natur wirklich genießen.",
+          },
+          {
+            term: "das Tier / die Tiere",
+            translation: "the animal / animals",
+            example: "Im Wald leben noch viele wilde Tiere.",
+          },
+          {
+            term: "die Landschaft",
+            translation: "the landscape, scenery",
+            example: "Die Landschaft hier oben ist wirklich atemberaubend.",
+          },
+          {
+            term: "der Sonnenuntergang",
+            translation: "the sunset",
+            example: "Wir haben den Sonnenuntergang am See beobachtet.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Lass uns eine Wanderung machen!",
+            translation: "Let's go on a hike!",
+          },
+          {
+            phrase: "Die Aussicht von hier oben ist fantastisch.",
+            translation: "The view from up here is fantastic.",
+          },
+          {
+            phrase: "Pass auf, der Weg ist ziemlich steil.",
+            translation: "Be careful, the path is quite steep.",
+          },
+          {
+            phrase: "Ich liebe es, Zeit in der Natur zu verbringen.",
+            translation: "I love spending time in nature.",
+          },
+          {
+            phrase: "Nimm genug Wasser für die Wanderung mit.",
+            translation: "Bring enough water for the hike.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Talk about music, instruments, and entertainment — from favorite bands to upcoming concerts.",
+        scenario: "You're at a party talking with someone about your favorite music, the instruments you play, and an upcoming concert.",
+        vocabulary: [
+          {
+            term: "Musik hören",
+            translation: "to listen to music",
+            example: "Ich höre abends sehr gern Musik.",
+          },
+          {
+            term: "ein Instrument spielen",
+            translation: "to play an instrument",
+            example: "Spielst du eigentlich ein Instrument?",
+          },
+          {
+            term: "das Konzert",
+            translation: "the concert",
+            example: "Wir gehen morgen Abend zu einem Konzert.",
+          },
+          {
+            term: "die Band",
+            translation: "the band",
+            example: "Meine Lieblingsband kommt ursprünglich aus Hamburg.",
+          },
+          {
+            term: "das Lied / die Lieder",
+            translation: "the song / songs",
+            example: "Dieses Lied gefällt mir schon seit Jahren.",
+          },
+          {
+            term: "die Lautstärke",
+            translation: "the volume",
+            example: "Kannst du die Lautstärke bitte etwas leiser machen?",
+          },
+          {
+            term: "der Text",
+            translation: "the lyrics",
+            example: "Ich kenne den Text von diesem Lied auswendig.",
+          },
+          {
+            term: "auftreten",
+            translation: "to perform, to appear on stage",
+            example: "Die Band tritt heute Abend zum ersten Mal live auf.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Was für Musik hörst du am liebsten?",
+            translation: "What kind of music do you like to listen to most?",
+          },
+          {
+            phrase: "Ich spiele schon seit Jahren Gitarre.",
+            translation: "I've been playing guitar for years.",
+          },
+          {
+            phrase: "Dieses Lied geht mir einfach nicht mehr aus dem Kopf.",
+            translation: "I just can't get this song out of my head.",
+          },
+          {
+            phrase: "Hast du schon Karten für das Konzert?",
+            translation: "Do you already have tickets for the concert?",
+          },
+          {
+            phrase: "Die Band war live wirklich beeindruckend.",
+            translation: "The band was really impressive live.",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Learn vocabulary for talking about pets and caring for animals at home.",
+        scenario: "You're chatting with a friend about your pets, their habits, and how you take care of them.",
+        vocabulary: [
+          {
+            term: "das Haustier",
+            translation: "the pet",
+            example: "Hast du eigentlich ein Haustier?",
+          },
+          {
+            term: "der Hund",
+            translation: "the dog",
+            example: "Mein Hund braucht jeden Tag mindestens zwei Spaziergänge.",
+          },
+          {
+            term: "die Katze",
+            translation: "the cat",
+            example: "Meine Katze schläft fast den ganzen Tag.",
+          },
+          {
+            term: "füttern",
+            translation: "to feed",
+            example: "Ich füttere meinen Hund immer zweimal am Tag.",
+          },
+          {
+            term: "das Fell",
+            translation: "the fur, coat (of an animal)",
+            example: "Ihr Fell ist ganz weich und dunkel.",
+          },
+          {
+            term: "der Tierarzt / die Tierärztin",
+            translation: "the veterinarian (m/f)",
+            example: "Morgen früh gehen wir zum Tierarzt.",
+          },
+          {
+            term: "der Käfig",
+            translation: "the cage",
+            example: "Der Hamster lebt in einem großen Käfig.",
+          },
+          {
+            term: "Gassi gehen",
+            translation: "to walk the dog (colloquial)",
+            example: "Ich gehe jeden Morgen vor der Arbeit mit dem Hund Gassi.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Wie heißt dein Haustier?",
+            translation: "What's your pet's name?",
+          },
+          {
+            phrase: "Meine Katze ist total verschmust.",
+            translation: "My cat is very affectionate/cuddly.",
+          },
+          {
+            phrase: "Wer kümmert sich um deinen Hund, wenn du verreist?",
+            translation: "Who takes care of your dog when you travel?",
+          },
+          {
+            phrase: "Er ist erst seit einer Woche bei uns.",
+            translation: "He's only been with us for a week.",
+          },
+          {
+            phrase: "Haustiere machen das Leben einfach schöner.",
+            translation: "Pets simply make life nicer.",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💶",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Learn essential vocabulary for handling money, banking, and everyday financial transactions in German.",
+        scenario: "You're opening a bank account and later paying for groceries, navigating everyday money matters in German.",
+        vocabulary: [
+          {
+            term: "das Konto",
+            translation: "the (bank) account",
+            example: "Ich möchte gern ein neues Konto eröffnen.",
+          },
+          {
+            term: "das Bargeld",
+            translation: "cash",
+            example: "Ich habe leider gerade kein Bargeld dabei.",
+          },
+          {
+            term: "mit Karte bezahlen",
+            translation: "to pay by card",
+            example: "Kann ich hier auch mit Karte bezahlen?",
+          },
+          {
+            term: "die Rechnung",
+            translation: "the bill, invoice",
+            example: "Könnten wir bitte die Rechnung haben?",
+          },
+          {
+            term: "abheben",
+            translation: "to withdraw (money)",
+            example: "Ich muss noch schnell Geld abheben.",
+          },
+          {
+            term: "überweisen",
+            translation: "to transfer (money)",
+            example: "Ich überweise dir das Geld gleich morgen.",
+          },
+          {
+            term: "das Kleingeld",
+            translation: "change, small coins",
+            example: "Hast du zufällig etwas Kleingeld für den Parkautomaten?",
+          },
+          {
+            term: "sparen",
+            translation: "to save (money)",
+            example: "Ich versuche, jeden Monat etwas Geld zu sparen.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Wo ist der nächste Geldautomat?",
+            translation: "Where's the nearest ATM?",
+          },
+          {
+            phrase: "Kann ich hier mit Karte zahlen?",
+            translation: "Can I pay by card here?",
+          },
+          {
+            phrase: "Das ist mir ehrlich gesagt zu teuer.",
+            translation: "Honestly, that's too expensive for me.",
+          },
+          {
+            phrase: "Ich möchte Geld auf mein Konto überweisen.",
+            translation: "I'd like to transfer money to my account.",
+          },
+          {
+            phrase: "Können Sie mir bitte die Rechnung geben?",
+            translation: "Could you give me the bill, please?",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📞",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Learn how to make phone calls, leave messages, and handle common communication situations in German.",
+        scenario: "You're calling to schedule an appointment and later leaving a message when the person you need isn't available.",
+        vocabulary: [
+          {
+            term: "anrufen",
+            translation: "to call (someone) on the phone",
+            example: "Ich rufe dich heute Abend auf jeden Fall an.",
+          },
+          {
+            term: "der Anruf",
+            translation: "the phone call",
+            example: "Ich habe leider einen wichtigen Anruf verpasst.",
+          },
+          {
+            term: "auflegen",
+            translation: "to hang up (the phone)",
+            example: "Bitte leg noch nicht auf, ich bin gleich fertig.",
+          },
+          {
+            term: "die Mailbox",
+            translation: "the voicemail",
+            example: "Er war nicht erreichbar, also habe ich eine Nachricht auf der Mailbox hinterlassen.",
+          },
+          {
+            term: "erreichbar sein",
+            translation: "to be reachable",
+            example: "Ich bin heute den ganzen Tag telefonisch erreichbar.",
+          },
+          {
+            term: "zurückrufen",
+            translation: "to call back",
+            example: "Können Sie mich bitte später zurückrufen?",
+          },
+          {
+            term: "die Verbindung",
+            translation: "the (phone) connection",
+            example: "Die Verbindung ist gerade leider sehr schlecht.",
+          },
+          {
+            term: "eine SMS schreiben",
+            translation: "to write/send a text message",
+            example: "Ich schreibe dir schnell noch eine SMS.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Kann ich bitte mit Frau Müller sprechen?",
+            translation: "Could I please speak with Ms. Müller?",
+          },
+          {
+            phrase: "Einen Moment bitte, ich verbinde Sie.",
+            translation: "One moment please, I'll put you through.",
+          },
+          {
+            phrase: "Die Verbindung ist schlecht, können Sie das wiederholen?",
+            translation: "The connection is bad, could you repeat that?",
+          },
+          {
+            phrase: "Er ist gerade nicht da. Möchten Sie eine Nachricht hinterlassen?",
+            translation: "He's not here right now. Would you like to leave a message?",
+          },
+          {
+            phrase: "Ich rufe dich später noch einmal zurück.",
+            translation: "I'll call you back again later.",
           },
         ],
       },
@@ -4649,6 +5657,510 @@ export const courses = {
           },
         ],
       },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn common Spanish idioms and everyday expressions that native speakers use all the time.",
+        scenario: "You're chatting with Spanish friends who keep using colorful expressions you've never seen in a textbook, and you want to understand — and use — them naturally.",
+        vocabulary: [
+          {
+            term: "estar en las nubes",
+            translation: "to be daydreaming, not paying attention (literally 'to be in the clouds')",
+            example: "Perdona, estaba en las nubes, ¿qué decías?",
+          },
+          {
+            term: "costar un ojo de la cara",
+            translation: "to be very expensive, to cost a fortune",
+            example: "Ese piso le costó un ojo de la cara.",
+          },
+          {
+            term: "no tener pelos en la lengua",
+            translation: "to speak bluntly, to say exactly what you think",
+            example: "Mi abuela no tiene pelos en la lengua.",
+          },
+          {
+            term: "ser pan comido",
+            translation: "to be very easy, a piece of cake",
+            example: "El examen de hoy fue pan comido.",
+          },
+          {
+            term: "dar en el clavo",
+            translation: "to hit the nail on the head, to get something exactly right",
+            example: "Has dado en el clavo con esa explicación.",
+          },
+          {
+            term: "tomar el pelo",
+            translation: "to tease someone, to pull someone's leg",
+            example: "¿Me estás tomando el pelo o hablas en serio?",
+          },
+          {
+            term: "ponerse las pilas",
+            translation: "to get your act together, to start putting in effort (literally 'to put in the batteries')",
+            example: "Tienes que ponerte las pilas antes del examen.",
+          },
+          {
+            term: "meter la pata",
+            translation: "to make an embarrassing mistake, to put your foot in it",
+            example: "Metí la pata al preguntarle por su ex delante de todos.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "¡Qué va!",
+            translation: "No way! / Not at all! — used to strongly disagree or deny something",
+          },
+          {
+            phrase: "Ni idea.",
+            translation: "No idea. — a quick, casual way to say you don't know",
+          },
+          {
+            phrase: "¡Qué rollo!",
+            translation: "What a drag! — used to complain that something is boring or annoying",
+          },
+          {
+            phrase: "Eso sí que no.",
+            translation: "Absolutely not. — a firm refusal, stronger than a plain 'no'",
+          },
+          {
+            phrase: "Se me fue la olla.",
+            translation: "My mind went blank / I totally lost it — informal way to admit you forgot something or acted foolishly",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Talk about your neighborhood, get around the city, and describe everyday urban life.",
+        scenario: "You've just moved into a new neighborhood and are chatting with a neighbor about the area — the shops nearby, public transport, and what it's like to live there.",
+        vocabulary: [
+          {
+            term: "el barrio",
+            translation: "the neighborhood",
+            example: "Vivo en un barrio muy tranquilo.",
+          },
+          {
+            term: "el vecino / la vecina",
+            translation: "the neighbor (m/f)",
+            example: "Mi vecina siempre riega las plantas por la mañana.",
+          },
+          {
+            term: "el ayuntamiento",
+            translation: "the city hall / town council",
+            example: "Hay que ir al ayuntamiento para hacer ese trámite.",
+          },
+          {
+            term: "el transporte público",
+            translation: "public transportation",
+            example: "Prefiero el transporte público al coche.",
+          },
+          {
+            term: "la acera",
+            translation: "the sidewalk",
+            example: "Los niños van en bici por la acera.",
+          },
+          {
+            term: "el semáforo",
+            translation: "the traffic light",
+            example: "Cruza cuando el semáforo esté en verde.",
+          },
+          {
+            term: "la plaza",
+            translation: "the square, the plaza",
+            example: "Quedamos en la plaza a las seis.",
+          },
+          {
+            term: "el rascacielos",
+            translation: "the skyscraper",
+            example: "Desde el rascacielos se ve toda la ciudad.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "¿Vives cerca de aquí?",
+            translation: "Do you live near here?",
+          },
+          {
+            phrase: "El barrio está muy bien comunicado.",
+            translation: "The neighborhood has great transport connections.",
+          },
+          {
+            phrase: "Hay bastante ruido por la noche.",
+            translation: "There's quite a bit of noise at night.",
+          },
+          {
+            phrase: "¿Qué línea de metro va al centro?",
+            translation: "Which metro line goes downtown?",
+          },
+          {
+            phrase: "Esta zona se está poniendo de moda.",
+            translation: "This area is becoming trendy.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌲",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Explore vocabulary for hiking, camping, and enjoying the great outdoors.",
+        scenario: "You're planning a weekend hiking trip with friends and talking about the trail, the scenery, and what to pack.",
+        vocabulary: [
+          {
+            term: "el bosque",
+            translation: "the forest",
+            example: "Nos perdimos un poco en el bosque.",
+          },
+          {
+            term: "la montaña",
+            translation: "the mountain",
+            example: "Este fin de semana subimos a la montaña.",
+          },
+          {
+            term: "el río",
+            translation: "the river",
+            example: "El río baja muy fuerte después de la lluvia.",
+          },
+          {
+            term: "el senderismo",
+            translation: "hiking",
+            example: "Practicamos senderismo casi todos los domingos.",
+          },
+          {
+            term: "la naturaleza",
+            translation: "nature",
+            example: "Me encanta desconectar en la naturaleza.",
+          },
+          {
+            term: "el paisaje",
+            translation: "the landscape, the view",
+            example: "El paisaje desde la cima es impresionante.",
+          },
+          {
+            term: "acampar",
+            translation: "to camp",
+            example: "Vamos a acampar junto al lago.",
+          },
+          {
+            term: "la puesta de sol",
+            translation: "the sunset",
+            example: "Vimos la puesta de sol desde el mirador.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "¿Cuánto se tarda en llegar a la cima?",
+            translation: "How long does it take to reach the top?",
+          },
+          {
+            phrase: "Llévate agua suficiente.",
+            translation: "Bring enough water with you.",
+          },
+          {
+            phrase: "Hace un día perfecto para salir al aire libre.",
+            translation: "It's a perfect day to be outdoors.",
+          },
+          {
+            phrase: "Vamos a montar la tienda de campaña aquí.",
+            translation: "Let's pitch the tent here.",
+          },
+          {
+            phrase: "El sendero está muy bien señalizado.",
+            translation: "The trail is very well marked.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Talk about the music you like, going to concerts, and other ways you like to spend your free time.",
+        scenario: "You're discussing your favorite bands and an upcoming concert with a friend who loves music just as much as you do.",
+        vocabulary: [
+          {
+            term: "la canción",
+            translation: "the song",
+            example: "Esta canción me encanta.",
+          },
+          {
+            term: "el concierto",
+            translation: "the concert",
+            example: "Fuimos a un concierto increíble el sábado.",
+          },
+          {
+            term: "el grupo",
+            translation: "the band",
+            example: "Mi grupo favorito toca esta noche.",
+          },
+          {
+            term: "tocar un instrumento",
+            translation: "to play an instrument",
+            example: "Toco la guitarra desde los doce años.",
+          },
+          {
+            term: "la letra",
+            translation: "the lyrics",
+            example: "No entiendo bien la letra de esta canción.",
+          },
+          {
+            term: "el ritmo",
+            translation: "the rhythm, the beat",
+            example: "Tiene un ritmo muy pegadizo.",
+          },
+          {
+            term: "el cantante / la cantante",
+            translation: "the singer (m/f)",
+            example: "Es mi cantante favorita.",
+          },
+          {
+            term: "la entrada",
+            translation: "the ticket (for a show or event)",
+            example: "Compré las entradas con dos meses de antelación.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "¿Qué tipo de música te gusta?",
+            translation: "What kind of music do you like?",
+          },
+          {
+            phrase: "Tengo entradas para el concierto del viernes.",
+            translation: "I have tickets for Friday's concert.",
+          },
+          {
+            phrase: "Esta canción se me pega mucho.",
+            translation: "This song is really catchy, it gets stuck in my head.",
+          },
+          {
+            phrase: "¿Tocas algún instrumento?",
+            translation: "Do you play any instrument?",
+          },
+          {
+            phrase: "Me pongo música mientras trabajo.",
+            translation: "I put on music while I work.",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Talk about pets, taking care of animals, and the creatures you might come across.",
+        scenario: "You're talking with a friend about your pets — what kind of animals you have, how you take care of them, and the funny things they do.",
+        vocabulary: [
+          {
+            term: "la mascota",
+            translation: "the pet",
+            example: "¿Tienes alguna mascota en casa?",
+          },
+          {
+            term: "el perro / la perra",
+            translation: "the dog (m/f)",
+            example: "Mi perro necesita salir a pasear.",
+          },
+          {
+            term: "el gato / la gata",
+            translation: "the cat (m/f)",
+            example: "Mi gata duerme casi todo el día.",
+          },
+          {
+            term: "pasear al perro",
+            translation: "to walk the dog",
+            example: "Paseo al perro antes de ir a trabajar.",
+          },
+          {
+            term: "dar de comer",
+            translation: "to feed",
+            example: "Hay que dar de comer al gato dos veces al día.",
+          },
+          {
+            term: "el veterinario / la veterinaria",
+            translation: "the vet (m/f)",
+            example: "Llevamos al perro al veterinario para su revisión.",
+          },
+          {
+            term: "ladrar",
+            translation: "to bark",
+            example: "El perro del vecino ladra toda la noche.",
+          },
+          {
+            term: "la jaula",
+            translation: "the cage",
+            example: "El hámster se escapó de la jaula.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "¿Qué mascotas tienes?",
+            translation: "What pets do you have?",
+          },
+          {
+            phrase: "Mi perro es muy juguetón.",
+            translation: "My dog is very playful.",
+          },
+          {
+            phrase: "Hay que llevarlo al veterinario esta semana.",
+            translation: "We need to take him to the vet this week.",
+          },
+          {
+            phrase: "Mi gato no para de maullar.",
+            translation: "My cat won't stop meowing.",
+          },
+          {
+            phrase: "Es muy cariñoso con los niños.",
+            translation: "He's very affectionate with children.",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💶",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Handle everyday money matters, from withdrawing cash to opening a bank account.",
+        scenario: "You're sorting out a bank account and later stopping at an ATM, practicing the vocabulary you need to manage your money in Spanish.",
+        vocabulary: [
+          {
+            term: "el banco",
+            translation: "the bank",
+            example: "Necesito ir al banco esta tarde.",
+          },
+          {
+            term: "la cuenta bancaria",
+            translation: "the bank account",
+            example: "Quiero abrir una cuenta bancaria.",
+          },
+          {
+            term: "sacar dinero",
+            translation: "to withdraw money",
+            example: "Voy a sacar dinero del cajero.",
+          },
+          {
+            term: "el cajero automático",
+            translation: "the ATM",
+            example: "El cajero automático no funciona.",
+          },
+          {
+            term: "la tarjeta de crédito",
+            translation: "the credit card",
+            example: "Pago casi todo con la tarjeta de crédito.",
+          },
+          {
+            term: "ahorrar",
+            translation: "to save (money)",
+            example: "Intento ahorrar un poco cada mes.",
+          },
+          {
+            term: "pedir prestado",
+            translation: "to borrow",
+            example: "Tuve que pedirle prestado dinero a mi hermano.",
+          },
+          {
+            term: "pagar en efectivo",
+            translation: "to pay in cash",
+            example: "Prefiero pagar en efectivo en el mercado.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "¿Dónde hay un cajero automático cerca?",
+            translation: "Where's there an ATM nearby?",
+          },
+          {
+            phrase: "Quiero abrir una cuenta, por favor.",
+            translation: "I'd like to open an account, please.",
+          },
+          {
+            phrase: "¿Aceptan tarjeta o solo efectivo?",
+            translation: "Do you take card or only cash?",
+          },
+          {
+            phrase: "Se me ha olvidado el PIN.",
+            translation: "I've forgotten my PIN.",
+          },
+          {
+            phrase: "Estoy intentando ahorrar para el viaje.",
+            translation: "I'm trying to save up for the trip.",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📱",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Learn how to make phone calls, leave messages, and handle common phone conversations.",
+        scenario: "You're calling a friend who doesn't pick up, then trying to reach a business, practicing what to say when you call, leave a message, or the line cuts out.",
+        vocabulary: [
+          {
+            term: "llamar por teléfono",
+            translation: "to call on the phone",
+            example: "Te llamo por teléfono en cuanto llegue.",
+          },
+          {
+            term: "colgar",
+            translation: "to hang up",
+            example: "No cuelgues, ahora vuelvo.",
+          },
+          {
+            term: "el número de teléfono",
+            translation: "the phone number",
+            example: "¿Me das tu número de teléfono?",
+          },
+          {
+            term: "dejar un mensaje",
+            translation: "to leave a message",
+            example: "¿Puedo dejarle un mensaje?",
+          },
+          {
+            term: "la llamada perdida",
+            translation: "the missed call",
+            example: "Tienes tres llamadas perdidas de tu madre.",
+          },
+          {
+            term: "el buzón de voz",
+            translation: "the voicemail",
+            example: "Salta directamente el buzón de voz.",
+          },
+          {
+            term: "marcar",
+            translation: "to dial",
+            example: "Marca el número otra vez, se ha cortado.",
+          },
+          {
+            term: "cortarse",
+            translation: "to cut out, to get disconnected (of a call)",
+            example: "Perdona, se corta un poco la llamada.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "¿Diga?",
+            translation: "Hello? — how you answer the phone",
+          },
+          {
+            phrase: "¿Puedo dejarle un mensaje?",
+            translation: "Can I leave him/her a message?",
+          },
+          {
+            phrase: "Se ha cortado la llamada.",
+            translation: "The call got cut off.",
+          },
+          {
+            phrase: "Te llamo luego, ahora no puedo hablar.",
+            translation: "I'll call you later, I can't talk right now.",
+          },
+          {
+            phrase: "No cuelgues, un momento.",
+            translation: "Don't hang up, one moment.",
+          },
+        ],
+      },
     ],
   },
   fr: {
@@ -6195,6 +7707,510 @@ export const courses = {
           {
             phrase: "Bienvenue chez moi!",
             translation: "Welcome to my place!",
+          },
+        ],
+      },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn the colorful idioms and expressions French speakers use every day, well beyond their literal dictionary meaning.",
+        scenario: "You're chatting with a French friend who peppers every sentence with idioms, and you want to keep up and start using them yourself.",
+        vocabulary: [
+          {
+            term: "avoir le cafard",
+            translation: "to feel down / blue",
+            example: "Depuis qu'il pleut sans arrêt, j'ai le cafard.",
+          },
+          {
+            term: "poser un lapin à quelqu'un",
+            translation: "to stand someone up",
+            example: "Elle m'a posé un lapin hier soir.",
+          },
+          {
+            term: "coûter les yeux de la tête",
+            translation: "to cost a fortune / an arm and a leg",
+            example: "Ce restaurant coûte les yeux de la tête.",
+          },
+          {
+            term: "il pleut des cordes",
+            translation: "it's pouring rain",
+            example: "Prends un parapluie, il pleut des cordes.",
+          },
+          {
+            term: "avoir un chat dans la gorge",
+            translation: "to have a frog in one's throat",
+            example: "Excuse-moi, j'ai un chat dans la gorge ce matin.",
+          },
+          {
+            term: "être dans la lune",
+            translation: "to be daydreaming / not paying attention",
+            example: "Désolé, j'étais dans la lune, tu disais quoi?",
+          },
+          {
+            term: "mettre son grain de sel",
+            translation: "to put in one's two cents (uninvited opinion)",
+            example: "Il met toujours son grain de sel dans nos discussions.",
+          },
+          {
+            term: "avoir la pêche",
+            translation: "to feel great / full of energy",
+            example: "Ce matin, j'ai vraiment la pêche!",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Ça me prend la tête.",
+            translation: "That's driving me crazy.",
+          },
+          {
+            phrase: "C'est pas grave.",
+            translation: "It's no big deal. / Don't worry about it.",
+          },
+          {
+            phrase: "Je n'en reviens pas!",
+            translation: "I can't believe it!",
+          },
+          {
+            phrase: "Tant pis.",
+            translation: "Oh well. / Too bad.",
+          },
+          {
+            phrase: "Ça marche!",
+            translation: "Sounds good! / Deal!",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Learn how to talk about city life, getting around, and your neighborhood.",
+        scenario: "You're showing a visiting friend around your city, pointing out your neighborhood and explaining how to get around town.",
+        vocabulary: [
+          {
+            term: "le trottoir",
+            translation: "the sidewalk",
+            example: "Ne roule pas sur le trottoir, c'est dangereux pour les piétons.",
+          },
+          {
+            term: "les transports en commun (m)",
+            translation: "public transportation",
+            example: "Je prends les transports en commun tous les jours.",
+          },
+          {
+            term: "l'embouteillage (m)",
+            translation: "the traffic jam",
+            example: "Il y avait un embouteillage énorme ce matin.",
+          },
+          {
+            term: "la mairie",
+            translation: "the town hall / city hall",
+            example: "Il faut aller à la mairie pour ce document.",
+          },
+          {
+            term: "le marché",
+            translation: "the market",
+            example: "On achète nos légumes au marché le samedi.",
+          },
+          {
+            term: "bruyant(e)",
+            translation: "noisy",
+            example: "Mon quartier est très bruyant le week-end.",
+          },
+          {
+            term: "le/la citadin(e)",
+            translation: "the city dweller",
+            example: "Les citadins n'ont pas souvent de jardin.",
+          },
+          {
+            term: "se déplacer",
+            translation: "to get around / travel (locally)",
+            example: "Je me déplace surtout à vélo en ville.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Il y a beaucoup de monde ici.",
+            translation: "There are a lot of people here.",
+          },
+          {
+            phrase: "Comment on va au centre-ville?",
+            translation: "How do we get downtown?",
+          },
+          {
+            phrase: "C'est à quelle distance d'ici?",
+            translation: "How far is it from here?",
+          },
+          {
+            phrase: "J'habite en plein centre-ville.",
+            translation: "I live right in the city center.",
+          },
+          {
+            phrase: "Le quartier est en travaux en ce moment.",
+            translation: "The neighborhood is under construction right now.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌲",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Learn how to talk about nature, the outdoors, and enjoying the natural world.",
+        scenario: "You're planning a weekend hike with a friend and talking about the outdoors, the weather, and the scenery along the way.",
+        vocabulary: [
+          {
+            term: "la forêt",
+            translation: "the forest",
+            example: "On s'est presque perdus dans la forêt.",
+          },
+          {
+            term: "la montagne",
+            translation: "the mountain",
+            example: "J'adore randonner en montagne.",
+          },
+          {
+            term: "le lac",
+            translation: "the lake",
+            example: "On peut nager dans ce lac en été.",
+          },
+          {
+            term: "le sentier",
+            translation: "the trail / path",
+            example: "Ce sentier mène jusqu'au sommet.",
+          },
+          {
+            term: "le coucher de soleil",
+            translation: "the sunset",
+            example: "Le coucher de soleil était magnifique hier soir.",
+          },
+          {
+            term: "respirer",
+            translation: "to breathe",
+            example: "Ça fait du bien de respirer l'air frais.",
+          },
+          {
+            term: "en pleine nature",
+            translation: "out in nature / in the wild",
+            example: "On a campé en pleine nature tout le week-end.",
+          },
+          {
+            term: "la randonnée",
+            translation: "the hike",
+            example: "Cette randonnée dure environ trois heures.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "On va faire une randonnée ce week-end?",
+            translation: "Should we go hiking this weekend?",
+          },
+          {
+            phrase: "Quel beau paysage!",
+            translation: "What a beautiful landscape!",
+          },
+          {
+            phrase: "Il fait un temps magnifique dehors.",
+            translation: "The weather outside is gorgeous.",
+          },
+          {
+            phrase: "J'ai besoin de prendre l'air.",
+            translation: "I need some fresh air.",
+          },
+          {
+            phrase: "Fais attention, le sentier est glissant.",
+            translation: "Be careful, the trail is slippery.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Learn how to talk about music, movies, and the entertainment you enjoy.",
+        scenario: "You're talking with a friend about the music you listen to, movies you've seen, and what to watch or listen to next.",
+        vocabulary: [
+          {
+            term: "la chanson",
+            translation: "the song",
+            example: "Cette chanson passe tout le temps à la radio.",
+          },
+          {
+            term: "le chanteur / la chanteuse",
+            translation: "the singer",
+            example: "C'est mon chanteur préféré.",
+          },
+          {
+            term: "le concert",
+            translation: "the concert",
+            example: "On a des billets pour le concert samedi.",
+          },
+          {
+            term: "écouter",
+            translation: "to listen (to)",
+            example: "J'écoute de la musique en travaillant.",
+          },
+          {
+            term: "jouer d'un instrument",
+            translation: "to play an instrument",
+            example: "Elle joue du piano depuis dix ans.",
+          },
+          {
+            term: "le film",
+            translation: "the movie",
+            example: "Ce film m'a beaucoup plu.",
+          },
+          {
+            term: "la série",
+            translation: "the TV show / series",
+            example: "On a fini la série hier soir.",
+          },
+          {
+            term: "le groupe",
+            translation: "the band",
+            example: "Ce groupe sort un nouvel album ce mois-ci.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Quel genre de musique tu écoutes?",
+            translation: "What kind of music do you listen to?",
+          },
+          {
+            phrase: "Cette chanson est dans ma tête toute la journée.",
+            translation: "This song has been stuck in my head all day.",
+          },
+          {
+            phrase: "On regarde un film ce soir?",
+            translation: "Shall we watch a movie tonight?",
+          },
+          {
+            phrase: "Je suis fan de ce groupe.",
+            translation: "I'm a big fan of this band.",
+          },
+          {
+            phrase: "Ça te dit d'aller au concert?",
+            translation: "Do you feel like going to the concert?",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Learn how to talk about pets, animals, and caring for them.",
+        scenario: "You're chatting with a neighbor about your pets — what animals you have, how you take care of them, and the funny things they do.",
+        vocabulary: [
+          {
+            term: "le chien",
+            translation: "the dog",
+            example: "Mon chien adore jouer dans le jardin.",
+          },
+          {
+            term: "le chat",
+            translation: "the cat",
+            example: "Le chat dort presque toute la journée.",
+          },
+          {
+            term: "promener",
+            translation: "to walk (a dog)",
+            example: "Je promène le chien tous les matins.",
+          },
+          {
+            term: "nourrir",
+            translation: "to feed",
+            example: "N'oublie pas de nourrir le poisson.",
+          },
+          {
+            term: "le vétérinaire",
+            translation: "the vet",
+            example: "On a rendez-vous chez le vétérinaire demain.",
+          },
+          {
+            term: "la laisse",
+            translation: "the leash",
+            example: "Mets la laisse avant de sortir.",
+          },
+          {
+            term: "mignon(ne)",
+            translation: "cute",
+            example: "Ton chaton est tellement mignon!",
+          },
+          {
+            term: "aboyer",
+            translation: "to bark",
+            example: "Le chien aboie dès qu'on sonne à la porte.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Tu as un animal de compagnie?",
+            translation: "Do you have a pet?",
+          },
+          {
+            phrase: "Il faut que je promène le chien.",
+            translation: "I need to walk the dog.",
+          },
+          {
+            phrase: "Comment s'appelle ton chat?",
+            translation: "What's your cat's name?",
+          },
+          {
+            phrase: "Elle est trop mignonne!",
+            translation: "She's so cute!",
+          },
+          {
+            phrase: "Mon chien aboie dès qu'il entend du bruit.",
+            translation: "My dog barks the moment he hears a noise.",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💳",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Learn how to talk about money, banking, and everyday purchases.",
+        scenario: "You're at the bank and in shops handling everyday money matters — paying, withdrawing cash, and talking about prices.",
+        vocabulary: [
+          {
+            term: "le compte bancaire",
+            translation: "the bank account",
+            example: "J'ai ouvert un compte bancaire le mois dernier.",
+          },
+          {
+            term: "retirer de l'argent",
+            translation: "to withdraw money",
+            example: "Je dois retirer de l'argent avant midi.",
+          },
+          {
+            term: "la carte bancaire",
+            translation: "the debit/credit card",
+            example: "Je paie presque toujours avec ma carte bancaire.",
+          },
+          {
+            term: "payer en espèces",
+            translation: "to pay in cash",
+            example: "Ce marché n'accepte que les paiements en espèces.",
+          },
+          {
+            term: "économiser",
+            translation: "to save (money)",
+            example: "J'essaie d'économiser pour les vacances.",
+          },
+          {
+            term: "le virement",
+            translation: "the (bank) transfer",
+            example: "J'ai fait un virement à mon frère.",
+          },
+          {
+            term: "emprunter",
+            translation: "to borrow",
+            example: "Il a dû emprunter de l'argent à ses parents.",
+          },
+          {
+            term: "le distributeur",
+            translation: "the ATM",
+            example: "Il y a un distributeur juste au coin de la rue.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Je n'ai plus d'argent liquide.",
+            translation: "I don't have any cash left.",
+          },
+          {
+            phrase: "Vous acceptez la carte?",
+            translation: "Do you accept card?",
+          },
+          {
+            phrase: "Combien ça coûte?",
+            translation: "How much does it cost?",
+          },
+          {
+            phrase: "Je dois retirer de l'argent au distributeur.",
+            translation: "I need to withdraw money from the ATM.",
+          },
+          {
+            phrase: "C'est trop cher pour moi.",
+            translation: "That's too expensive for me.",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📱",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Learn how to make phone calls, leave messages, and talk about everyday communication.",
+        scenario: "You're making and receiving phone calls in everyday situations, from casual chats to leaving a quick message.",
+        vocabulary: [
+          {
+            term: "appeler",
+            translation: "to call",
+            example: "Je t'appelle ce soir.",
+          },
+          {
+            term: "décrocher",
+            translation: "to pick up (the phone)",
+            example: "Elle n'a pas décroché, elle devait être occupée.",
+          },
+          {
+            term: "raccrocher",
+            translation: "to hang up",
+            example: "Il a raccroché sans dire au revoir.",
+          },
+          {
+            term: "laisser un message",
+            translation: "to leave a message",
+            example: "Tu peux laisser un message après le bip.",
+          },
+          {
+            term: "envoyer un texto",
+            translation: "to send a text message",
+            example: "Je t'envoie un texto quand j'arrive.",
+          },
+          {
+            term: "le numéro de téléphone",
+            translation: "the phone number",
+            example: "Quel est ton numéro de téléphone?",
+          },
+          {
+            term: "être en ligne",
+            translation: "to be on the phone / on the line",
+            example: "Elle est en ligne avec sa mère depuis une heure.",
+          },
+          {
+            term: "la batterie",
+            translation: "the battery",
+            example: "Je n'ai plus de batterie, désolé.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Allô, qui est à l'appareil?",
+            translation: "Hello, who's calling?",
+          },
+          {
+            phrase: "Ne quitte pas.",
+            translation: "Hold on. / Don't hang up.",
+          },
+          {
+            phrase: "Je te rappelle plus tard.",
+            translation: "I'll call you back later.",
+          },
+          {
+            phrase: "Je n'ai plus de batterie.",
+            translation: "My phone is dead.",
+          },
+          {
+            phrase: "Tu peux me passer un coup de fil ce soir?",
+            translation: "Can you give me a call tonight?",
           },
         ],
       },
@@ -8020,6 +10036,601 @@ export const courses = {
             phrase: "我们打算明年搬家。",
             romaji: "Wǒmen dǎsuàn míngnián bānjiā.",
             translation: "We're planning to move next year.",
+          },
+        ],
+      },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn common Chinese idioms and set expressions that native speakers use all the time",
+        scenario: "You're chatting with a Chinese friend who peppers everyday conversation with common idioms and set phrases, and you want to understand and use them naturally.",
+        vocabulary: [
+          {
+            term: "马马虎虎",
+            romaji: "mǎmǎhūhū",
+            translation: "so-so / careless (literally 'horse horse tiger tiger')",
+            example: "今天的考试我考得马马虎虎。",
+          },
+          {
+            term: "加油",
+            romaji: "jiāyóu",
+            translation: "keep going / good luck (literally 'add oil')",
+            example: "明天有比赛,加油!",
+          },
+          {
+            term: "没关系",
+            romaji: "méi guānxi",
+            translation: "it doesn't matter / no problem",
+            example: "没关系,下次再试试。",
+          },
+          {
+            term: "入乡随俗",
+            romaji: "rùxiāngsuísú",
+            translation: "when in Rome, do as the Romans do",
+            example: "在国外生活要入乡随俗。",
+          },
+          {
+            term: "画蛇添足",
+            romaji: "huàshétiānzú",
+            translation: "to ruin something by adding unnecessary detail (literally 'draw a snake and add feet')",
+            example: "这句话已经够清楚了,你再解释就是画蛇添足。",
+          },
+          {
+            term: "半途而废",
+            romaji: "bàntú'érfèi",
+            translation: "to give up halfway",
+            example: "做事不能半途而废。",
+          },
+          {
+            term: "习以为常",
+            romaji: "xíyǐwéicháng",
+            translation: "to be used to something / take it for granted",
+            example: "这里堵车,大家都习以为常了。",
+          },
+          {
+            term: "客气",
+            romaji: "kèqi",
+            translation: "polite / to stand on ceremony",
+            example: "别客气,多吃点。",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "不用谢。",
+            romaji: "Bú yòng xiè.",
+            translation: "You're welcome (literally 'no need to thank').",
+          },
+          {
+            phrase: "慢慢来。",
+            romaji: "Màn man lái.",
+            translation: "Take your time / no rush.",
+          },
+          {
+            phrase: "说曹操,曹操到。",
+            romaji: "Shuō Cáo Cāo, Cáo Cāo dào.",
+            translation: "Speak of the devil, and he shall appear (literally 'mention Cao Cao and Cao Cao arrives').",
+          },
+          {
+            phrase: "这是小意思。",
+            romaji: "Zhè shì xiǎo yìsi.",
+            translation: "It's nothing / just a small token.",
+          },
+          {
+            phrase: "有点意思。",
+            romaji: "Yǒudiǎn yìsi.",
+            translation: "That's kind of interesting.",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Talk about your neighborhood, city landmarks, and everyday urban life",
+        scenario: "You're showing a visiting friend around your neighborhood, pointing out useful places and talking about what daily life in the city is like.",
+        vocabulary: [
+          {
+            term: "城市",
+            romaji: "chéngshì",
+            translation: "city",
+            example: "这是一个很热闹的城市。",
+          },
+          {
+            term: "小区",
+            romaji: "xiǎoqū",
+            translation: "residential neighborhood / housing complex",
+            example: "我住的小区很安静。",
+          },
+          {
+            term: "地铁站",
+            romaji: "dìtiězhàn",
+            translation: "subway station",
+            example: "地铁站离我家很近。",
+          },
+          {
+            term: "超市",
+            romaji: "chāoshì",
+            translation: "supermarket",
+            example: "我常去附近的超市买菜。",
+          },
+          {
+            term: "十字路口",
+            romaji: "shízì lùkǒu",
+            translation: "intersection / crossroads",
+            example: "在十字路口往左转。",
+          },
+          {
+            term: "人行道",
+            romaji: "rénxíngdào",
+            translation: "sidewalk",
+            example: "请走人行道,注意安全。",
+          },
+          {
+            term: "热闹",
+            romaji: "rènao",
+            translation: "lively / bustling",
+            example: "周末这条街特别热闹。",
+          },
+          {
+            term: "附近",
+            romaji: "fùjìn",
+            translation: "nearby / vicinity",
+            example: "附近有没有咖啡馆?",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "这附近有地铁站吗?",
+            romaji: "Zhè fùjìn yǒu dìtiězhàn ma?",
+            translation: "Is there a subway station nearby?",
+          },
+          {
+            phrase: "我就住在这附近。",
+            romaji: "Wǒ jiù zhù zài zhè fùjìn.",
+            translation: "I live right around here.",
+          },
+          {
+            phrase: "这个小区很方便。",
+            romaji: "Zhège xiǎoqū hěn fāngbiàn.",
+            translation: "This neighborhood is very convenient.",
+          },
+          {
+            phrase: "晚上这里很热闹。",
+            romaji: "Wǎnshang zhèlǐ hěn rènao.",
+            translation: "It gets lively here at night.",
+          },
+          {
+            phrase: "过马路要小心。",
+            romaji: "Guò mǎlù yào xiǎoxīn.",
+            translation: "Be careful crossing the street.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌳",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Describe the natural world around you, from mountains and forests to hiking and weather",
+        scenario: "You're planning a weekend hike with friends and talking about the scenery, the trail, and what to pack.",
+        vocabulary: [
+          {
+            term: "山",
+            romaji: "shān",
+            translation: "mountain",
+            example: "这座山不太高,适合初学者。",
+          },
+          {
+            term: "森林",
+            romaji: "sēnlín",
+            translation: "forest",
+            example: "森林里的空气很新鲜。",
+          },
+          {
+            term: "湖",
+            romaji: "hú",
+            translation: "lake",
+            example: "湖边风景很美。",
+          },
+          {
+            term: "河流",
+            romaji: "héliú",
+            translation: "river",
+            example: "这条河流经好几个城市。",
+          },
+          {
+            term: "爬山",
+            romaji: "páshān",
+            translation: "to hike / climb a mountain",
+            example: "我们周末去爬山吧。",
+          },
+          {
+            term: "风景",
+            romaji: "fēngjǐng",
+            translation: "scenery / view",
+            example: "山顶的风景太美了。",
+          },
+          {
+            term: "新鲜空气",
+            romaji: "xīnxiān kōngqì",
+            translation: "fresh air",
+            example: "出去呼吸一下新鲜空气吧。",
+          },
+          {
+            term: "野生动物",
+            romaji: "yěshēng dòngwù",
+            translation: "wildlife",
+            example: "森林里有很多野生动物。",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "我们去爬山吧!",
+            romaji: "Wǒmen qù páshān ba!",
+            translation: "Let's go hiking!",
+          },
+          {
+            phrase: "这里的风景真美。",
+            romaji: "Zhèlǐ de fēngjǐng zhēn měi.",
+            translation: "The scenery here is really beautiful.",
+          },
+          {
+            phrase: "记得带水和防晒霜。",
+            romaji: "Jìde dài shuǐ hé fángshàishuāng.",
+            translation: "Remember to bring water and sunscreen.",
+          },
+          {
+            phrase: "空气真新鲜!",
+            romaji: "Kōngqì zhēn xīnxiān!",
+            translation: "The air is so fresh!",
+          },
+          {
+            phrase: "小心,前面路很滑。",
+            romaji: "Xiǎoxīn, qiánmiàn lù hěn huá.",
+            translation: "Careful, the path ahead is slippery.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Talk about music, movies, and the shows you enjoy in your free time",
+        scenario: "You're discussing your favorite music, movies, and shows with a friend, recommending things you love and asking about their taste.",
+        vocabulary: [
+          {
+            term: "音乐",
+            romaji: "yīnyuè",
+            translation: "music",
+            example: "我喜欢听流行音乐。",
+          },
+          {
+            term: "歌手",
+            romaji: "gēshǒu",
+            translation: "singer",
+            example: "她是我最喜欢的歌手。",
+          },
+          {
+            term: "演唱会",
+            romaji: "yǎnchànghuì",
+            translation: "concert",
+            example: "下个月有一场演唱会。",
+          },
+          {
+            term: "电影",
+            romaji: "diànyǐng",
+            translation: "movie",
+            example: "这部电影非常感人。",
+          },
+          {
+            term: "电视剧",
+            romaji: "diànshìjù",
+            translation: "TV drama / series",
+            example: "我最近在追一部电视剧。",
+          },
+          {
+            term: "乐队",
+            romaji: "yuèduì",
+            translation: "band",
+            example: "这个乐队的歌都很好听。",
+          },
+          {
+            term: "好看",
+            romaji: "hǎokàn",
+            translation: "good to watch / interesting (for shows, movies)",
+            example: "这部剧很好看,你一定要看。",
+          },
+          {
+            term: "追剧",
+            romaji: "zhuījù",
+            translation: "to binge-watch a show",
+            example: "我周末喜欢在家追剧。",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "你喜欢什么样的音乐?",
+            romaji: "Nǐ xǐhuan shénmeyàng de yīnyuè?",
+            translation: "What kind of music do you like?",
+          },
+          {
+            phrase: "这首歌太好听了!",
+            romaji: "Zhè shǒu gē tài hǎotīng le!",
+            translation: "This song sounds amazing!",
+          },
+          {
+            phrase: "最近有什么好看的电影吗?",
+            romaji: "Zuìjìn yǒu shénme hǎokàn de diànyǐng ma?",
+            translation: "Are there any good movies out recently?",
+          },
+          {
+            phrase: "我们一起去看演唱会吧。",
+            romaji: "Wǒmen yìqǐ qù kàn yǎnchànghuì ba.",
+            translation: "Let's go to the concert together.",
+          },
+          {
+            phrase: "我在追一部新剧。",
+            romaji: "Wǒ zài zhuī yí bù xīn jù.",
+            translation: "I'm binge-watching a new show.",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Talk about pets, animals, and taking care of them",
+        scenario: "You're chatting with a neighbor about your pets — what animals you have, how you take care of them, and swapping stories about your furry friends.",
+        vocabulary: [
+          {
+            term: "宠物",
+            romaji: "chǒngwù",
+            translation: "pet",
+            example: "你家养什么宠物?",
+          },
+          {
+            term: "狗",
+            romaji: "gǒu",
+            translation: "dog",
+            example: "我家的狗很聪明。",
+          },
+          {
+            term: "猫",
+            romaji: "māo",
+            translation: "cat",
+            example: "这只猫喜欢睡觉。",
+          },
+          {
+            term: "养",
+            romaji: "yǎng",
+            translation: "to raise / keep (an animal)",
+            example: "我从小就养狗。",
+          },
+          {
+            term: "喂",
+            romaji: "wèi",
+            translation: "to feed",
+            example: "我每天早上喂猫。",
+          },
+          {
+            term: "散步",
+            romaji: "sànbù",
+            translation: "to walk (e.g. take a dog for a walk)",
+            example: "我每天带狗去散步。",
+          },
+          {
+            term: "可爱",
+            romaji: "kě'ài",
+            translation: "cute",
+            example: "你的兔子太可爱了!",
+          },
+          {
+            term: "兽医",
+            romaji: "shòuyī",
+            translation: "veterinarian",
+            example: "它生病了,得去看兽医。",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "你家养宠物吗?",
+            romaji: "Nǐ jiā yǎng chǒngwù ma?",
+            translation: "Do you have any pets at home?",
+          },
+          {
+            phrase: "我家有一只狗和一只猫。",
+            romaji: "Wǒ jiā yǒu yì zhī gǒu hé yì zhī māo.",
+            translation: "I have a dog and a cat at home.",
+          },
+          {
+            phrase: "它真可爱!",
+            romaji: "Tā zhēn kě'ài!",
+            translation: "It's so cute!",
+          },
+          {
+            phrase: "你每天遛狗吗?",
+            romaji: "Nǐ měitiān liù gǒu ma?",
+            translation: "Do you walk your dog every day?",
+          },
+          {
+            phrase: "它今天不太舒服。",
+            romaji: "Tā jīntiān bú tài shūfu.",
+            translation: "It's not feeling well today.",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💰",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Handle everyday money matters like paying, exchanging currency, and using the bank",
+        scenario: "You're at a bank in China trying to exchange money and open a simple account, and later paying for things and talking about prices with a friend.",
+        vocabulary: [
+          {
+            term: "钱",
+            romaji: "qián",
+            translation: "money",
+            example: "我没带够钱。",
+          },
+          {
+            term: "银行",
+            romaji: "yínháng",
+            translation: "bank",
+            example: "银行几点开门?",
+          },
+          {
+            term: "账户",
+            romaji: "zhànghù",
+            translation: "account",
+            example: "我想开一个新账户。",
+          },
+          {
+            term: "现金",
+            romaji: "xiànjīn",
+            translation: "cash",
+            example: "这里可以用现金支付吗?",
+          },
+          {
+            term: "刷卡",
+            romaji: "shuākǎ",
+            translation: "to pay by card",
+            example: "我可以刷卡吗?",
+          },
+          {
+            term: "换钱",
+            romaji: "huànqián",
+            translation: "to exchange currency",
+            example: "我想把美元换成人民币。",
+          },
+          {
+            term: "汇率",
+            romaji: "huìlǜ",
+            translation: "exchange rate",
+            example: "今天的汇率是多少?",
+          },
+          {
+            term: "手续费",
+            romaji: "shǒuxùfèi",
+            translation: "service fee / handling fee",
+            example: "换钱要收手续费吗?",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "我想换点钱。",
+            romaji: "Wǒ xiǎng huàn diǎn qián.",
+            translation: "I'd like to exchange some money.",
+          },
+          {
+            phrase: "可以用微信支付吗?",
+            romaji: "Kěyǐ yòng Wēixìn zhīfù ma?",
+            translation: "Can I pay with WeChat Pay?",
+          },
+          {
+            phrase: "这个多少钱?",
+            romaji: "Zhège duōshao qián?",
+            translation: "How much does this cost?",
+          },
+          {
+            phrase: "太贵了,能便宜点吗?",
+            romaji: "Tài guì le, néng piányi diǎn ma?",
+            translation: "That's too expensive, can you lower the price?",
+          },
+          {
+            phrase: "我要开一个银行账户。",
+            romaji: "Wǒ yào kāi yí ge yínháng zhànghù.",
+            translation: "I'd like to open a bank account.",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📱",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Make phone calls, leave messages, and handle common phone and messaging situations",
+        scenario: "You're calling a friend and later a business in China, navigating small talk, leaving a message, and dealing with a bad connection.",
+        vocabulary: [
+          {
+            term: "电话",
+            romaji: "diànhuà",
+            translation: "phone / telephone call",
+            example: "我给你打电话了。",
+          },
+          {
+            term: "手机号码",
+            romaji: "shǒujī hàomǎ",
+            translation: "mobile phone number",
+            example: "你的手机号码是多少?",
+          },
+          {
+            term: "打电话",
+            romaji: "dǎ diànhuà",
+            translation: "to make a phone call",
+            example: "我等一下给你打电话。",
+          },
+          {
+            term: "接电话",
+            romaji: "jiē diànhuà",
+            translation: "to answer the phone",
+            example: "他没接电话。",
+          },
+          {
+            term: "挂电话",
+            romaji: "guà diànhuà",
+            translation: "to hang up the phone",
+            example: "别挂电话,我马上回来。",
+          },
+          {
+            term: "留言",
+            romaji: "liúyán",
+            translation: "to leave a message",
+            example: "他不在,你要留言吗?",
+          },
+          {
+            term: "信号",
+            romaji: "xìnhào",
+            translation: "signal",
+            example: "这里信号不太好。",
+          },
+          {
+            term: "微信",
+            romaji: "Wēixìn",
+            translation: "WeChat (common messaging app)",
+            example: "加我的微信吧。",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "喂,你好。",
+            romaji: "Wéi, nǐ hǎo.",
+            translation: "Hello (used when answering the phone).",
+          },
+          {
+            phrase: "请问哪位?",
+            romaji: "Qǐngwèn nǎ wèi?",
+            translation: "May I ask who's calling?",
+          },
+          {
+            phrase: "我听不清楚,信号不好。",
+            romaji: "Wǒ tīng bù qīngchu, xìnhào bù hǎo.",
+            translation: "I can't hear clearly, the signal is bad.",
+          },
+          {
+            phrase: "我等一下打给你。",
+            romaji: "Wǒ děng yíxià dǎ gěi nǐ.",
+            translation: "I'll call you back in a bit.",
+          },
+          {
+            phrase: "能加一下你的微信吗?",
+            romaji: "Néng jiā yíxià nǐ de Wēixìn ma?",
+            translation: "Can I add you on WeChat?",
           },
         ],
       },
@@ -9872,6 +12483,601 @@ export const courses = {
           },
         ],
       },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn common Russian idioms and everyday expressions that native speakers use in casual conversation",
+        scenario: "You're chatting with Russian friends who keep using colorful expressions, and you want to understand — and start using — them yourself.",
+        vocabulary: [
+          {
+            term: "вешать лапшу на уши",
+            romaji: "veshat' lapshu na ushi",
+            translation: "to lie or deceive someone (lit. 'to hang noodles on someone's ears')",
+            example: "Не вешай мне лапшу на уши, я знаю правду.",
+          },
+          {
+            term: "как две капли воды",
+            romaji: "kak dve kapli vody",
+            translation: "exactly alike, like two peas in a pod (lit. 'like two drops of water')",
+            example: "Она похожа на мать как две капли воды.",
+          },
+          {
+            term: "ни пуха ни пера",
+            romaji: "ni pukha ni pera",
+            translation: "good luck! (traditional wish before an exam or big event, lit. 'neither fluff nor feather')",
+            example: "Завтра экзамен? Ни пуха ни пера!",
+          },
+          {
+            term: "бить баклуши",
+            romaji: "bit' baklushi",
+            translation: "to idle around, waste time doing nothing",
+            example: "Хватит бить баклуши, пора работать.",
+          },
+          {
+            term: "держать язык за зубами",
+            romaji: "derzhat' yazyk za zubami",
+            translation: "to keep quiet, hold one's tongue (lit. 'to hold one's tongue behind the teeth')",
+            example: "Это секрет, держи язык за зубами.",
+          },
+          {
+            term: "делать из мухи слона",
+            romaji: "delat' iz mukhi slona",
+            translation: "to make a mountain out of a molehill (lit. 'to make an elephant out of a fly')",
+            example: "Не делай из мухи слона, всё не так серьёзно.",
+          },
+          {
+            term: "работать спустя рукава",
+            romaji: "rabotat' spustya rukava",
+            translation: "to work carelessly or sloppily (lit. 'to work with sleeves hanging down')",
+            example: "Он работает спустя рукава, поэтому у него много ошибок.",
+          },
+          {
+            term: "в двух словах",
+            romaji: "v dvukh slovakh",
+            translation: "in a nutshell, briefly (lit. 'in two words')",
+            example: "Расскажи в двух словах, что случилось.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Не бери в голову.",
+            romaji: "Ne beri v golovu.",
+            translation: "Don't worry about it. (lit. 'Don't take it into your head')",
+          },
+          {
+            phrase: "Мне всё равно.",
+            romaji: "Mne vsyo ravno.",
+            translation: "I don't care; it's all the same to me.",
+          },
+          {
+            phrase: "Так себе.",
+            romaji: "Tak sebe.",
+            translation: "So-so; nothing special.",
+          },
+          {
+            phrase: "Была не была!",
+            romaji: "Byla ne byla!",
+            translation: "Here goes nothing! (used before taking a risk)",
+          },
+          {
+            phrase: "Ты что, шутишь?",
+            romaji: "Ty chto, shutish'?",
+            translation: "Are you kidding me?",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Talk about your neighborhood, getting around town, and everyday city life",
+        scenario: "You've just moved into a new neighborhood and are chatting with a neighbor about shops, transport, and daily life nearby.",
+        vocabulary: [
+          {
+            term: "район",
+            romaji: "rayon",
+            translation: "neighborhood, district",
+            example: "Я живу в тихом районе города.",
+          },
+          {
+            term: "центр города",
+            romaji: "tsentr goroda",
+            translation: "city center, downtown",
+            example: "Центр города всегда полон людей.",
+          },
+          {
+            term: "пробка",
+            romaji: "probka",
+            translation: "traffic jam",
+            example: "Утром на дороге была ужасная пробка.",
+          },
+          {
+            term: "тротуар",
+            romaji: "trotuar",
+            translation: "sidewalk",
+            example: "Дети катались на велосипеде по тротуару.",
+          },
+          {
+            term: "светофор",
+            romaji: "svetofor",
+            translation: "traffic light",
+            example: "Подожди, пока светофор не станет зелёным.",
+          },
+          {
+            term: "соседи",
+            romaji: "sosedi",
+            translation: "neighbors",
+            example: "У нас очень дружелюбные соседи.",
+          },
+          {
+            term: "супермаркет",
+            romaji: "supermarket",
+            translation: "supermarket",
+            example: "Я купил продукты в супермаркете за углом.",
+          },
+          {
+            term: "многоквартирный дом",
+            romaji: "mnogokvartirnyy dom",
+            translation: "apartment building",
+            example: "Мы живём в многоквартирном доме на пятом этаже.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Где находится ближайшая аптека?",
+            romaji: "Gde nakhoditsya blizhayshaya apteka?",
+            translation: "Where's the nearest pharmacy?",
+          },
+          {
+            phrase: "Как пройти до центра?",
+            romaji: "Kak proyti do tsentra?",
+            translation: "How do I get downtown?",
+          },
+          {
+            phrase: "Я живу за углом.",
+            romaji: "Ya zhivu za uglom.",
+            translation: "I live around the corner.",
+          },
+          {
+            phrase: "На этой улице всегда шумно.",
+            romaji: "Na etoy ulitse vsegda shumno.",
+            translation: "This street is always noisy.",
+          },
+          {
+            phrase: "Здесь удобно добираться на метро.",
+            romaji: "Zdes' udobno dobirat'sya na metro.",
+            translation: "It's convenient to get around by metro here.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌲",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Learn vocabulary for describing nature, weather, and outdoor adventures",
+        scenario: "You're planning a weekend hike with friends and talking about the forest, mountains, and weather you'll encounter.",
+        vocabulary: [
+          {
+            term: "лес",
+            romaji: "les",
+            translation: "forest, woods",
+            example: "Мы гуляли по лесу всё утро.",
+          },
+          {
+            term: "гора",
+            romaji: "gora",
+            translation: "mountain",
+            example: "Вершина горы была покрыта снегом.",
+          },
+          {
+            term: "река",
+            romaji: "reka",
+            translation: "river",
+            example: "Река течёт через весь город.",
+          },
+          {
+            term: "озеро",
+            romaji: "ozero",
+            translation: "lake",
+            example: "Летом мы купаемся в озере.",
+          },
+          {
+            term: "поход",
+            romaji: "pokhod",
+            translation: "hike, camping trip",
+            example: "В субботу мы идём в поход в горы.",
+          },
+          {
+            term: "закат",
+            romaji: "zakat",
+            translation: "sunset",
+            example: "Закат над морем был потрясающим.",
+          },
+          {
+            term: "дикая природа",
+            romaji: "dikaya priroda",
+            translation: "wildlife, wild nature",
+            example: "В этом заповеднике богатая дикая природа.",
+          },
+          {
+            term: "свежий воздух",
+            romaji: "svezhiy vozdukh",
+            translation: "fresh air",
+            example: "После города приятно подышать свежим воздухом.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Какая сегодня погода?",
+            romaji: "Kakaya segodnya pogoda?",
+            translation: "What's the weather like today?",
+          },
+          {
+            phrase: "Давай пойдём в поход в эти выходные.",
+            romaji: "Davay poydyom v pokhod v eti vykhodnyye.",
+            translation: "Let's go hiking this weekend.",
+          },
+          {
+            phrase: "Осторожно, тропа скользкая.",
+            romaji: "Ostorozhno, tropa skol'zkaya.",
+            translation: "Careful, the trail is slippery.",
+          },
+          {
+            phrase: "Отсюда открывается прекрасный вид.",
+            romaji: "Otsyuda otkryvayetsya prekrasnyy vid.",
+            translation: "There's a beautiful view from here.",
+          },
+          {
+            phrase: "Не забудь воду и солнцезащитный крем.",
+            romaji: "Ne zabud' vodu i solntsezashchitnyy krem.",
+            translation: "Don't forget water and sunscreen.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Talk about the music you like, concerts, movies, and other entertainment",
+        scenario: "You're chatting with a friend about favorite bands, films, and weekend entertainment plans.",
+        vocabulary: [
+          {
+            term: "песня",
+            romaji: "pesnya",
+            translation: "song",
+            example: "Эта песня играет по радио каждый день.",
+          },
+          {
+            term: "группа",
+            romaji: "gruppa",
+            translation: "band, music group",
+            example: "Моя любимая группа выступает в субботу.",
+          },
+          {
+            term: "концерт",
+            romaji: "kontsert",
+            translation: "concert",
+            example: "Мы идём на концерт в пятницу.",
+          },
+          {
+            term: "петь",
+            romaji: "pet'",
+            translation: "to sing",
+            example: "Она прекрасно поёт.",
+          },
+          {
+            term: "играть на гитаре",
+            romaji: "igrat' na gitare",
+            translation: "to play the guitar",
+            example: "Он научился играть на гитаре в детстве.",
+          },
+          {
+            term: "фильм",
+            romaji: "fil'm",
+            translation: "movie, film",
+            example: "Какой фильм ты хочешь посмотреть?",
+          },
+          {
+            term: "слушать музыку",
+            romaji: "slushat' muzyku",
+            translation: "to listen to music",
+            example: "Я люблю слушать музыку по дороге на работу.",
+          },
+          {
+            term: "билет на концерт",
+            romaji: "bilet na kontsert",
+            translation: "concert ticket",
+            example: "Билеты на концерт уже раскупили.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Какую музыку ты слушаешь?",
+            romaji: "Kakuyu muzyku ty slushayesh'?",
+            translation: "What kind of music do you listen to?",
+          },
+          {
+            phrase: "Ты умеешь играть на каком-нибудь инструменте?",
+            romaji: "Ty umeyesh' igrat' na kakom-nibud' instrumente?",
+            translation: "Can you play any instrument?",
+          },
+          {
+            phrase: "Этот фильм получил много наград.",
+            romaji: "Etot fil'm poluchil mnogo nagrad.",
+            translation: "This movie won a lot of awards.",
+          },
+          {
+            phrase: "Пойдём на концерт вместе?",
+            romaji: "Poydyom na kontsert vmeste?",
+            translation: "Shall we go to the concert together?",
+          },
+          {
+            phrase: "У меня в плейлисте одни хиты.",
+            romaji: "U menya v pleyliste odni khity.",
+            translation: "My playlist is all hits.",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Learn how to talk about pets, animals, and taking care of them",
+        scenario: "You're at a friend's house meeting their new puppy and swapping stories about pets you've both had.",
+        vocabulary: [
+          {
+            term: "собака",
+            romaji: "sobaka",
+            translation: "dog",
+            example: "У меня дома живёт собака.",
+          },
+          {
+            term: "кошка",
+            romaji: "koshka",
+            translation: "cat",
+            example: "Моя кошка любит спать весь день.",
+          },
+          {
+            term: "щенок",
+            romaji: "shchenok",
+            translation: "puppy",
+            example: "Этот щенок совсем маленький.",
+          },
+          {
+            term: "домашнее животное",
+            romaji: "domashneye zhivotnoye",
+            translation: "pet, domestic animal",
+            example: "У тебя есть домашнее животное?",
+          },
+          {
+            term: "кормить",
+            romaji: "kormit'",
+            translation: "to feed",
+            example: "Я кормлю кота два раза в день.",
+          },
+          {
+            term: "гулять с собакой",
+            romaji: "gulyat' s sobakoy",
+            translation: "to walk the dog",
+            example: "Каждое утро я гуляю с собакой.",
+          },
+          {
+            term: "клетка",
+            romaji: "kletka",
+            translation: "cage",
+            example: "Попугай сидит в клетке.",
+          },
+          {
+            term: "ветеринар",
+            romaji: "veterinar",
+            translation: "veterinarian",
+            example: "Завтра мы ведём кота к ветеринару.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "У тебя есть домашнее животное?",
+            romaji: "U tebya yest' domashneye zhivotnoye?",
+            translation: "Do you have a pet?",
+          },
+          {
+            phrase: "Как зовут твою собаку?",
+            romaji: "Kak zovut tvoyu sobaku?",
+            translation: "What's your dog's name?",
+          },
+          {
+            phrase: "Мою кошку нужно кормить два раза в день.",
+            romaji: "Moyu koshku nuzhno kormit' dva raza v den'.",
+            translation: "My cat needs to be fed twice a day.",
+          },
+          {
+            phrase: "Он взял щенка из приюта.",
+            romaji: "On vzyal shchenka iz priyuta.",
+            translation: "He adopted a puppy from a shelter.",
+          },
+          {
+            phrase: "Нам нужно отвести собаку к ветеринару.",
+            romaji: "Nam nuzhno otvesti sobaku k veterinaru.",
+            translation: "We need to take the dog to the vet.",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💰",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Learn essential vocabulary for handling money, banking, and paying for things",
+        scenario: "You're opening a bank account in a new city and asking about cards, cash, and paying bills.",
+        vocabulary: [
+          {
+            term: "деньги",
+            romaji: "den'gi",
+            translation: "money",
+            example: "У меня осталось мало денег.",
+          },
+          {
+            term: "банк",
+            romaji: "bank",
+            translation: "bank",
+            example: "Банк открывается в девять утра.",
+          },
+          {
+            term: "банковская карта",
+            romaji: "bankovskaya karta",
+            translation: "bank card",
+            example: "Я оплатил покупку банковской картой.",
+          },
+          {
+            term: "наличные",
+            romaji: "nalichnyye",
+            translation: "cash",
+            example: "У тебя есть наличные?",
+          },
+          {
+            term: "счёт",
+            romaji: "schyot",
+            translation: "account (bank); also 'bill' at a restaurant",
+            example: "Мне нужно открыть счёт в банке.",
+          },
+          {
+            term: "платить",
+            romaji: "platit'",
+            translation: "to pay",
+            example: "Кто будет платить за ужин?",
+          },
+          {
+            term: "снять деньги",
+            romaji: "snyat' den'gi",
+            translation: "to withdraw money",
+            example: "Мне нужно снять деньги в банкомате.",
+          },
+          {
+            term: "сдача",
+            romaji: "sdacha",
+            translation: "change (money returned after a purchase)",
+            example: "Не забудьте свою сдачу.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Сколько это стоит?",
+            romaji: "Skol'ko eto stoit?",
+            translation: "How much does this cost?",
+          },
+          {
+            phrase: "Вы принимаете карты?",
+            romaji: "Vy prinimayete karty?",
+            translation: "Do you accept cards?",
+          },
+          {
+            phrase: "Курс обмена валют сегодня выгодный.",
+            romaji: "Kurs obmena valyut segodnya vygodnyy.",
+            translation: "Today's exchange rate is good.",
+          },
+          {
+            phrase: "Можно оплатить наличными?",
+            romaji: "Mozhno oplatit' nalichnymi?",
+            translation: "Can I pay in cash?",
+          },
+          {
+            phrase: "Я хочу открыть счёт в банке.",
+            romaji: "Ya khochu otkryt' schyot v banke.",
+            translation: "I want to open a bank account.",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📞",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Learn how to make phone calls, leave messages, and handle everyday phone conversations",
+        scenario: "You're calling a friend and then a business to schedule an appointment, navigating typical phone etiquette.",
+        vocabulary: [
+          {
+            term: "звонить",
+            romaji: "zvonit'",
+            translation: "to call (by phone)",
+            example: "Позвони мне, когда приедешь.",
+          },
+          {
+            term: "трубка",
+            romaji: "trubka",
+            translation: "phone receiver",
+            example: "Она подняла трубку после третьего звонка.",
+          },
+          {
+            term: "номер телефона",
+            romaji: "nomer telefona",
+            translation: "phone number",
+            example: "Дай мне свой номер телефона.",
+          },
+          {
+            term: "перезвонить",
+            romaji: "perezvonit'",
+            translation: "to call back",
+            example: "Я перезвоню тебе через час.",
+          },
+          {
+            term: "оставить сообщение",
+            romaji: "ostavit' soobshcheniye",
+            translation: "to leave a message",
+            example: "Могу я оставить сообщение?",
+          },
+          {
+            term: "занято",
+            romaji: "zanyato",
+            translation: "busy (phone line)",
+            example: "Линия занята, попробуй позже.",
+          },
+          {
+            term: "пропущенный звонок",
+            romaji: "propushchennyy zvonok",
+            translation: "missed call",
+            example: "У меня три пропущенных звонка от тебя.",
+          },
+          {
+            term: "положить трубку",
+            romaji: "polozhit' trubku",
+            translation: "to hang up",
+            example: "Он резко положил трубку.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Алло, кто это?",
+            romaji: "Allo, kto eto?",
+            translation: "Hello, who is this?",
+          },
+          {
+            phrase: "Могу я поговорить с менеджером?",
+            romaji: "Mogu ya pogovorit' s menedzherom?",
+            translation: "May I speak with the manager?",
+          },
+          {
+            phrase: "Подождите минутку, пожалуйста.",
+            romaji: "Podozhdite minutku, pozhaluysta.",
+            translation: "Please hold on a moment.",
+          },
+          {
+            phrase: "Перезвоните мне позже.",
+            romaji: "Perezvonite mne pozzhe.",
+            translation: "Call me back later.",
+          },
+          {
+            phrase: "Извините, плохо слышно.",
+            romaji: "Izvinite, plokho slyshno.",
+            translation: "Sorry, I can barely hear you.",
+          },
+        ],
+      },
     ],
   },
   it: {
@@ -11423,6 +14629,510 @@ export const courses = {
           {
             phrase: "Qual è la tua festa preferita?",
             translation: "What's your favorite holiday?",
+          },
+        ],
+      },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn common Italian idioms and expressions that native speakers use all the time.",
+        scenario: "You're chatting with an Italian friend who keeps using colorful expressions you want to understand and use yourself.",
+        vocabulary: [
+          {
+            term: "in bocca al lupo",
+            translation: "good luck (literally 'into the wolf's mouth')",
+            example: "In bocca al lupo per l'esame di domani!",
+          },
+          {
+            term: "essere al verde",
+            translation: "to be broke, out of money",
+            example: "Non posso uscire stasera, sono al verde.",
+          },
+          {
+            term: "costare un occhio della testa",
+            translation: "to cost a fortune",
+            example: "Quella borsa costa un occhio della testa.",
+          },
+          {
+            term: "avere la testa tra le nuvole",
+            translation: "to be distracted, daydreaming",
+            example: "Scusa, oggi ho la testa tra le nuvole.",
+          },
+          {
+            term: "prendere due piccioni con una fava",
+            translation: "to kill two birds with one stone",
+            example: "Se andiamo a piedi, prendiamo due piccioni con una fava: risparmiamo e facciamo sport.",
+          },
+          {
+            term: "rompere il ghiaccio",
+            translation: "to break the ice",
+            example: "Ha raccontato una barzelletta per rompere il ghiaccio.",
+          },
+          {
+            term: "non vedere l'ora",
+            translation: "to be really looking forward to something",
+            example: "Non vedo l'ora di rivederti!",
+          },
+          {
+            term: "in gamba",
+            translation: "capable, switched-on (about a person)",
+            example: "Il tuo collega è davvero in gamba.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "In bocca al lupo!",
+            translation: "Good luck! (traditional reply: 'Crepi!')",
+          },
+          {
+            phrase: "Sono al verde questo mese.",
+            translation: "I'm broke this month.",
+          },
+          {
+            phrase: "Non vedo l'ora di vederti.",
+            translation: "I can't wait to see you.",
+          },
+          {
+            phrase: "Ho la testa tra le nuvole oggi.",
+            translation: "My head's in the clouds today.",
+          },
+          {
+            phrase: "Sei davvero in gamba!",
+            translation: "You're really switched-on / capable!",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Talk about your neighborhood, getting around town, and everyday city life.",
+        scenario: "You've just moved to a new neighborhood and are chatting with a neighbor about the area and how to get around.",
+        vocabulary: [
+          {
+            term: "il quartiere",
+            translation: "neighborhood",
+            example: "Il mio quartiere è molto tranquillo.",
+          },
+          {
+            term: "il marciapiede",
+            translation: "sidewalk",
+            example: "Cammina sul marciapiede, non in strada.",
+          },
+          {
+            term: "l'incrocio",
+            translation: "intersection, crossroads",
+            example: "Gira a destra all'incrocio.",
+          },
+          {
+            term: "il semaforo",
+            translation: "traffic light",
+            example: "Aspetta il verde al semaforo.",
+          },
+          {
+            term: "la fermata dell'autobus",
+            translation: "bus stop",
+            example: "La fermata dell'autobus è vicino a casa mia.",
+          },
+          {
+            term: "il palazzo",
+            translation: "building",
+            example: "Abito in quel palazzo giallo.",
+          },
+          {
+            term: "il vicino di casa",
+            translation: "neighbor",
+            example: "Il mio vicino di casa è molto gentile.",
+          },
+          {
+            term: "il centro",
+            translation: "downtown, city center",
+            example: "Andiamo in centro a fare shopping.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Dov'è la fermata dell'autobus più vicina?",
+            translation: "Where's the nearest bus stop?",
+          },
+          {
+            phrase: "Come si arriva al centro da qui?",
+            translation: "How do you get downtown from here?",
+          },
+          {
+            phrase: "Abito in questo quartiere da due anni.",
+            translation: "I've lived in this neighborhood for two years.",
+          },
+          {
+            phrase: "Gira a sinistra dopo il semaforo.",
+            translation: "Turn left after the traffic light.",
+          },
+          {
+            phrase: "È a due passi da qui.",
+            translation: "It's just a stone's throw from here.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌲",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Explore vocabulary for mountains, forests, and everything you'd see on a hike.",
+        scenario: "You're planning a weekend hike with friends and describing the scenery you hope to see.",
+        vocabulary: [
+          {
+            term: "la montagna",
+            translation: "mountain",
+            example: "D'estate andiamo sempre in montagna.",
+          },
+          {
+            term: "il bosco",
+            translation: "woods, forest",
+            example: "Il sentiero attraversa un bosco di pini.",
+          },
+          {
+            term: "il fiume",
+            translation: "river",
+            example: "Il fiume scorre vicino al paese.",
+          },
+          {
+            term: "il lago",
+            translation: "lake",
+            example: "Ci siamo fatti il bagno nel lago.",
+          },
+          {
+            term: "il sentiero",
+            translation: "trail, path",
+            example: "Seguiamo il sentiero fino alla cima.",
+          },
+          {
+            term: "la spiaggia",
+            translation: "beach",
+            example: "La spiaggia era piena di gente.",
+          },
+          {
+            term: "il tramonto",
+            translation: "sunset",
+            example: "Il tramonto sulle colline è bellissimo.",
+          },
+          {
+            term: "fare un'escursione",
+            translation: "to go hiking",
+            example: "Domani facciamo un'escursione in montagna.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Andiamo a fare un'escursione questo weekend?",
+            translation: "Shall we go hiking this weekend?",
+          },
+          {
+            phrase: "Che bel tramonto!",
+            translation: "What a beautiful sunset!",
+          },
+          {
+            phrase: "Il sentiero è un po' ripido.",
+            translation: "The trail is a bit steep.",
+          },
+          {
+            phrase: "C'è un lago vicino da queste parti?",
+            translation: "Is there a lake nearby around here?",
+          },
+          {
+            phrase: "Mi piace stare a contatto con la natura.",
+            translation: "I like being close to nature.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Talk about your favorite music, concerts, and how you like to spend your free time.",
+        scenario: "You're at a party talking with someone about the music and bands you both love.",
+        vocabulary: [
+          {
+            term: "la canzone",
+            translation: "song",
+            example: "Questa canzone mi piace molto.",
+          },
+          {
+            term: "il/la cantante",
+            translation: "singer",
+            example: "Il mio cantante preferito è italiano.",
+          },
+          {
+            term: "il concerto",
+            translation: "concert",
+            example: "Sabato andiamo a un concerto.",
+          },
+          {
+            term: "lo strumento musicale",
+            translation: "musical instrument",
+            example: "Suoni qualche strumento musicale?",
+          },
+          {
+            term: "la chitarra",
+            translation: "guitar",
+            example: "Sto imparando a suonare la chitarra.",
+          },
+          {
+            term: "il ritmo",
+            translation: "rhythm, beat",
+            example: "Questa canzone ha un ritmo fantastico.",
+          },
+          {
+            term: "ballare",
+            translation: "to dance",
+            example: "Ci piace ballare quando usciamo.",
+          },
+          {
+            term: "il genere musicale",
+            translation: "music genre",
+            example: "Qual è il tuo genere musicale preferito?",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Che genere di musica ti piace?",
+            translation: "What kind of music do you like?",
+          },
+          {
+            phrase: "Andiamo al concerto stasera?",
+            translation: "Shall we go to the concert tonight?",
+          },
+          {
+            phrase: "Suoni qualche strumento?",
+            translation: "Do you play any instrument?",
+          },
+          {
+            phrase: "Questa canzone mi fa venire voglia di ballare.",
+            translation: "This song makes me want to dance.",
+          },
+          {
+            phrase: "Hai ascoltato l'ultimo album?",
+            translation: "Have you listened to the latest album?",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Learn how to talk about pets, animals, and taking care of them.",
+        scenario: "You're at the park with a friend, talking about your pets and how to take care of them.",
+        vocabulary: [
+          {
+            term: "il cane",
+            translation: "dog",
+            example: "Il mio cane si chiama Leo.",
+          },
+          {
+            term: "il gatto",
+            translation: "cat",
+            example: "Il gatto dorme tutto il giorno.",
+          },
+          {
+            term: "l'animale domestico",
+            translation: "pet",
+            example: "Hai un animale domestico?",
+          },
+          {
+            term: "il veterinario",
+            translation: "vet",
+            example: "Domani porto il cane dal veterinario.",
+          },
+          {
+            term: "il guinzaglio",
+            translation: "leash",
+            example: "Metti il guinzaglio al cane prima di uscire.",
+          },
+          {
+            term: "portare a spasso",
+            translation: "to walk (a pet)",
+            example: "Porto il cane a spasso ogni mattina.",
+          },
+          {
+            term: "la coda",
+            translation: "tail",
+            example: "Il cane scodinzola quando è felice.",
+          },
+          {
+            term: "il pesce rosso",
+            translation: "goldfish",
+            example: "Mia sorella ha un pesce rosso in camera.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Hai un animale domestico?",
+            translation: "Do you have a pet?",
+          },
+          {
+            phrase: "Come si chiama il tuo cane?",
+            translation: "What's your dog's name?",
+          },
+          {
+            phrase: "Devo portare il cane a spasso.",
+            translation: "I need to walk the dog.",
+          },
+          {
+            phrase: "Il mio gatto è molto pigro.",
+            translation: "My cat is very lazy.",
+          },
+          {
+            phrase: "È dolcissimo il tuo cucciolo!",
+            translation: "Your puppy is so sweet!",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💶",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Learn the vocabulary you need to handle money, pay bills, and visit the bank.",
+        scenario: "You're at the bank opening an account and asking about how to manage your money.",
+        vocabulary: [
+          {
+            term: "il conto bancario",
+            translation: "bank account",
+            example: "Ho aperto un conto bancario la settimana scorsa.",
+          },
+          {
+            term: "il bancomat",
+            translation: "ATM, debit card",
+            example: "Devo prelevare dei soldi al bancomat.",
+          },
+          {
+            term: "la carta di credito",
+            translation: "credit card",
+            example: "Pago sempre con la carta di credito.",
+          },
+          {
+            term: "il contante",
+            translation: "cash",
+            example: "Non ho contante, posso pagare con la carta?",
+          },
+          {
+            term: "il bonifico",
+            translation: "bank transfer",
+            example: "Ti faccio un bonifico domani.",
+          },
+          {
+            term: "risparmiare",
+            translation: "to save (money)",
+            example: "Cerco di risparmiare ogni mese.",
+          },
+          {
+            term: "il prezzo",
+            translation: "price",
+            example: "Qual è il prezzo di questo articolo?",
+          },
+          {
+            term: "la ricevuta",
+            translation: "receipt",
+            example: "Puoi darmi la ricevuta, per favore?",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Posso pagare con la carta?",
+            translation: "Can I pay by card?",
+          },
+          {
+            phrase: "Dov'è il bancomat più vicino?",
+            translation: "Where's the nearest ATM?",
+          },
+          {
+            phrase: "Vorrei aprire un conto bancario.",
+            translation: "I'd like to open a bank account.",
+          },
+          {
+            phrase: "Quanto costa in totale?",
+            translation: "How much is it in total?",
+          },
+          {
+            phrase: "Sto cercando di risparmiare di più.",
+            translation: "I'm trying to save more money.",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📱",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Learn how to make phone calls, leave messages, and handle common phone situations in Italian.",
+        scenario: "You're calling a friend, but they don't pick up, so you need to leave a message and try again later.",
+        vocabulary: [
+          {
+            term: "il telefono",
+            translation: "phone",
+            example: "Ho lasciato il telefono a casa.",
+          },
+          {
+            term: "chiamare",
+            translation: "to call",
+            example: "Ti chiamo appena arrivo.",
+          },
+          {
+            term: "il messaggio",
+            translation: "message, text",
+            example: "Ti ho mandato un messaggio ieri sera.",
+          },
+          {
+            term: "rispondere",
+            translation: "to answer",
+            example: "Non ha risposto al telefono.",
+          },
+          {
+            term: "riattaccare",
+            translation: "to hang up",
+            example: "Ha riattaccato senza salutare.",
+          },
+          {
+            term: "la segreteria telefonica",
+            translation: "voicemail",
+            example: "Lascia un messaggio in segreteria telefonica.",
+          },
+          {
+            term: "il numero di telefono",
+            translation: "phone number",
+            example: "Mi dai il tuo numero di telefono?",
+          },
+          {
+            term: "la linea",
+            translation: "line (phone connection)",
+            example: "La linea è caduta all'improvviso.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Pronto?",
+            translation: "Hello? (used only when answering the phone)",
+          },
+          {
+            phrase: "Posso lasciare un messaggio?",
+            translation: "Can I leave a message?",
+          },
+          {
+            phrase: "Ti richiamo più tardi.",
+            translation: "I'll call you back later.",
+          },
+          {
+            phrase: "Mi dispiace, ho sbagliato numero.",
+            translation: "Sorry, I dialed the wrong number.",
+          },
+          {
+            phrase: "La linea cade sempre qui.",
+            translation: "The line always drops here.",
           },
         ],
       },
@@ -12995,6 +16705,510 @@ export const courses = {
           },
         ],
       },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn common Polish idioms and expressions that native speakers use every day.",
+        scenario: "You're chatting with a Polish friend who keeps using colorful expressions and idioms you want to understand and start using yourself.",
+        vocabulary: [
+          {
+            term: "mieć muchy w nosie",
+            translation: "to be in a bad mood, easily irritated (literally 'to have flies in one's nose')",
+            example: "Nie podchodź do niego, dziś ma muchy w nosie.",
+          },
+          {
+            term: "rzucać grochem o ścianę",
+            translation: "to waste time trying to convince someone who won't listen (literally 'to throw peas at a wall')",
+            example: "Tłumaczenie mu tego to jak rzucanie grochem o ścianę.",
+          },
+          {
+            term: "wiercić komuś dziurę w brzuchu",
+            translation: "to pester someone with constant questions or nagging (literally 'to drill a hole in someone's stomach')",
+            example: "Przestań wiercić mi dziurę w brzuchu, powiem ci później.",
+          },
+          {
+            term: "mieć głowę na karku",
+            translation: "to be sensible and level-headed (literally 'to have a head on one's neck')",
+            example: "Ona ma głowę na karku, na pewno sobie poradzi.",
+          },
+          {
+            term: "raz na ruski rok",
+            translation: "very rarely, once in a blue moon (literally 'once in a Russian year')",
+            example: "Widujemy się raz na ruski rok.",
+          },
+          {
+            term: "chytry jak lis",
+            translation: "sly as a fox, cunning",
+            example: "Uważaj na niego, jest chytry jak lis.",
+          },
+          {
+            term: "co dwie głowy, to nie jedna",
+            translation: "two heads are better than one",
+            example: "Zapytajmy jeszcze kogoś, co dwie głowy, to nie jedna.",
+          },
+          {
+            term: "między młotem a kowadłem",
+            translation: "caught between a rock and a hard place (literally 'between the hammer and the anvil')",
+            example: "Czuję się jak między młotem a kowadłem w tej sprawie.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Nie ma sprawy.",
+            translation: "No problem. / Don't worry about it.",
+          },
+          {
+            phrase: "Trzymam kciuki!",
+            translation: "I'm keeping my fingers crossed for you! (literally 'I'm holding thumbs')",
+          },
+          {
+            phrase: "Co się stało, to się nie odstanie.",
+            translation: "What's done is done.",
+          },
+          {
+            phrase: "Lepiej późno niż wcale.",
+            translation: "Better late than never.",
+          },
+          {
+            phrase: "To nie mój problem.",
+            translation: "That's not my problem.",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Talk about city life, getting around your neighborhood, and everyday urban spots.",
+        scenario: "You've just moved to a new neighborhood in a Polish city and are getting oriented — finding your way around and describing where things are.",
+        vocabulary: [
+          {
+            term: "miasto",
+            translation: "city, town",
+            example: "Mieszkam w dużym mieście.",
+          },
+          {
+            term: "dzielnica",
+            translation: "district, neighborhood",
+            example: "Nasza dzielnica jest bardzo spokojna.",
+          },
+          {
+            term: "chodnik",
+            translation: "sidewalk, pavement",
+            example: "Idź prosto tym chodnikiem.",
+          },
+          {
+            term: "skrzyżowanie",
+            translation: "intersection, crossroads",
+            example: "Skręć w lewo na następnym skrzyżowaniu.",
+          },
+          {
+            term: "przystanek autobusowy",
+            translation: "bus stop",
+            example: "Przystanek autobusowy jest tuż za rogiem.",
+          },
+          {
+            term: "ratusz",
+            translation: "town hall, city hall",
+            example: "Ratusz stoi na głównym rynku.",
+          },
+          {
+            term: "korek (uliczny)",
+            translation: "traffic jam",
+            example: "Utknęliśmy w korku przez godzinę.",
+          },
+          {
+            term: "osiedle",
+            translation: "residential estate, housing development",
+            example: "Mieszkam na nowym osiedlu na obrzeżach miasta.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Jak dojść do centrum?",
+            translation: "How do I get to the city center?",
+          },
+          {
+            phrase: "Czy to jest blisko stąd?",
+            translation: "Is that close from here?",
+          },
+          {
+            phrase: "Zgubiłem się.",
+            translation: "I got lost.",
+          },
+          {
+            phrase: "Gdzie jest najbliższy przystanek?",
+            translation: "Where is the nearest stop?",
+          },
+          {
+            phrase: "To jest tuż za rogiem.",
+            translation: "It's just around the corner.",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌲",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Learn vocabulary for describing nature, the outdoors, and weather during hikes or walks.",
+        scenario: "You're planning a weekend hike in the mountains with friends and talking about the trail, the weather, and the scenery along the way.",
+        vocabulary: [
+          {
+            term: "las",
+            translation: "forest, woods",
+            example: "Spacerowaliśmy po lesie cały dzień.",
+          },
+          {
+            term: "góra",
+            translation: "mountain",
+            example: "Ta góra jest bardzo wysoka.",
+          },
+          {
+            term: "jezioro",
+            translation: "lake",
+            example: "Latem pływamy w tym jeziorze.",
+          },
+          {
+            term: "rzeka",
+            translation: "river",
+            example: "Rzeka płynie przez całą dolinę.",
+          },
+          {
+            term: "szlak (turystyczny)",
+            translation: "hiking trail",
+            example: "Ten szlak prowadzi na szczyt.",
+          },
+          {
+            term: "łąka",
+            translation: "meadow",
+            example: "Dzieci biegały po łące pełnej kwiatów.",
+          },
+          {
+            term: "pogoda",
+            translation: "weather",
+            example: "Jaka jest dziś pogoda w górach?",
+          },
+          {
+            term: "zachód słońca",
+            translation: "sunset",
+            example: "Oglądaliśmy zachód słońca nad jeziorem.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Jaka jest prognoza pogody na jutro?",
+            translation: "What's the weather forecast for tomorrow?",
+          },
+          {
+            phrase: "Chodźmy na spacer do lasu.",
+            translation: "Let's go for a walk in the forest.",
+          },
+          {
+            phrase: "Ten widok jest przepiękny.",
+            translation: "This view is beautiful.",
+          },
+          {
+            phrase: "Weź ze sobą wodę i mapę.",
+            translation: "Take water and a map with you.",
+          },
+          {
+            phrase: "Uważaj, ścieżka jest śliska.",
+            translation: "Be careful, the path is slippery.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Talk about music, concerts, movies, and how you like to spend your free time.",
+        scenario: "You're discussing your favorite music, a concert you went to, and weekend entertainment plans with a friend.",
+        vocabulary: [
+          {
+            term: "muzyka",
+            translation: "music",
+            example: "Uwielbiam słuchać muzyki wieczorem.",
+          },
+          {
+            term: "piosenka",
+            translation: "song",
+            example: "Ta piosenka gra teraz wszędzie.",
+          },
+          {
+            term: "koncert",
+            translation: "concert",
+            example: "Byliśmy wczoraj na świetnym koncercie.",
+          },
+          {
+            term: "zespół (muzyczny)",
+            translation: "band",
+            example: "Mój ulubiony zespół wydał nową płytę.",
+          },
+          {
+            term: "film",
+            translation: "movie, film",
+            example: "Obejrzeliśmy ciekawy film w kinie.",
+          },
+          {
+            term: "kino",
+            translation: "cinema, movie theater",
+            example: "Idziemy dziś do kina.",
+          },
+          {
+            term: "grać na gitarze",
+            translation: "to play the guitar",
+            example: "Uczę się grać na gitarze od roku.",
+          },
+          {
+            term: "śpiewać",
+            translation: "to sing",
+            example: "Ona pięknie śpiewa.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Jakiej muzyki słuchasz?",
+            translation: "What kind of music do you listen to?",
+          },
+          {
+            phrase: "Masz ochotę iść na koncert?",
+            translation: "Do you feel like going to a concert?",
+          },
+          {
+            phrase: "Ten film bardzo mi się podobał.",
+            translation: "I really liked that movie.",
+          },
+          {
+            phrase: "Kto jest twoim ulubionym wykonawcą?",
+            translation: "Who is your favorite artist/performer?",
+          },
+          {
+            phrase: "Co robisz w wolnym czasie?",
+            translation: "What do you do in your free time?",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Learn how to talk about pets, animals, and taking care of them.",
+        scenario: "You're chatting with a neighbor about your pets, their habits, and animals you both like.",
+        vocabulary: [
+          {
+            term: "zwierzę (domowe)",
+            translation: "pet, (domestic) animal",
+            example: "Mamy w domu dwa zwierzęta domowe.",
+          },
+          {
+            term: "pies",
+            translation: "dog",
+            example: "Mój pies uwielbia biegać po parku.",
+          },
+          {
+            term: "kot",
+            translation: "cat",
+            example: "Kot śpi prawie cały dzień.",
+          },
+          {
+            term: "karmić",
+            translation: "to feed",
+            example: "Karmię kota dwa razy dziennie.",
+          },
+          {
+            term: "wyprowadzać (psa) na spacer",
+            translation: "to walk (a dog)",
+            example: "Wyprowadzam psa na spacer co rano.",
+          },
+          {
+            term: "weterynarz",
+            translation: "veterinarian",
+            example: "Zabrałem kota do weterynarza.",
+          },
+          {
+            term: "klatka",
+            translation: "cage",
+            example: "Chomik mieszka w małej klatce.",
+          },
+          {
+            term: "sierść",
+            translation: "fur, coat (of an animal)",
+            example: "Ten pies ma bardzo miękką sierść.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Jakie masz zwierzę?",
+            translation: "What pet do you have?",
+          },
+          {
+            phrase: "Jak on/ona ma na imię?",
+            translation: "What's his/her name?",
+          },
+          {
+            phrase: "Muszę wyprowadzić psa.",
+            translation: "I have to walk the dog.",
+          },
+          {
+            phrase: "Czy ten pies jest przyjazny?",
+            translation: "Is this dog friendly?",
+          },
+          {
+            phrase: "Od jak dawna masz kota?",
+            translation: "How long have you had the cat?",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💳",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Learn essential vocabulary for handling money, paying bills, and everyday banking.",
+        scenario: "You're at the bank opening an account and later paying for groceries, learning how to talk about money and payments.",
+        vocabulary: [
+          {
+            term: "pieniądze",
+            translation: "money",
+            example: "Nie mam przy sobie gotówki, tylko pieniądze na koncie.",
+          },
+          {
+            term: "konto (bankowe)",
+            translation: "bank account",
+            example: "Chciałbym założyć konto bankowe.",
+          },
+          {
+            term: "karta kredytowa / debetowa",
+            translation: "credit / debit card",
+            example: "Zapłacę kartą debetową.",
+          },
+          {
+            term: "gotówka",
+            translation: "cash",
+            example: "Czy mogę zapłacić gotówką?",
+          },
+          {
+            term: "rachunek",
+            translation: "bill, receipt",
+            example: "Muszę zapłacić rachunek za prąd.",
+          },
+          {
+            term: "przelew (bankowy)",
+            translation: "bank transfer",
+            example: "Zrobiłem przelew wczoraj wieczorem.",
+          },
+          {
+            term: "bankomat",
+            translation: "ATM",
+            example: "Najbliższy bankomat jest przy stacji.",
+          },
+          {
+            term: "oszczędzać",
+            translation: "to save (money)",
+            example: "Staram się oszczędzać co miesiąc.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Ile to kosztuje?",
+            translation: "How much does this cost?",
+          },
+          {
+            phrase: "Czy mogę zapłacić kartą?",
+            translation: "Can I pay by card?",
+          },
+          {
+            phrase: "Chciałbym wypłacić pieniądze.",
+            translation: "I'd like to withdraw money.",
+          },
+          {
+            phrase: "Nie stać mnie na to.",
+            translation: "I can't afford that.",
+          },
+          {
+            phrase: "Gdzie jest najbliższy bankomat?",
+            translation: "Where is the nearest ATM?",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📱",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Learn how to make phone calls, leave messages, and handle common phone conversations.",
+        scenario: "You're making and receiving phone calls in Polish — scheduling appointments, leaving messages, and dealing with a bad connection.",
+        vocabulary: [
+          {
+            term: "telefon (komórkowy)",
+            translation: "(mobile/cell) phone",
+            example: "Zgubiłem mój telefon komórkowy.",
+          },
+          {
+            term: "dzwonić (do kogoś)",
+            translation: "to call (someone)",
+            example: "Zadzwonię do ciebie wieczorem.",
+          },
+          {
+            term: "odbierać (telefon)",
+            translation: "to answer, pick up (the phone)",
+            example: "Nie mogłem odebrać, byłem w pracy.",
+          },
+          {
+            term: "numer telefonu",
+            translation: "phone number",
+            example: "Zapisz mój numer telefonu.",
+          },
+          {
+            term: "wiadomość (tekstowa)",
+            translation: "(text) message",
+            example: "Wyślij mi wiadomość, jak dojedziesz.",
+          },
+          {
+            term: "połączenie",
+            translation: "(phone) call, connection",
+            example: "Połączenie się urwało.",
+          },
+          {
+            term: "bateria",
+            translation: "battery",
+            example: "Bateria w moim telefonie się rozładowała.",
+          },
+          {
+            term: "oddzwonić",
+            translation: "to call back",
+            example: "Oddzwonię do ciebie za pięć minut.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Halo, kto mówi?",
+            translation: "Hello, who's speaking?",
+          },
+          {
+            phrase: "Czy mogę rozmawiać z panem Kowalskim?",
+            translation: "May I speak with Mr. Kowalski?",
+          },
+          {
+            phrase: "Zaczekaj chwilę, przełączam.",
+            translation: "Hold on a moment, I'm transferring you.",
+          },
+          {
+            phrase: "Nic nie słyszę, słaby zasięg.",
+            translation: "I can't hear anything, the signal is weak.",
+          },
+          {
+            phrase: "Oddzwonię później.",
+            translation: "I'll call back later.",
+          },
+        ],
+      },
     ],
   },
   nl: {
@@ -14541,6 +18755,510 @@ export const courses = {
           {
             phrase: "Dat is een mooie traditie.",
             translation: "That's a beautiful tradition.",
+          },
+        ],
+      },
+      {
+        id: "idioms",
+        icon: "🗨️",
+        category: "Foundations",
+        title: "Idioms & Everyday Expressions",
+        description: "Learn common Dutch idioms and expressions that make you sound like a native speaker.",
+        scenario: "A Dutch friend keeps using colorful expressions in conversation, and you're picking up what they really mean.",
+        vocabulary: [
+          {
+            term: "de kat uit de boom kijken",
+            translation: "to wait and see how something develops (literally: to watch the cat out of the tree)",
+            example: "Ik kijk nog even de kat uit de boom voordat ik beslis.",
+          },
+          {
+            term: "het regent pijpenstelen",
+            translation: "it's raining very hard (literally: it's raining pipe stems)",
+            example: "Neem een paraplu mee, het regent pijpenstelen.",
+          },
+          {
+            term: "de handen uit de mouwen steken",
+            translation: "to get to work, to roll up your sleeves",
+            example: "Kom op, we moeten de handen uit de mouwen steken.",
+          },
+          {
+            term: "iets in de gaten houden",
+            translation: "to keep an eye on something",
+            example: "Kun jij de kinderen even in de gaten houden?",
+          },
+          {
+            term: "het maakt me niet uit",
+            translation: "I don't mind, it makes no difference to me",
+            example: "Het maakt me niet uit waar we eten.",
+          },
+          {
+            term: "ergens genoeg van hebben",
+            translation: "to be fed up with something",
+            example: "Ik heb er genoeg van, altijd hetzelfde gedoe.",
+          },
+          {
+            term: "op eieren lopen",
+            translation: "to tread carefully, to walk on eggshells",
+            example: "Sinds de ruzie loopt iedereen op eieren.",
+          },
+          {
+            term: "boven op iets zitten",
+            translation: "to closely monitor or manage something",
+            example: "De manager zit er echt boven op.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Nou breekt mijn klomp!",
+            translation: "Well, that beats everything! (an expression of surprise or disbelief)",
+          },
+          {
+            phrase: "Dat zal wel loslopen.",
+            translation: "It'll probably turn out fine, don't worry about it.",
+          },
+          {
+            phrase: "Nu komt de aap uit de mouw.",
+            translation: "Now the truth comes out (literally: now the monkey comes out of the sleeve).",
+          },
+          {
+            phrase: "Geen paniek, het komt goed.",
+            translation: "No panic, it'll be alright.",
+          },
+          {
+            phrase: "Zullen we het erbij laten?",
+            translation: "Shall we leave it at that? (used to end a discussion amicably)",
+          },
+        ],
+      },
+      {
+        id: "city-life",
+        icon: "🏙️",
+        category: "Out and About",
+        title: "City Life & Neighborhood",
+        description: "Talk about your neighborhood, getting around the city, and everyday urban life.",
+        scenario: "You're showing a visiting friend around your neighborhood, pointing out useful places and daily city routines.",
+        vocabulary: [
+          {
+            term: "de buurt",
+            translation: "neighborhood",
+            example: "Ik woon al jaren in deze buurt.",
+          },
+          {
+            term: "het plein",
+            translation: "square (as in town square)",
+            example: "Op het plein staat elke zaterdag een markt.",
+          },
+          {
+            term: "de buren",
+            translation: "neighbors",
+            example: "Onze buren zijn erg vriendelijk.",
+          },
+          {
+            term: "het gemeentehuis",
+            translation: "town hall, city hall",
+            example: "Voor een nieuw paspoort moet je naar het gemeentehuis.",
+          },
+          {
+            term: "de fietsenstalling",
+            translation: "bicycle parking",
+            example: "Zet je fiets maar in de fietsenstalling.",
+          },
+          {
+            term: "de drukte",
+            translation: "the crowds, busyness",
+            example: "Op zaterdag is de drukte in het centrum enorm.",
+          },
+          {
+            term: "de wijk",
+            translation: "district, part of town",
+            example: "Deze wijk is de laatste jaren erg opgeknapt.",
+          },
+          {
+            term: "bereikbaar",
+            translation: "accessible, reachable",
+            example: "Het station is goed bereikbaar met de bus.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Is dit een leuke buurt om te wonen?",
+            translation: "Is this a nice neighborhood to live in?",
+          },
+          {
+            phrase: "Er is hier altijd wel iets te doen.",
+            translation: "There's always something to do around here.",
+          },
+          {
+            phrase: "Loop je even mee naar de markt?",
+            translation: "Want to walk with me to the market?",
+          },
+          {
+            phrase: "Het is hier best druk in het weekend.",
+            translation: "It's pretty busy here on the weekend.",
+          },
+          {
+            phrase: "Ken je een goede plek om te lunchen?",
+            translation: "Do you know a good place to have lunch?",
+          },
+        ],
+      },
+      {
+        id: "nature",
+        icon: "🌳",
+        category: "Out and About",
+        title: "Nature & Outdoors",
+        description: "Describe the outdoors, plan a hike, and talk about the natural world around you.",
+        scenario: "You're planning a weekend hike with a friend and discussing the trail, the weather, and what you might see along the way.",
+        vocabulary: [
+          {
+            term: "het bos",
+            translation: "forest",
+            example: "We wandelen graag door het bos.",
+          },
+          {
+            term: "het meer",
+            translation: "lake",
+            example: "Het meer is glashelder vandaag.",
+          },
+          {
+            term: "de berg",
+            translation: "mountain",
+            example: "Vanaf de berg heb je een prachtig uitzicht.",
+          },
+          {
+            term: "het pad",
+            translation: "path, trail",
+            example: "Dit pad loopt langs de rivier.",
+          },
+          {
+            term: "de natuur",
+            translation: "nature",
+            example: "Ik geniet enorm van de natuur.",
+          },
+          {
+            term: "wandelen",
+            translation: "to hike, to walk",
+            example: "Zullen we dit weekend gaan wandelen?",
+          },
+          {
+            term: "de duinen",
+            translation: "the dunes",
+            example: "De duinen bij de kust zijn erg mooi.",
+          },
+          {
+            term: "de zonsondergang",
+            translation: "sunset",
+            example: "We kijken samen naar de zonsondergang.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Zullen we een frisse neus halen?",
+            translation: "Shall we get some fresh air? (a common expression for going outside)",
+          },
+          {
+            phrase: "Hoe lang duurt deze wandeling?",
+            translation: "How long does this hike take?",
+          },
+          {
+            phrase: "Neem genoeg water mee.",
+            translation: "Bring enough water with you.",
+          },
+          {
+            phrase: "Wat een prachtig uitzicht!",
+            translation: "What a beautiful view!",
+          },
+          {
+            phrase: "Pas op, het pad is glad.",
+            translation: "Watch out, the path is slippery.",
+          },
+        ],
+      },
+      {
+        id: "music",
+        icon: "🎵",
+        category: "Life & Interests",
+        title: "Music & Entertainment",
+        description: "Talk about the music you like, concerts, and other ways you spend your free evenings.",
+        scenario: "You and a friend are comparing music tastes and deciding whether to go to a concert together this weekend.",
+        vocabulary: [
+          {
+            term: "de muziek",
+            translation: "music",
+            example: "Ik luister elke dag naar muziek.",
+          },
+          {
+            term: "het concert",
+            translation: "concert",
+            example: "We gaan zaterdag naar een concert.",
+          },
+          {
+            term: "het liedje",
+            translation: "song",
+            example: "Dit liedje ken ik uit mijn hoofd.",
+          },
+          {
+            term: "de band",
+            translation: "band",
+            example: "Mijn favoriete band treedt hier op.",
+          },
+          {
+            term: "de film",
+            translation: "movie, film",
+            example: "Zullen we vanavond een film kijken?",
+          },
+          {
+            term: "optreden",
+            translation: "to perform (as in a concert or show)",
+            example: "De zanger treedt volgende week op.",
+          },
+          {
+            term: "het festival",
+            translation: "festival",
+            example: "Dit festival duurt het hele weekend.",
+          },
+          {
+            term: "de smaak",
+            translation: "taste (as in personal preference)",
+            example: "Onze muzieksmaak is heel verschillend.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Wat voor muziek luister jij graag?",
+            translation: "What kind of music do you like to listen to?",
+          },
+          {
+            phrase: "Heb je zin om naar een concert te gaan?",
+            translation: "Do you feel like going to a concert?",
+          },
+          {
+            phrase: "Dit liedje staat al de hele dag in mijn hoofd.",
+            translation: "This song has been stuck in my head all day.",
+          },
+          {
+            phrase: "Welke film wil je zien?",
+            translation: "Which movie do you want to see?",
+          },
+          {
+            phrase: "De sfeer was geweldig!",
+            translation: "The atmosphere was amazing!",
+          },
+        ],
+      },
+      {
+        id: "pets",
+        icon: "🐾",
+        category: "Life & Interests",
+        title: "Pets & Animals",
+        description: "Talk about pets, animals, and taking care of them in everyday life.",
+        scenario: "A neighbor stops by and you end up chatting about your pets and how you take care of them.",
+        vocabulary: [
+          {
+            term: "het huisdier",
+            translation: "pet",
+            example: "Heb jij een huisdier?",
+          },
+          {
+            term: "de hond",
+            translation: "dog",
+            example: "Onze hond wil elke dag wandelen.",
+          },
+          {
+            term: "de kat",
+            translation: "cat",
+            example: "De kat slaapt de hele dag.",
+          },
+          {
+            term: "voeren",
+            translation: "to feed (an animal)",
+            example: "Heb je de vissen al gevoerd?",
+          },
+          {
+            term: "uitlaten",
+            translation: "to walk (a dog), to take out",
+            example: "Ik laat de hond twee keer per dag uit.",
+          },
+          {
+            term: "de dierenarts",
+            translation: "veterinarian",
+            example: "Morgen gaan we naar de dierenarts.",
+          },
+          {
+            term: "aaien",
+            translation: "to pet, to stroke (an animal)",
+            example: "Mag ik je kat even aaien?",
+          },
+          {
+            term: "het staartje",
+            translation: "little tail",
+            example: "Ze kwispelt met haar staartje van blijdschap.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Heb je een hond of een kat?",
+            translation: "Do you have a dog or a cat?",
+          },
+          {
+            phrase: "Hoe heet jouw huisdier?",
+            translation: "What's your pet's name?",
+          },
+          {
+            phrase: "Ik moet de hond nog uitlaten.",
+            translation: "I still need to walk the dog.",
+          },
+          {
+            phrase: "Ze is heel lief voor een kat.",
+            translation: "She's very sweet for a cat.",
+          },
+          {
+            phrase: "Kun je op mijn huisdier passen dit weekend?",
+            translation: "Can you look after my pet this weekend?",
+          },
+        ],
+      },
+      {
+        id: "money",
+        icon: "💶",
+        category: "Everyday Life",
+        title: "Money & Banking",
+        description: "Handle everyday money matters like paying, transferring, and managing a bank account.",
+        scenario: "You're at the bank sorting out a new account and asking about how to pay and transfer money in daily life.",
+        vocabulary: [
+          {
+            term: "het geld",
+            translation: "money",
+            example: "Ik heb geen contant geld bij me.",
+          },
+          {
+            term: "de bank",
+            translation: "bank",
+            example: "Ik moet nog naar de bank.",
+          },
+          {
+            term: "de rekening",
+            translation: "bank account, bill",
+            example: "Kun je het geld op mijn rekening overmaken?",
+          },
+          {
+            term: "betalen",
+            translation: "to pay",
+            example: "Kan ik hier met kaart betalen?",
+          },
+          {
+            term: "pinnen",
+            translation: "to pay by debit card",
+            example: "Ik pin altijd, ik heb bijna nooit contant geld.",
+          },
+          {
+            term: "overmaken",
+            translation: "to transfer (money)",
+            example: "Ik maak het bedrag vandaag nog over.",
+          },
+          {
+            term: "sparen",
+            translation: "to save (money)",
+            example: "We sparen voor een nieuwe bank.",
+          },
+          {
+            term: "de wisselkoers",
+            translation: "exchange rate",
+            example: "De wisselkoers is vandaag gunstig.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Kan ik hier pinnen?",
+            translation: "Can I pay by card here?",
+          },
+          {
+            phrase: "Hoeveel kost dat?",
+            translation: "How much does that cost?",
+          },
+          {
+            phrase: "Ik wil graag een rekening openen.",
+            translation: "I'd like to open a bank account.",
+          },
+          {
+            phrase: "Kunt u het wisselgeld natellen?",
+            translation: "Could you count the change again? (a polite way to ask the cashier to double-check)",
+          },
+          {
+            phrase: "Ik maak het je later over.",
+            translation: "I'll transfer it to you later.",
+          },
+        ],
+      },
+      {
+        id: "phone",
+        icon: "📱",
+        category: "Everyday Life",
+        title: "Phone Calls & Communication",
+        description: "Handle phone calls, texting, and everyday communication with confidence.",
+        scenario: "Your phone rings and you need to handle the call, take a message, and arrange to call back later.",
+        vocabulary: [
+          {
+            term: "bellen",
+            translation: "to call (on the phone)",
+            example: "Ik bel je vanavond nog even.",
+          },
+          {
+            term: "het telefoonnummer",
+            translation: "phone number",
+            example: "Wat is jouw telefoonnummer?",
+          },
+          {
+            term: "ophangen",
+            translation: "to hang up",
+            example: "Ze hing plotseling op.",
+          },
+          {
+            term: "een bericht achterlaten",
+            translation: "to leave a message",
+            example: "Kunt u een bericht achterlaten?",
+          },
+          {
+            term: "terugbellen",
+            translation: "to call back",
+            example: "Ik bel je straks terug.",
+          },
+          {
+            term: "de verbinding",
+            translation: "connection (phone or internet line)",
+            example: "De verbinding is heel slecht hier.",
+          },
+          {
+            term: "een appje sturen",
+            translation: "to send a text message (informal, via WhatsApp)",
+            example: "Stuur me even een appje als je er bent.",
+          },
+          {
+            term: "in gesprek",
+            translation: "on the line, engaged (phone)",
+            example: "Sorry, de lijn is in gesprek.",
+          },
+        ],
+        phrases: [
+          {
+            phrase: "Met wie spreek ik?",
+            translation: "Who am I speaking with?",
+          },
+          {
+            phrase: "Een ogenblikje, ik verbind u door.",
+            translation: "One moment, I'll put you through.",
+          },
+          {
+            phrase: "Kunt u dat herhalen?",
+            translation: "Could you repeat that?",
+          },
+          {
+            phrase: "Ik bel u later nog even terug.",
+            translation: "I'll call you back a bit later.",
+          },
+          {
+            phrase: "Sorry, ik versta u niet goed.",
+            translation: "Sorry, I can't hear you well.",
           },
         ],
       },

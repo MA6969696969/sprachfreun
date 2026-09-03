@@ -1,4 +1,5 @@
 import { Link, useParams, Navigate } from "react-router-dom";
+import { Layers, Shuffle, Mic } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import SpeakButton from "./SpeakButton.jsx";
 import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
@@ -66,13 +67,13 @@ export default function CourseDetail({ courses }) {
 
         <div className="cta-stack">
           <Link to={`/${langCode}/course/${courseId}/flashcards`} className="primary-button practice-cta flashcard-cta">
-            📇 Practice vocabulary
+            <Layers size={18} /> Practice vocabulary
           </Link>
           <Link to={`/${langCode}/course/${courseId}/match`} className="secondary-button practice-cta">
-            🔀 Play match
+            <Shuffle size={18} /> Play match
           </Link>
           <Link to={`/${langCode}/practice/${courseId}`} className="secondary-button practice-cta">
-            🎙️ Practice speaking with AI
+            <Mic size={18} /> Practice speaking with AI
           </Link>
         </div>
       </div>

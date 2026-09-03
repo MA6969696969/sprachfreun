@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CalendarDays } from "lucide-react";
 import { useStreak } from "../context/StreakContext.jsx";
 
 const WEEKDAY_LABELS = ["S", "M", "T", "W", "T", "F", "S"];
@@ -66,7 +67,9 @@ export default function Streak() {
     <>
       <div className="page">
         <header className="hero small">
-          <h1>📅 Streak</h1>
+          <h1>
+            <CalendarDays size={26} className="icon-inline" /> Streak
+          </h1>
           <p>
             {streakCount === 0
               ? "No active streak yet — spend 5 minutes in the app today to start one."

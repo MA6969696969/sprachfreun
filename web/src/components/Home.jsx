@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Target, Award, MessageCircle, CheckCircle2, FlaskConical } from "lucide-react";
 import ProfileBar from "./ProfileBar.jsx";
 import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import { useActiveLanguage } from "../context/ActiveLanguageContext.jsx";
@@ -40,13 +41,18 @@ export default function Home({ courses }) {
       <header className="lang-home-header">
         <LanguageSwitcher courses={courses} />
         <div className="proficiency-badge">
-          <span className="stat-icon">🎯</span> {proficiency.title} · {proficiency.passedCount}/
+          <span className="stat-icon">
+            <Target size={16} />
+          </span>{" "}
+          {proficiency.title} · {proficiency.passedCount}/
           {proficiency.totalCount} units passed
         </div>
         {langPoints > 0 && (
           <p className="lang-mastery">
-            <span className="stat-icon">🏅</span> {langLevel.title} · {langPoints} pts in{" "}
-            {lang.languageName}
+            <span className="stat-icon">
+              <Award size={16} />
+            </span>{" "}
+            {langLevel.title} · {langPoints} pts in {lang.languageName}
           </p>
         )}
       </header>
@@ -54,7 +60,9 @@ export default function Home({ courses }) {
       <section>
         <h2>Speaking Playground</h2>
         <Link to={`/${langCode}/playground`} className="playground-card">
-          <h3>🗣️ Open conversation practice</h3>
+          <h3>
+            <MessageCircle size={20} className="icon-inline" /> Open conversation practice
+          </h3>
           <p>Pick your level and talk about anything — get a feedback recap when you're done.</p>
         </Link>
       </section>
@@ -90,7 +98,9 @@ export default function Home({ courses }) {
                   to={`/${langCode}/test/${categorySlug(category)}`}
                   className={`path-node path-checkpoint ${passed ? "passed" : ""}`}
                 >
-                  <span className="path-node-icon">{passed ? "✅" : "🧪"}</span>
+                  <span className="path-node-icon">
+                    {passed ? <CheckCircle2 size={28} /> : <FlaskConical size={28} />}
+                  </span>
                 </Link>
                 <span className="path-node-label">
                   {passed ? `${category} test passed — retake` : `${category} test`}

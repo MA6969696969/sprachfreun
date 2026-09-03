@@ -26,6 +26,22 @@ import {
   Smile,
   House,
   Gift,
+  Quote,
+  Building2,
+  TreePine,
+  Music,
+  PawPrint,
+  Banknote,
+  Phone,
+  ShoppingCart,
+  Hand as WaveHand,
+  Coffee,
+  Compass as CompassIcon,
+  Stethoscope as StethoscopeIcon,
+  BedDouble,
+  PartyPopper as PartyPopperIcon,
+  UtensilsCrossed as UtensilsIcon,
+  ShoppingBag as BagIcon,
 } from "lucide-react";
 
 // Nav icons — used by AppShell for the persistent tab bar / sidebar.
@@ -63,6 +79,13 @@ export const COURSE_ICONS = {
   emotions: Smile,
   home: House,
   holidays: Gift,
+  idioms: Quote,
+  "city-life": Building2,
+  nature: TreePine,
+  music: Music,
+  pets: PawPrint,
+  money: Banknote,
+  phone: Phone,
 };
 
 // A small rotating palette of muted colors, assigned per course so
@@ -91,6 +114,13 @@ export const COURSE_COLORS = {
   work: "amber",
   emotions: "violet",
   home: "green",
+  idioms: "blue",
+  "city-life": "violet",
+  nature: "green",
+  music: "amber",
+  pets: "teal",
+  money: "terracotta",
+  phone: "teal",
 };
 
 export function courseColorClass(courseId) {
@@ -100,6 +130,26 @@ export function courseColorClass(courseId) {
 
 export function CourseIcon({ courseId, size = 22, className }) {
   const Icon = COURSE_ICONS[courseId];
+  if (!Icon) return null;
+  return <Icon size={size} className={className} aria-hidden="true" />;
+}
+
+// Icons for the scripted "real-life situations", keyed by situation id.
+export const SITUATION_ICONS = {
+  "grocery-store": ShoppingCart,
+  neighbor: WaveHand,
+  cafe: Coffee,
+  directions: CompassIcon,
+  doctor: StethoscopeIcon,
+  hotel: BedDouble,
+  "new-friend": PartyPopperIcon,
+  restaurant: UtensilsIcon,
+  shopping: BagIcon,
+  park: TreePine,
+};
+
+export function SituationIcon({ situationId, size = 22, className }) {
+  const Icon = SITUATION_ICONS[situationId];
   if (!Icon) return null;
   return <Icon size={size} className={className} aria-hidden="true" />;
 }

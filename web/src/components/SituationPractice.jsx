@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, Navigate, Link, useNavigate } from "react-router-dom";
+import { MessageCircle, RotateCcw, X, CheckCircle2, XCircle, Minus } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import { sendChat } from "../api.js";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition.js";
@@ -7,6 +8,7 @@ import { useSpeechSynthesis } from "../hooks/useSpeechSynthesis.js";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { getSituation, SITUATION_TURN_COUNT } from "../lib/situations.js";
 import { situationPoints } from "../lib/points.js";
+import { SituationIcon } from "../lib/icons.jsx";
 
 export default function SituationPractice({ courses }) {
   const { lang: langCode, situationId } = useParams();
@@ -211,9 +213,23 @@ export default function SituationPractice({ courses }) {
   }
 
   function scoreLabel(score) {
-    if (score === 1) return "✅ Nice";
-    if (score === 0.5) return "〰️ Close";
-    return "❌ Off";
+    if (score === 1)
+      return (
+        <>
+          <CheckCircle2 size={16} /> Nice
+        </>
+      );
+    if (score === 0.5)
+      return (
+        <>
+          <Minus size={16} /> Close
+        </>
+      );
+    return (
+      <>
+        <XCircle size={16} /> Off
+      </>
+    );
   }
 
   if (ended) {
@@ -222,7 +238,10 @@ export default function SituationPractice({ courses }) {
         <AppHeader backTo={backTo} backLabel="Situations" />
         <div className="page">
           <header className="hero small">
-            <h1>{situation.icon} {situation.title}</h1>
+            <h1>
+              <SituationIcon situationId={situation.id} size={26} className="icon-inline" />{" "}
+              {situation.title}
+            </h1>
             <p>
               {lang.flag} Scenario complete · {totalScore}/{turns.length || 0} score
             </p>
@@ -235,7 +254,9 @@ export default function SituationPractice({ courses }) {
               <ul className="recap-list">
                 {turns.map((t, i) => (
                   <li key={i}>
-                    <div className="recap-said">🗣️ {t.userText}</div>
+                    <div className="recap-said">
+                      <MessageCircle size={16} /> {t.userText}
+                    </div>
                     <div className={t.score === 1 ? "recap-ok" : "recap-tip"}>
                       {scoreLabel(t.score)} — {t.score}/1
                     </div>
@@ -247,7 +268,7 @@ export default function SituationPractice({ courses }) {
 
           <div className="cta-stack">
             <button type="button" className="primary-button" onClick={startSession}>
-              🔁 Try again
+              <RotateCcw size={18} /> Try again
             </button>
             <Link to={backTo} className="secondary-button">
               Done
@@ -262,7 +283,7 @@ export default function SituationPractice({ courses }) {
     <div className="voice-session">
       <div className="voice-topbar">
         <button type="button" className="voice-close" onClick={handleClose} aria-label="End simulation">
-          ✕
+          <X size={18} />
         </button>
         <div className="voice-title">
           {lang.flag} <strong>{situation.title}</strong>

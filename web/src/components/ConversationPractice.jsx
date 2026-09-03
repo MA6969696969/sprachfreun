@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useParams, Navigate, Link, useNavigate } from "react-router-dom";
+import { X, MessageCircle, Lightbulb, Check, RotateCcw } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import { sendChat } from "../api.js";
 import { useSpeechRecognition } from "../hooks/useSpeechRecognition.js";
@@ -11,9 +12,9 @@ import { conversationTurnPoints, conversationSessionBonus } from "../lib/points.
 const TEST_TURN_COUNT = 5;
 const TEST_TIER_BONUS = { green: 40, yellow: 20, red: 5 };
 const TEST_TIER_LABEL = {
-  green: "Great job! 🟢",
-  yellow: "Getting there 🟡",
-  red: "Keep practicing 🔴",
+  green: "Great job!",
+  yellow: "Getting there",
+  red: "Keep practicing",
 };
 
 export default function ConversationPractice({ courses, mode }) {
@@ -299,11 +300,17 @@ export default function ConversationPractice({ courses, mode }) {
             <ul className="recap-list">
               {turns.map((t, i) => (
                 <li key={i}>
-                  <div className="recap-said">🗣️ {t.userText}</div>
+                  <div className="recap-said">
+                    <MessageCircle size={16} /> {t.userText}
+                  </div>
                   {t.hasCorrection ? (
-                    <div className="recap-tip">💡 {t.correction}</div>
+                    <div className="recap-tip">
+                      <Lightbulb size={16} /> {t.correction}
+                    </div>
                   ) : (
-                    <div className="recap-ok">✓ Nice — no corrections here</div>
+                    <div className="recap-ok">
+                      <Check size={16} /> Nice — no corrections here
+                    </div>
                   )}
                 </li>
               ))}
@@ -312,7 +319,7 @@ export default function ConversationPractice({ courses, mode }) {
 
           <div className="cta-stack">
             <button type="button" className="primary-button" onClick={startSession}>
-              🔁 Retake the test
+              <RotateCcw size={18} /> Retake the test
             </button>
             <Link to={backTo} className="cta-text-link">
               Done
@@ -343,11 +350,17 @@ export default function ConversationPractice({ courses, mode }) {
               <ul className="recap-list">
                 {turns.map((t, i) => (
                   <li key={i}>
-                    <div className="recap-said">🗣️ {t.userText}</div>
+                    <div className="recap-said">
+                      <MessageCircle size={16} /> {t.userText}
+                    </div>
                     {t.hasCorrection ? (
-                      <div className="recap-tip">💡 {t.correction}</div>
+                      <div className="recap-tip">
+                        <Lightbulb size={16} /> {t.correction}
+                      </div>
                     ) : (
-                      <div className="recap-ok">✓ Nice — no corrections here</div>
+                      <div className="recap-ok">
+                        <Check size={16} /> Nice — no corrections here
+                      </div>
                     )}
                   </li>
                 ))}
@@ -357,7 +370,7 @@ export default function ConversationPractice({ courses, mode }) {
 
           <div className="cta-stack">
             <button type="button" className="primary-button" onClick={startSession}>
-              🔁 Practice again
+              <RotateCcw size={18} /> Practice again
             </button>
             <Link to={backTo} className="secondary-button">
               Done
@@ -372,13 +385,21 @@ export default function ConversationPractice({ courses, mode }) {
     <div className="voice-session">
       <div className="voice-topbar">
         <button type="button" className="voice-close" onClick={handleEndSession} aria-label="End session">
-          ✕
+          <X size={18} />
         </button>
         <div className="voice-title">
           {lang.flag} <strong>{title}</strong>
         </div>
         <div className="voice-tip-count">
-          {mode === "test" ? `${turns.length}/${TEST_TURN_COUNT}` : tipCount > 0 && `💡 ${tipCount}`}
+          {mode === "test" ? (
+            `${turns.length}/${TEST_TURN_COUNT}`
+          ) : (
+            tipCount > 0 && (
+              <>
+                <Lightbulb size={14} /> {tipCount}
+              </>
+            )
+          )}
         </div>
       </div>
 

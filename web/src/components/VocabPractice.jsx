@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
+import { PartyPopper, Target, Shuffle, Mic, RotateCcw, CheckCircle2, CircleDashed } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import { buildDeck, shuffle } from "../lib/deck.js";
 import { useProfile } from "../context/ProfileContext.jsx";
@@ -149,23 +150,25 @@ export default function VocabPractice({ courses }) {
 
         {complete ? (
           <div className="flashcard-complete">
-            <div className="flashcard-complete-icon">🎉</div>
+            <div className="flashcard-complete-icon">
+              <PartyPopper size={52} />
+            </div>
             <p>
               You made it through every card in {course.title}
               {round > 1 ? ` in ${round} rounds` : ""}. Nice work.
             </p>
             <div className="cta-stack">
               <Link to={`/${langCode}/course/${courseId}/test`} className="primary-button">
-                🎯 Take the test
+                <Target size={18} /> Take the test
               </Link>
               <Link to={`/${langCode}/course/${courseId}/match`} className="secondary-button">
-                🔀 Play match
+                <Shuffle size={18} /> Play match
               </Link>
               <Link to={`/${langCode}/practice/${courseId}`} className="secondary-button">
-                🎙️ Practice speaking with AI
+                <Mic size={18} /> Practice speaking with AI
               </Link>
               <button type="button" className="secondary-button" onClick={handleRestart}>
-                🔁 Practice again
+                <RotateCcw size={18} /> Practice again
               </button>
               <Link to={backTo} className="cta-text-link">
                 Done
@@ -202,15 +205,23 @@ export default function VocabPractice({ courses }) {
             {flipped ? (
               reviewing ? (
                 <p className="flashcard-review-note">
-                  {marks[current._id] === "got" ? "✅ You had this one" : "😅 Still practicing this one"}
+                  {marks[current._id] === "got" ? (
+                    <>
+                      <CheckCircle2 size={16} className="icon-inline" /> You had this one
+                    </>
+                  ) : (
+                    <>
+                      <CircleDashed size={16} className="icon-inline" /> Still practicing this one
+                    </>
+                  )}
                 </p>
               ) : (
                 <div className="flashcard-actions">
                   <button type="button" className="flashcard-btn still-learning" onClick={() => handleMark(false)}>
-                    😅 Still learning
+                    <CircleDashed size={18} /> Still learning
                   </button>
                   <button type="button" className="flashcard-btn got-it" onClick={() => handleMark(true)}>
-                    ✅ Got it
+                    <CheckCircle2 size={18} /> Got it
                   </button>
                 </div>
               )

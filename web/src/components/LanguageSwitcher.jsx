@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Check } from "lucide-react";
 import { useActiveLanguage } from "../context/ActiveLanguageContext.jsx";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { useLocale } from "../context/LocaleContext.jsx";
@@ -40,7 +41,11 @@ export default function LanguageSwitcher({ courses }) {
                     <span className="sheet-lang-name">{lang.languageName}</span>
                     <span className="sheet-lang-points">{points[lang.code] || 0} pts</span>
                   </span>
-                  {lang.code === activeLanguage && <span className="sheet-lang-check">✓</span>}
+                  {lang.code === activeLanguage && (
+                    <span className="sheet-lang-check">
+                      <Check size={16} />
+                    </span>
+                  )}
                 </button>
               ))}
             </div>

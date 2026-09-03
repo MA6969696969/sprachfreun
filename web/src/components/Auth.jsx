@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { User } from "lucide-react";
 import AppHeader from "./AppHeader.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 
@@ -37,7 +38,9 @@ export default function Auth() {
         <AppHeader backTo="/settings" backLabel="Settings" />
         <div className="page">
           <header className="hero small">
-            <h1>👤 Account</h1>
+            <h1>
+              <User size={26} className="icon-inline" /> Account
+            </h1>
           </header>
           <div className="list-card auth-account-card">
             <div className="auth-account-username">{user.username}</div>
@@ -69,7 +72,9 @@ export default function Auth() {
       <AppHeader backTo="/settings" backLabel="Settings" />
       <div className="page">
         <header className="hero small">
-          <h1>👤 {mode === "signup" ? "Create account" : "Sign in"}</h1>
+          <h1>
+            <User size={26} className="icon-inline" /> {mode === "signup" ? "Create account" : "Sign in"}
+          </h1>
           <p>Protect your leaderboard name with an email and password.</p>
         </header>
 

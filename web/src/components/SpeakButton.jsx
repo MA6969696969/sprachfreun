@@ -1,3 +1,5 @@
+import { Volume2 } from "lucide-react";
+
 export default function SpeakButton({ text, speak, className = "" }) {
   return (
     <button
@@ -9,7 +11,7 @@ export default function SpeakButton({ text, speak, className = "" }) {
       }}
       aria-label={`Play pronunciation`}
     >
-      🔊
+      <Volume2 size={14} />
     </button>
   );
 }

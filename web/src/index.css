@@ -360,6 +360,12 @@ button {
   background: var(--accent-soft);
 }
 
+.app-menu-item span:first-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .app-menu-item-value {
   color: var(--ink-faint);
   font-weight: 500;
@@ -818,6 +824,12 @@ button {
   align-items: center;
 }
 
+.icon-inline {
+  display: inline-block;
+  vertical-align: -4px;
+  margin-right: 2px;
+}
+
 .category-test-cta {
   display: block;
   margin-top: var(--sp-3);
@@ -1162,6 +1174,11 @@ button {
 
 .path-checkpoint .path-node-icon {
   font-size: 2.1rem;
+  color: white;
+}
+
+.path-checkpoint.passed .path-node-icon {
+  color: var(--ok-ink);
 }
 
 .path-checkpoint:active {
@@ -1480,6 +1497,8 @@ section h2 {
 }
 
 .profile-edit-hint {
+  display: inline-flex;
+  align-items: center;
   font-size: 0.75rem;
   color: var(--ink-faint);
 }
@@ -1665,7 +1684,10 @@ section h2 {
 }
 
 .primary-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
   text-align: center;
   background: var(--accent-strong);
   color: white;
@@ -1689,7 +1711,10 @@ section h2 {
 }
 
 .secondary-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
   text-align: center;
   background: var(--accent-soft);
   color: var(--accent);
@@ -1719,7 +1744,10 @@ section h2 {
 }
 
 .cta-text-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-1);
   width: 100%;
   background: none;
   border: none;
@@ -1861,6 +1889,10 @@ section h2 {
 }
 
 .voice-tip-count {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
   min-width: 38px;
   text-align: right;
   font-size: 0.85rem;
@@ -2146,6 +2178,9 @@ section h2 {
 }
 
 .test-feedback-verdict {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
   margin: 0;
   font-weight: 700;
   font-size: 1.05rem;
@@ -2205,12 +2240,18 @@ section h2 {
 }
 
 .recap-said {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
   font-weight: 600;
   font-size: 1.02rem;
   line-height: 1.4;
 }
 
 .recap-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-1);
   margin-top: var(--sp-2);
   background: var(--warn-bg);
   color: var(--warn-ink);
@@ -2220,7 +2261,15 @@ section h2 {
   line-height: 1.4;
 }
 
+.recap-tip svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
 .recap-ok {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
   margin-top: var(--sp-2);
   color: var(--ok-ink);
   font-size: 0.88rem;
@@ -2412,6 +2461,10 @@ section h2 {
 }
 
 .flashcard-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
   flex: 1;
   padding: var(--sp-3);
   border-radius: 999px;
@@ -2448,7 +2501,10 @@ section h2 {
 }
 
 .flashcard-complete-icon {
-  font-size: 3.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
 }
 
 .flashcard-complete p {
@@ -2477,6 +2533,10 @@ section h2 {
 }
 
 .match-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--ink-soft);
@@ -2625,6 +2685,9 @@ section h2 {
 }
 
 .settings-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 10px var(--sp-4);
   border-radius: 999px;
   border: 1px solid var(--border);
@@ -2802,12 +2865,25 @@ section h2 {
 }
 
 .leaderboard-rank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
   width: 32px;
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--ink-soft);
   text-align: center;
+}
+
+.leaderboard-rank.rank-gold {
+  color: #c9971f;
+}
+.leaderboard-rank.rank-silver {
+  color: #8b93a1;
+}
+.leaderboard-rank.rank-bronze {
+  color: #b3702f;
 }
 
 .leaderboard-name {

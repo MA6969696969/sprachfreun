@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Menu, CalendarDays, Trophy, Settings } from "lucide-react";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { useStreak } from "../context/StreakContext.jsx";
 
@@ -33,7 +34,7 @@ export default function AppHeader({ backTo, backLabel }) {
             onClick={() => setMenuOpen((open) => !open)}
             aria-label="Menu"
           >
-            ☰
+            <Menu size={20} />
           </button>
         </div>
       </div>
@@ -50,14 +51,20 @@ export default function AppHeader({ backTo, backLabel }) {
               </div>
             </div>
             <button type="button" className="app-menu-item" onClick={() => goTo("/streak")}>
-              <span>📅 Streak</span>
+              <span>
+                <CalendarDays size={18} /> Streak
+              </span>
               <span className="app-menu-item-value">{streakCount}d</span>
             </button>
             <button type="button" className="app-menu-item" onClick={() => goTo("/leaderboard")}>
-              <span>🏆 Leaderboard</span>
+              <span>
+                <Trophy size={18} /> Leaderboard
+              </span>
             </button>
             <button type="button" className="app-menu-item" onClick={() => goTo("/settings")}>
-              <span>⚙️ Settings</span>
+              <span>
+                <Settings size={18} /> Settings
+              </span>
             </button>
           </div>
         </>

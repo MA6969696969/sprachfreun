@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Trophy, Lock, Crown, Medal } from "lucide-react";
 import { useProfile } from "../context/ProfileContext.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import { getDeviceId } from "../lib/deviceId.js";
@@ -65,13 +66,16 @@ export default function Leaderboard({ courses }) {
     <>
       <div className="page">
         <header className="hero small">
-          <h1>🏆 Leaderboard</h1>
+          <h1>
+            <Trophy size={26} className="icon-inline" /> Leaderboard
+          </h1>
           <p>See how your points stack up against everyone else playing Sprachfreund.</p>
         </header>
 
         {isSignedIn ? (
           <p className="leaderboard-account-status">
-            🔒 Signed in as <strong>{user.username}</strong> — your name is protected.
+            <Lock size={14} className="icon-inline" /> Signed in as <strong>{user.username}</strong> —
+            your name is protected.
           </p>
         ) : (
           <p className="leaderboard-account-status">
@@ -110,7 +114,7 @@ export default function Leaderboard({ courses }) {
                 className={`settings-choice ${langCode === null ? "active" : ""}`}
                 onClick={() => setLangCode(null)}
               >
-                🏆 Overall
+                <Trophy size={16} /> Overall
               </button>
               {languageList.map((lang) => (
                 <button
@@ -139,14 +143,24 @@ export default function Leaderboard({ courses }) {
                       key={entry.deviceId}
                       className={`leaderboard-row ${entry.deviceId === effectiveDeviceId ? "me" : ""}`}
                     >
-                      <span className="leaderboard-rank">
-                        {entry.rank === 1
-                          ? "🥇"
-                          : entry.rank === 2
-                          ? "🥈"
-                          : entry.rank === 3
-                          ? "🥉"
-                          : `#${entry.rank}`}
+                      <span
+                        className={`leaderboard-rank ${
+                          entry.rank === 1
+                            ? "rank-gold"
+                            : entry.rank === 2
+                            ? "rank-silver"
+                            : entry.rank === 3
+                            ? "rank-bronze"
+                            : ""
+                        }`}
+                      >
+                        {entry.rank === 1 ? (
+                          <Crown size={18} />
+                        ) : entry.rank <= 3 ? (
+                          <Medal size={18} />
+                        ) : (
+                          `#${entry.rank}`
+                        )}
                       </span>
                       <span className="leaderboard-name">
                         {entry.name}
